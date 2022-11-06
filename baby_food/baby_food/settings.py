@@ -28,6 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'baby_food.menu_app',
+    'baby_food.recipes',
+    'baby_food.accounts',
+    'baby_food.orders',
+    'baby_food.common',
 ]
 
 MIDDLEWARE = [
@@ -65,10 +69,15 @@ WSGI_APPLICATION = 'baby_food.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'baby_food_db',
+        'USER': 'postgres-user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost', # '127.0.0.1'
+        'PORT': '5432',
     }
 }
 
@@ -112,6 +121,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     BASE_DIR / 'staticfiles',
 )
+
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

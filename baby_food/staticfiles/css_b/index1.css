@@ -1,0 +1,26 @@
+body {
+    background-image: url(../images_b/index_image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+header {
+    font-size: 30px;
+    text-align: right;
+    color: steelblue;
+    font-family: 'Segoe UI Emoji', cursive;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    background: #234465;
+}
+
+footer p {
+    padding: 1rem 0;
+    font-weight: bold;
+    margin: 0;
+    color: darkgreen;
+}

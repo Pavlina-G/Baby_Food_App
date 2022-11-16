@@ -1,1 +1,8 @@
-@import "index.css";
+@import "index1.css";
+@import "Home.css";
+@import "Locations.css";
+@import "Menus.css";
+@import "Register.css";
+@import "Sign-In.css";
+@import "nicepage.css";
+/*@import "Post-Template.css";*/

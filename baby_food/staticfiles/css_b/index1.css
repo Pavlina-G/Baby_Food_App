@@ -1,26 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
-    background-image: url(../images_b/index_image.jpg);
+    background-image: url(../images/image3.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 
 }
 
+.error {
+    color: #c91c1c;
+}
+
 header {
-    font-size: 30px;
-    text-align: right;
-    color: steelblue;
-    font-family: 'Segoe UI Emoji', cursive;
+    /*font-size: 30px;*/
+    text-align: center;
+    padding-top: 20px;
+    color: #1fa994;
+    font-family: Roboto, cursive;
+}
+
+.icon {
+    position: relative;
+    /* Adjust these values accordingly */
+    top: 5px;
+    left: 5px;
+}
+
+.icon text {
+    position: relative;
+    /* Adjust these values accordingly */
+    top: 5px;
+    left: 5px;
+}
+
+/* Create a top navigation bar with a black background color  */
+.topnav {
+    background-color: transparent;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: right;
+    color: #1fa994;
+    text-align: center;
+    /*padding-top: 10px;*/
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    /*background-color: transparent;*/
+    color: #065b4f;
 }
 
 footer {
-    margin-top: auto;
-    text-align: center;
-    background: #234465;
+    /*text-align: center;*/
+    background: transparent;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    /*margin-bottom: 20px;*/
+    width: 100%;
+    /*background-color: red;*/
+    color: #0f8e74;
+
 }
 
 footer p {
     padding: 1rem 0;
     font-weight: bold;
     margin: 0;
-    color: darkgreen;
+    color: #0f8e74;
+}
+
+/* Container holding the image and the text */
+.container {
+    position: fixed;
+    text-align: center;
+    color: #065b4f;
+    /*padding: 5px 0;*/
+    display: flex;
+    /*align-items: center;*/
+}
+
+/*Centered text*/
+.centered {
+    position: fixed;
+    text-align: center;
+    word-wrap: break-word;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*transform: translate(-40%);*/
+    display: block;
+    margin: 0 54px;
+
 }

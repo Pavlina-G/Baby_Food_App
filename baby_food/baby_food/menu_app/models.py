@@ -45,6 +45,13 @@ class MenuWithoutAllergens(BaseMenu):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    age = models.CharField(
+        max_length=10,
+        choices=(
+            ('10M-36M', '10M-36M'),
+        ),
+    )
+
     soup = models.ForeignKey(
         RecipeWithoutAllergens,
         on_delete=models.DO_NOTHING,

@@ -362,12 +362,7 @@
                 </div>
             </div>
         </header>
-        {#        <div class="profile-details-container4">#}
-        {#            <img#}
-        {#                    src="{% static 'public/playground_assets/profile-icon-200h.jpg' %}"#}
-        {#                    alt="image"#}
-        {#                    class="profile-details-image2"#}
-        {#            />#}
+
         <div class="login-register-div">
             <div class="login-register-box">
                 <h1>Profile Details</h1>
@@ -389,9 +384,6 @@
                         </div>
                     </div>
                     <p style="margin-top: -169px">
-                        {#                        <br>#}
-                        {#                        <span class="profile-details-text3">Profile Image: {{ user.profile.profile_image }}</span>#}
-                        {#                        <br>#}
                         <br>
                         <span class="profile-details-text-info"><b>Username: </b>{{ user.username }}</span>
                         <br>
@@ -405,7 +397,6 @@
                         <span class="profile-details-text-info"><b>Last Name: </b>{{ user.profile.last_name }}</span>
                         <br>
                         <br>
-                        {#                    <span class="profile-details-text-info">Number of Children: {{ user.profile.number_of_children }}</span>#}
                         {% if total_children %}
                         <span class="profile-details-text-info"><b>Number of Children: </b>{{ total_children }}</span>
                     {% else %}
@@ -421,20 +412,27 @@
                         {% endfor %}
 
                     </p>
-                    <a href="{% url 'profile update' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 109px;
+                    <a href="{% url 'profile update' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 5px;
 background-color: rgb(31, 169, 148);
 	color: white;
 	font-weight: bold;
 	border: none;
 width: 100px;
 text-align: center">Edit</a>
-                    <a href="{% url 'profile delete' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 20px;
+                    <a href="{% url 'profile delete' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 10px;
 background-color: rgb(31, 169, 148);
 	color: white;
 	font-weight: bold;
 	border: none;
 width: 100px;
 text-align: center">Delete</a>
+                    <a href="{% url 'change password' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 10px;
+background-color: rgb(31, 169, 148);
+	color: white;
+	font-weight: bold;
+	border: none;
+width: 180px;
+text-align: center">Change Password</a>
                     {% csrf_token %}
 
                 </form>
@@ -442,58 +440,7 @@ text-align: center">Delete</a>
 
             </div>
         </div>
-        {#            <label class="profile-details-text3">#}
-        {#                <span>Profile Image</span>#}
-        {#                <br/>#}
-        {#            </label>#}
-        {#            <form name="profile-details-form" class="profile-details-form" style="font-family: ABeeZee; background-color: whitesmoke">#}
-        {#                <p>#}
-        {#                <br>#}
-        {#                <span class="profile-details-text-info">Username: {{ user.username }}</span>#}
-        {#                <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">Email: {{ user.email }}</span>#}
-        {#                <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">First Name: {{ user.profile.first_name }}</span>#}
-        {#                    <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">Last Name: {{ user.profile.last_name }}</span>#}
-        {#                       <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">Number of Children: {{ user.profile.number_of_children }}</span>#}
-        {#                    {% for child in user.child_set.all %}#}
-        {#                       <br>#}
-        {#                    <br>#}
-        {#                        <span class="profile-details-text-info">Child Name: {{ child.first_name }} {{ child.last_name }}</span>#}
-        {#                        <br>#}
-        {#                        <br>#}
-        {#                        <span class="profile-details-text-info">Child Birth Date: {{ child.date_of_birth }}</span>#}
-        {#                    {% endfor %}#}
-        {##}
-        {#                </p>#}
-        {#                {{ user.username }}#}
-        {#                <a#}
-        {#                        href="{% url 'index' %}"#}
-        {#                        name="edit-btn"#}
-        {#                        target="_blank"#}
-        {#                        rel="noreferrer noopener"#}
-        {#                        class="profile-details-link button"#}
-        {#                        style="margin-left: -170px"#}
-        {#                >#}
-        {#                    Edit#}
-        {#                </a>#}
-        {#                <a#}
-        {#                        href="https://text"#}
-        {#                        name="delete-btn"#}
-        {#                        target="_blank"#}
-        {#                        rel="noreferrer noopener"#}
-        {#                        class="profile-details-link1 button"#}
-        {#                >#}
-        {#                    Delete#}
-        {#                </a>#}
-        {#            </form>#}
-        {#        </div>#}
+
         <footer class="profile-details-footer">
           <span class="profile-details-text6">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>

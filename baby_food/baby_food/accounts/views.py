@@ -4,27 +4,21 @@ from django.contrib.auth import get_user_model, login, authenticate
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic as views, View
-from django.views.generic.edit import FormMixin, ModelFormMixin
-from multi_form_view import MultiModelFormView, MultiFormView
+from multi_form_view import MultiModelFormView
 
 from baby_food.accounts.forms import SignInForm, SignUpForm, ProfileForm, UserEditForm, UserForm, ChildForm, \
     UserUpdateForm, ProfileEditForm, ChildEditForm
 from baby_food.accounts.models import Profile, AppUser, Child
 
-# from baby_food.accounts.forms import SignUpForm
 
 UserModel = get_user_model()
 
-
-# def get_profile():
-#     try:
-#         return Profile.objects.get(pk=self.request.user.pk)
-#     except Profile.DoesNotExist as ex:
-#         return None
 
 class SignUpView(views.CreateView):
     template_name = 'accounts/register.html'
@@ -42,24 +36,6 @@ class SignUpView(views.CreateView):
 class SignInView(auth_views.LoginView):
     template_name = 'accounts/login.html'
     authentication_form = SignInForm
-    # success_url = reverse_lazy('profile home')
-
-
-# def sign_in_view(request, *args, **kwargs):
-#
-#     form = SignInForm(request.POST)
-#     if request.POST:
-#         if form.is_valid():
-#             email = request.POST['email']
-#             password = request.POST['password']
-#             user = authenticate(email=email, password=password)
-#             if user:
-#                 login(request, user)
-#                 return redirect('profile home')
-#
-#     else:
-#         form = SignInForm()
-#     return render(request, 'login.html', {'form': form})
 
 
 class SignOutView(auth_views.LogoutView):
@@ -172,3 +148,9 @@ class ProfileDeleteView(views.DeleteView):
     template_name = 'accounts/profile-delete.html'
     model = UserModel
     success_url = reverse_lazy('index')
+
+
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'accounts/password_change.html'
+    success_message = "Successfully Changed Your Password"
+    success_url = reverse_lazy('profile home')

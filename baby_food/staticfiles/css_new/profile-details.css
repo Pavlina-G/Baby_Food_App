@@ -748,9 +748,10 @@
 
 
 .login-register-div {
-	margin-top: 5%;
+	margin-top: 8%;
 	margin-bottom: 10%;
   margin-left: 50%;
+
 }
 
 .login-register-box, .second-option {
@@ -804,5 +805,5 @@
 
 .second-option {
 	text-align: center;
-	padding: 20px;
+	padding: 0px;
 }

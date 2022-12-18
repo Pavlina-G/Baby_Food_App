@@ -55,35 +55,6 @@ class SignUpForm(auth_forms.UserCreationForm):
 
 class SignInForm(auth_forms.AuthenticationForm):
     pass
-    # username = forms.CharField(widget=forms.TextInput(
-    #     attrs={'class': 'form-control', 'type': 'text', 'name': 'username', 'placeholder': 'Username'}),
-    #     label='Username',
-    #     error_messages={
-    #         'required': 'Please enter a valid username'
-    #     }, )
-    # password = forms.CharField(widget=forms.PasswordInput(
-    #     attrs={"autocomplete": "current-password", 'class': 'form-control', 'type': 'password', 'name': 'password',
-    #            'placeholder': 'Password'}),
-    #     label='Password',
-    #     error_messages={
-    #         'required': 'Please enter a valid password',
-    #     },
-    # )
-    # error_messages = {
-    #     "invalid_login": _(
-    #         "Please enter a correct %(username)s and password. Note that both "
-    #         "fields may be case-sensitive."
-    #     ),
-    # }
-    #
-    # def __init__(self, *args, **kwargs):
-    #     super(SignInForm, self).__init__(*args, **kwargs)
-    #
-    # def confirm_login_allowed(self, user):
-    #     pass
-    #
-    # class Meta:
-    #     fields = ['email', 'password']
 
 
 class UserEditForm(auth_forms.UserChangeForm):
@@ -108,9 +79,15 @@ class BaseUserForm(forms.ModelForm):
                 'placeholder': 'Email',
             })
         }
+        labels = {
+            'username': 'Username',
+            'email': 'Email',
+        }
+
 
 class UserForm(BaseUserForm):
     pass
+
 
 class UserUpdateForm(BaseUserForm):
     pass
@@ -128,19 +105,21 @@ class BaseProfileForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={
                 'placeholder': 'Last Name',
             }),
-            # 'number_of_children': forms.IntegerField(attrs={
-            #     'placeholder': 'Number of Children',
-            # }),
-            # 'profile_image': forms.ImageField(attrs={
-            #     'placeholder': 'Profile Image',
-            # }),
         }
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'profile_image': 'Profile Image'
+        }
+
 
 class ProfileForm(BaseProfileForm):
     pass
 
+
 class ProfileEditForm(BaseProfileForm):
     pass
+
 
 class BaseChildForm(forms.ModelForm):
     class Meta:
@@ -159,9 +138,16 @@ class BaseChildForm(forms.ModelForm):
                 'placeholder': 'Child Birth Date',
             }),
         }
+        labels = {
+            'first_name': 'Child First Name',
+            'last_name': 'Child Last Name',
+            'date_of_birth': 'Birth Date',
+        }
+
 
 class ChildForm(BaseChildForm):
     pass
+
 
 class ChildEditForm(BaseChildForm):
     pass

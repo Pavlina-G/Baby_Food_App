@@ -493,13 +493,14 @@
 /*}*/
 .home-text03 {
   top: 0px;
-  right: -2px;
+  /*right: -5px;*/
   position: absolute;
-  margin-right: 170px;
+  margin-right: 10%;
   font-style: normal;
   text-align: center;
   font-family: ABeeZee;
   font-weight: 400;
+    margin-left: 12%;
 }
 .home-text05 {
   color: #40a49e;

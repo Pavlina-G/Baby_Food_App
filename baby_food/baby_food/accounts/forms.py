@@ -1,9 +1,6 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model, authenticate
-from django.contrib.auth.forms import UsernameField
-from django.contrib.auth.password_validation import validate_password
-from django.core import validators
-from django.core.exceptions import ValidationError, ObjectDoesNotExist
+
 from django.utils.translation import gettext_lazy as _
 
 from baby_food.accounts.models import Profile, AppUser, Child
@@ -31,11 +28,6 @@ class SignUpForm(auth_forms.UserCreationForm):
                     'placeholder': 'Email: ',
                 },
             ),
-            # 'number_of_children': forms.IntegerField(
-            #     attrs={
-            #         'placeholder': 'Number of Children: ',
-            #     },
-            # ),
         }
 
     def save(self, commit=True):
@@ -47,7 +39,7 @@ class SignUpForm(auth_forms.UserCreationForm):
         if commit:
             profile.save()
             for _ in range(children_numbers):
-                child = Child(parent=user)
+                child = Child(parent=profile)
                 child.save()
 
         return user
@@ -60,8 +52,8 @@ class SignInForm(auth_forms.AuthenticationForm):
 class UserEditForm(auth_forms.UserChangeForm):
     class Meta:
         model = UserModel
-        # fields = ('username', 'email')
-        fields = "__all__"
+        exclude = ('date_joined',)
+        # fields = '__all__'
         field_classes = {'username': auth_forms.UsernameField}
 
 
@@ -129,7 +121,6 @@ class BaseChildForm(forms.ModelForm):
         widgets = {
             'first_name': forms.TextInput(attrs={
                 'placeholder': 'Child First Name',
-                'class': 'form-control',
             }),
             'last_name': forms.TextInput(attrs={
                 'placeholder': 'Child Last Name',
@@ -139,8 +130,8 @@ class BaseChildForm(forms.ModelForm):
             }),
         }
         labels = {
-            'first_name': 'Child First Name',
-            'last_name': 'Child Last Name',
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
             'date_of_birth': 'Birth Date',
         }
 
@@ -150,4 +141,8 @@ class ChildForm(BaseChildForm):
 
 
 class ChildEditForm(BaseChildForm):
-    pass
+   pass
+
+
+
+

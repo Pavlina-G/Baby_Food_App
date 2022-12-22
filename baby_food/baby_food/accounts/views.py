@@ -1,21 +1,17 @@
-import six
-from django.contrib import messages
 from django.contrib.auth import get_user_model, login, authenticate
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.exceptions import ValidationError
-from django.shortcuts import render, redirect
+from django.forms import modelformset_factory, inlineformset_factory
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.views import generic as views, View
+from django.views import generic as views
 from multi_form_view import MultiModelFormView
 
-from baby_food.accounts.forms import SignInForm, SignUpForm, ProfileForm, UserEditForm, UserForm, ChildForm, \
-    UserUpdateForm, ProfileEditForm, ChildEditForm
+from baby_food.accounts.forms import SignInForm, SignUpForm, ProfileForm, UserForm, ChildForm, ProfileEditForm, \
+    ChildEditForm
 from baby_food.accounts.models import Profile, AppUser, Child
-
 
 UserModel = get_user_model()
 
@@ -43,7 +39,7 @@ class SignOutView(auth_views.LogoutView):
 
 
 class ProfileHomeView(views.DetailView):
-    template_name = 'profile_home.html'
+    template_name = 'common/profile_home.html'
     model = UserModel
 
     def get_object(self, queryset=None):
@@ -82,7 +78,7 @@ class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
         return {
             'profile_form': profile,
             'user_form': profile.user if profile else None,
-            'child_form': profile.user.child_set if profile else None,
+            'child_form': profile.child_set if profile else None,
         }
 
     def get_success_url(self):
@@ -97,51 +93,67 @@ class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
 
     def get_context_data(self, **kwargs):
         user = AppUser.objects.get(pk=self.request.user.pk)
+        profile = Profile.objects.get(user_id=self.request.user.pk)
 
         context = super().get_context_data(**kwargs)
-        context['is_owner'] = self.request.user
 
-        # total_children = 0
-        # for child in user.child_set.all:
-        #     total_children += 1
-        # return total_children
-        #
-        context['total_children'] = user.child_set.count() if user.child_set else user.profile.number_of_children
-
+        context['total_children'] = profile.child_set.count() if profile.child_set else user.number_of_children
+        context['children'] = profile.child_set.all()
         return context
 
 
+def get_child_by_user_id(pk, parent_id):
+    return Child.objects \
+        .filter(pk=pk, parent_id=parent_id) \
+        .get()
+
+
 @login_required
-def profile_update(request, pk):
+def profile_edit(request, pk):
     user = request.user
+
+    # profile = get_object_or_404(Profile, user_id=user.pk)
     profile = Profile.objects.get(user_id=user.pk)
-    children = Child.objects.filter(parent_id=user.pk).all()
-    children_forms = []
 
     if request.method == 'POST':
-        user_form = UserUpdateForm(request.POST, instance=user)
         profile_form = ProfileEditForm(request.POST, request.FILES, instance=profile)
-        for child in children:
-            child_form = ChildEditForm(request.POST, instance=child)
-            children_forms.append(child_form)
-            if child_form.is_valid():
-                # child_form.save_m2m()
-                child_form.save()
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
+        if profile_form.is_valid():
             profile_form.save()
-            return redirect('profile details', pk=user.pk)
+
+        return redirect('profile details', pk=user.pk)
+
     else:
-        user_form = UserUpdateForm(instance=user)
         profile_form = ProfileEditForm(instance=profile)
 
-        for child in children:
-            child_form = ChildEditForm(instance=child)
-            children_forms.append(child_form)
+        context = {
+            'profile_form': profile_form,
+        }
 
     return render(request, 'accounts/profile-edit.html',
-                  {'user_form': user_form, 'profile_form': profile_form, 'children_forms': children_forms})
+                  context, )
+
+
+@login_required
+def child_update(request, user_id, pk):
+    user = request.user
+    child = Child.objects.get(pk=pk, parent_id=user_id)
+
+    if request.method == 'POST':
+        child_form = ChildEditForm(request.POST, request.FILES, instance=child)
+        if child_form.is_valid():
+            child_form.save()
+
+        return redirect('profile details', pk=user.pk)
+
+    else:
+        child_form = ChildEditForm(instance=child)
+
+        context = {
+            'child_form': child_form,
+            'child_pk': child.id
+        }
+
+    return render(request, 'accounts/child-edit.html', context)
 
 
 class ProfileDeleteView(views.DeleteView):

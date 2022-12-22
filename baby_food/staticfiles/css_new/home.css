@@ -247,7 +247,8 @@
   height: var(--dl-size-size-xsmall);
 }
 .home-container4 {
-  border-radius: var(--dl-radius-radius-radius4);
+  /*border-radius: var(--dl-radius-radius-radius4);*/
+  border-radius: 20px;
   top: 250px;
   right: 150px;
   width: 636px;

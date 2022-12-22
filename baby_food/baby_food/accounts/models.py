@@ -11,6 +11,7 @@ from django.db import models
 from django.contrib.auth import models as auth_models
 from baby_food.accounts.managers import AppUserManager
 
+
 class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
     username_validator = UnicodeUsernameValidator()
 
@@ -80,42 +81,47 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
         return self.username
 
 
-class BaseProfile(models.Model):
-    class Meta:
-        abstract = True
-
-    first_name = models.CharField(
-        max_length=30
-    )
-    last_name = models.CharField(
-        max_length=30
-    )
-
-
-class Profile(BaseProfile):
+class Profile(models.Model):
     user = models.OneToOneField(
         AppUser,
         primary_key=True,
         on_delete=models.CASCADE,
     )
 
+    first_name = models.CharField(
+        max_length=30
+    )
+
+    last_name = models.CharField(
+        max_length=30
+    )
+
     profile_image = models.ImageField(
         upload_to='profile_pics',
-        default='profile-icon.jpg'
+        default='profile_pics/profile-icon.jpg'
     )
 
 
+class Child(models.Model):
+    first_name = models.CharField(
+        max_length=30
+    )
 
-class Child(BaseProfile):
+    last_name = models.CharField(
+        max_length=30
+    )
+
     date_of_birth = models.DateField(
         default=timezone.now
     )
     parent = models.ForeignKey(
-        AppUser,
+        Profile,
         on_delete=models.CASCADE,
     )
 
     def __str__(self):
-        return f'Email: {self.parent.email} Child: {self.first_name} {self.last_name}'
+        return f'Email: {self.parent.user.username} Child: {self.first_name} {self.last_name}'
+
+
 
     # last_voucher_on = date_of_birth + timedelta(days=365*3)

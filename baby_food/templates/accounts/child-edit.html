@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Profile-Delete</title>
+    <title>Child-Edit</title>
     <meta
             property="og:title"
             content="profile-details - Electric Cylindrical Llama"
@@ -362,27 +362,24 @@
                 </div>
             </div>
         </header>
-        {#        <div class="profile-details-container4">#}
-        {#            <img#}
-        {#                    src="{% static 'public/playground_assets/profile-icon-200h.jpg' %}"#}
-        {#                    alt="image"#}
-        {#                    class="profile-details-image2"#}
-        {#            />#}
+
         <div class="login-register-div">
             <div class="login-register-box">
 
-                <h1>Profile Delete</h1>
+                <h1>Child Update</h1>
                 <!-- Start Register Form -->
-                <form id='edit-form' method="post" action="{% url 'profile delete' pk=request.user.pk %}"
+                <form  method="post" action="{% url 'child update' pk=child_pk user_id=request.user.pk %}"
                       enctype="multipart/form-data">
-                    <br>
-                    <h2 style="text-align: center">
-                        Are you sure you want to delete your profile?
-                    </h2>
 
-                    <button type="submit" value="edit">Yes, Delete Profile</button>
+                    {% for field in child_form %}
+                            {{ field.label }}
+                        {% endfor %}
+                        {{ child_form }}
+                        {{ child_form.errors }}
+                        <button type="submit" value="edit">Update Child</button>
+
+
                     {% csrf_token %}
-
 
                 </form>
 
@@ -391,7 +388,7 @@
         </div>
 
         <footer class="profile-details-footer">
-          <span class="profile-details-text6" style="margin-top: 8%">
+          <span class="profile-details-text6">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>
           </span>

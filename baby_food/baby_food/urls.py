@@ -9,7 +9,7 @@ urlpatterns = [
     path('bf-admin/', admin.site.urls),
     path('', include('baby_food.common.urls')),
     path('accounts/', include('baby_food.accounts.urls')),
-    path('menus/', include('baby_food.menu_app.urls')),
+    path('menu_app/', include('baby_food.menu_app.urls')),
     path('recipes/', include('baby_food.recipes.urls')),
     path('vouchers/', include('baby_food.vouchers.urls')),
 ]

@@ -1,9 +1,10 @@
-{% load placeholders %}
 {% load static %}
+{% load placeholders %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Profile-Delete</title>
+    <title>Profile-Edit</title>
     <meta
             property="og:title"
             content="profile-details - Electric Cylindrical Llama"
@@ -362,36 +363,39 @@
                 </div>
             </div>
         </header>
-        {#        <div class="profile-details-container4">#}
-        {#            <img#}
-        {#                    src="{% static 'public/playground_assets/profile-icon-200h.jpg' %}"#}
-        {#                    alt="image"#}
-        {#                    class="profile-details-image2"#}
-        {#            />#}
+
         <div class="login-register-div">
             <div class="login-register-box">
 
-                <h1>Profile Delete</h1>
-                <!-- Start Register Form -->
-                <form id='edit-form' method="post" action="{% url 'profile delete' pk=request.user.pk %}"
-                      enctype="multipart/form-data">
-                    <br>
-                    <h2 style="text-align: center">
-                        Are you sure you want to delete your profile?
-                    </h2>
+                <h1>Profile Update</h1>
 
-                    <button type="submit" value="edit">Yes, Delete Profile</button>
+                <form id='edit-form' method="post" action="{% url 'profile update' pk=request.user.pk %}"
+                      enctype="multipart/form-data">
+
+                    {% for field in profile_form %}
+                        {{ field.label }}
+                    {% endfor %}
+                    {{ profile_form }}
+                {{ profile_form.errors }}
+
+                    {% for child_form in children_forms %}
+                        {% for field in child_form %}
+                            {{ field.label }}
+                        {% endfor %}
+                        {{ child_form }}
+                        {{ child_form.errors }}
+                    {% endfor %}
+
+                    <button type="submit" value="edit">Update Profile</button>
                     {% csrf_token %}
 
-
                 </form>
-
 
             </div>
         </div>
 
         <footer class="profile-details-footer">
-          <span class="profile-details-text6" style="margin-top: 8%">
+          <span class="profile-details-text6">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>
           </span>
@@ -406,3 +410,4 @@
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 </html>
+

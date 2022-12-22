@@ -35,7 +35,9 @@ class BaseMenu(models.Model):
         default=3.00,
         editable=False,
     )
-
+    quantity = models.PositiveIntegerField(
+        default=1,
+    )
 
 class Menu(BaseMenu):
     pass

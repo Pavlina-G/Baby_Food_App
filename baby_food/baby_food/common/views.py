@@ -4,7 +4,7 @@ from django.views import generic as views
 
 
 class IndexView(views.TemplateView):
-    template_name = 'home.html'
+    template_name = 'common/home.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:

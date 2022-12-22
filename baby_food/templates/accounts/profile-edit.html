@@ -1,5 +1,6 @@
-{% load placeholders %}
 {% load static %}
+{% load placeholders %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -287,7 +288,7 @@
                                                 class="navigation-links-text1">Profile Details</span></a>
 
                                         <br/>
-                                        </span>
+
                                     </div>
                                 </li>
                                 <li
@@ -362,43 +363,34 @@
                 </div>
             </div>
         </header>
-        {#        <div class="profile-details-container4">#}
-        {#            <img#}
-        {#                    src="{% static 'public/playground_assets/profile-icon-200h.jpg' %}"#}
-        {#                    alt="image"#}
-        {#                    class="profile-details-image2"#}
-        {#            />#}
+
         <div class="login-register-div">
             <div class="login-register-box">
 
                 <h1>Profile Update</h1>
                 <!-- Start Register Form -->
-                <form id='edit-form' method="post" action="{% url 'profile update' pk=request.user.pk %}"
+                <form id='edit-form' method="post" action="{% url 'profile edit' pk=request.user.pk %}"
                       enctype="multipart/form-data">
 
                     {% for field in profile_form %}
                         {{ field.label }}
                     {% endfor %}
                     {{ profile_form }}
+                <button type="submit" value="edit">Update Profile</button>
+{#                 <button type="submit" value="edit">#}
+{#                    <a href="{% url 'profile edit' pk=request.user.pk %}">Update Profile Details</a></button>#}
 
-                    {% for child_form in children_forms %}
-                        {% for field in child_form %}
-                        {{ field.label }}
-                    {% endfor %}
-                        {{ child_form }}
-                    {% endfor %}
-                    {{ forms.profile_form.errors }}
-                    {% for field in forms.profile_form %}
-                        {{ field }}
-                    {% endfor %}
-                    {#                        {{ forms.child_form.errors }}#}
-                    {#                        {% for child in total_children|times %}#}
-                    {#                            {% for field in forms.child_form %}#}
-                    {#                                {{ field }}#}
-                    {#                            {% endfor %}#}
-                    {#                        {% endfor %}#}
+{#                    {% for child_form in children_forms %}#}
+{#                        {% for field in child_form %}#}
+{#                        {{ field.label }}#}
+{#                    {% endfor %}#}
+{#                        {{ child_form }}#}
+{#                         <button type="button" value="edit">#}
+{#                    <a href="{% url 'child update' user_id=request.user.pk pk=child_form %}">Update Child Details</a></button>#}
+{#                    {% endfor %}#}
 
-                    <button type="submit" value="edit">Update Profile</button>
+
+{#                    <button type="submit" value="edit">Update Profile</button>#}
                     {% csrf_token %}
                     {#                    <img src="{% static 'public/playground_assets/profile-icon.jpg' %}"#}
                     {#                         class="img-fluid" alt="Sample image" width="318px" height="250px">#}
@@ -408,58 +400,7 @@
 
             </div>
         </div>
-        {#            <label class="profile-details-text3">#}
-        {#                <span>Profile Image</span>#}
-        {#                <br/>#}
-        {#            </label>#}
-        {#            <form name="profile-details-form" class="profile-details-form" style="font-family: ABeeZee; background-color: whitesmoke">#}
-        {#                <p>#}
-        {#                <br>#}
-        {#                <span class="profile-details-text-info">Username: {{ user.username }}</span>#}
-        {#                <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">Email: {{ user.email }}</span>#}
-        {#                <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">First Name: {{ user.profile.first_name }}</span>#}
-        {#                    <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">Last Name: {{ user.profile.last_name }}</span>#}
-        {#                       <br>#}
-        {#                <br>#}
-        {#                    <span class="profile-details-text-info">Number of Children: {{ user.profile.number_of_children }}</span>#}
-        {#                    {% for child in user.child_set.all %}#}
-        {#                       <br>#}
-        {#                    <br>#}
-        {#                        <span class="profile-details-text-info">Child Name: {{ child.first_name }} {{ child.last_name }}</span>#}
-        {#                        <br>#}
-        {#                        <br>#}
-        {#                        <span class="profile-details-text-info">Child Birth Date: {{ child.date_of_birth }}</span>#}
-        {#                    {% endfor %}#}
-        {##}
-        {#                </p>#}
-        {#                {{ user.username }}#}
-        {#                <a#}
-        {#                        href="{% url 'index' %}"#}
-        {#                        name="edit-btn"#}
-        {#                        target="_blank"#}
-        {#                        rel="noreferrer noopener"#}
-        {#                        class="profile-details-link button"#}
-        {#                        style="margin-left: -170px"#}
-        {#                >#}
-        {#                    Edit#}
-        {#                </a>#}
-        {#                <a#}
-        {#                        href="https://text"#}
-        {#                        name="delete-btn"#}
-        {#                        target="_blank"#}
-        {#                        rel="noreferrer noopener"#}
-        {#                        class="profile-details-link1 button"#}
-        {#                >#}
-        {#                    Delete#}
-        {#                </a>#}
-        {#            </form>#}
-        {#        </div>#}
+
         <footer class="profile-details-footer">
           <span class="profile-details-text6">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>

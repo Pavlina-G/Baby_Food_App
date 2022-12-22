@@ -396,30 +396,43 @@
                         <br>
                         <span class="profile-details-text-info"><b>Last Name: </b>{{ user.profile.last_name }}</span>
                         <br>
-                        <br>
-                        {% if total_children %}
-                        <span class="profile-details-text-info"><b>Number of Children: </b>{{ total_children }}</span>
-                    {% else %}
-                        <span class="profile-details-text-info"><b>Number of Children: </b>{{ user.profile.number_of_children }}</span>
-                    {% endif %}
-                        {% for child in user.child_set.all %}
+
+                    <button type="button" value="edit">
+                    <a href="{% url 'profile edit' pk=request.user.pk %}">Edit</a></button>
+                    <br>
+                    <br>
+{#                        {% if total_children %}#}
+{#                        <span class="profile-details-text-info"><b>Number of Children: </b>{{ total_children }}</span>#}
+{#                    {% else %}#}
+                        <span class="profile-details-text-info"><b>Number of Children: </b>{{ user.number_of_children }}</span>
+{#                    {% endif %}#}
+                        {% for child in children %}
                             <br>
                             <br>
                             <span class="profile-details-text-info"><b>Child Name: </b>{{ child.first_name }} {{ child.last_name }}</span>
                             <br>
                             <br>
                             <span class="profile-details-text-info"><b>Child Birth Date: </b>{{ child.date_of_birth }}</span>
+                            <button type="button" value="edit">
+                    <a href="{% url 'child update' user_id=request.user.pk pk=child.pk %}">Edit</a></button>
+{#                            <a href="{% url 'child update' user_id=request.user.pk pk=child.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 5px;#}
+{#background-color: rgb(31, 169, 148);#}
+{#	color: white;#}
+{#	font-weight: bold;#}
+{#	border: none;#}
+{#width: 100px;#}
+{#text-align: center">Edit</a>#}
                         {% endfor %}
 
                     </p>
-                    <a href="{% url 'profile update' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 5px;
-background-color: rgb(31, 169, 148);
-	color: white;
-	font-weight: bold;
-	border: none;
-width: 100px;
-text-align: center">Edit</a>
-                    <a href="{% url 'profile delete' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 10px;
+{#                    <a href="{% url 'profile edit' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 5px;#}
+{#background-color: rgb(31, 169, 148);#}
+{#	color: white;#}
+{#	font-weight: bold;#}
+{#	border: none;#}
+{#width: 100px;#}
+{#text-align: center">Edit</a>#}
+                    <a href="{% url 'profile delete' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 60px;
 background-color: rgb(31, 169, 148);
 	color: white;
 	font-weight: bold;

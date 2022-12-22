@@ -1,0 +1,71 @@
+<a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
+<a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
+<a href="{% url 'locations map' %}" class="navigation-links-link2"><span>Locations</span></a>
+
+<a href="{% url 'index' %}" class="navigation-links-link3"><span><span>Gallery</span></span></a>
+
+<div
+        data-thq="thq-dropdown"
+        class="navigation-links-thq-dropdown list-item"
+>
+    <div
+            data-thq="thq-dropdown-toggle"
+            class="navigation-links-dropdown-toggle"
+    >
+        <span class="navigation-links-text">Profile</span>
+    </div>
+    <ul
+            data-thq="thq-dropdown-list"
+            class="navigation-links-dropdown-list"
+    >
+        <li
+                data-thq="thq-dropdown"
+                class="navigation-links-dropdown list-item"
+        >
+            <div
+                    data-thq="thq-dropdown-toggle"
+                    class="navigation-links-dropdown-toggle1"
+            >
+                <a href="{% url 'profile details' pk=request.user.pk %}" class="navigation-links-link4"><span
+                        class="navigation-links-text1">Profile Details</span></a>
+
+                <br/>
+                </span>
+            </div>
+        </li>
+        <li
+                data-thq="thq-dropdown"
+                class="navigation-links-dropdown1 list-item"
+        >
+            <div
+                    data-thq="thq-dropdown-toggle"
+                    class="navigation-links-dropdown-toggle2"
+            >
+                <a href="{% url 'index' %}" class="navigation-links-link4"><span
+                        class="navigation-links-text4">Vouchers</span></a>
+
+            </div>
+        </li>
+        <li
+                data-thq="thq-dropdown"
+                class="navigation-links-dropdown2 list-item"
+        >
+            <div
+                    data-thq="thq-dropdown-toggle"
+                    class="navigation-links-dropdown-toggle3"
+            >
+                <a href="{% url 'index' %}" class="navigation-links-link4"><span
+                        class="navigation-links-text5">Cart</span></a>
+
+            </div>
+        </li>
+        <li
+                data-thq="thq-dropdown"
+                class="navigation-links-dropdown3 list-item"
+        >
+            <div
+                    data-thq="thq-dropdown-toggle"
+                    class="navigation-links-dropdown-toggle4"
+            >
+                <a href="{% url 'sign out' %}" class="navigation-links-link4"><span
+                        class="navigation-links-text6">Logout</span></a>

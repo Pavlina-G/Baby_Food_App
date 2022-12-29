@@ -25,6 +25,7 @@ class BaseMenu(models.Model):
         Recipe,
         on_delete=models.DO_NOTHING,
         related_name='menu_main_dish',
+        verbose_name='main dish',
     )
     dessert = models.ForeignKey(
         Recipe,
@@ -35,9 +36,9 @@ class BaseMenu(models.Model):
         default=3.00,
         editable=False,
     )
-    quantity = models.PositiveIntegerField(
-        default=1,
-    )
+    # quantity = models.PositiveIntegerField(
+    #     default=1,
+    # )
 
 class Menu(BaseMenu):
     pass
@@ -63,6 +64,7 @@ class MenuWithoutAllergens(BaseMenu):
         RecipeWithoutAllergens,
         on_delete=models.DO_NOTHING,
         related_name='menu_wa_main_dish',
+        verbose_name='main dish',
     )
     dessert = models.ForeignKey(
         RecipeWithoutAllergens,

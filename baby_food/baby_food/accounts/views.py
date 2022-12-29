@@ -72,7 +72,6 @@ class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
         user_id = self.request.user.pk
         try:
             profile = Profile.objects.get(user_id=self.kwargs.get('user_id', None))
-            # user = model.objects.get(pk=self.kwargs.get('pk', None))
         except Profile.DoesNotExist:
             profile = None
         return {
@@ -93,7 +92,8 @@ class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
 
     def get_context_data(self, **kwargs):
         user = AppUser.objects.get(pk=self.request.user.pk)
-        profile = Profile.objects.get(user_id=self.request.user.pk)
+        # profile = Profile.objects.get(user_id=self.request.user.pk)
+        profile = get_object_or_404(Profile, user_id=self.request.user.pk)
 
         context = super().get_context_data(**kwargs)
 

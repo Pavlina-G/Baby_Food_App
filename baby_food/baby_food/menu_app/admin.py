@@ -13,3 +13,4 @@ class MenuAdmin(admin.ModelAdmin):
 class MenuWithoutAllergensAdmin(admin.ModelAdmin):
     list_display = ('date', 'age', 'soup', 'main_dish', 'dessert')
     list_filter = ('age', 'date',)
+

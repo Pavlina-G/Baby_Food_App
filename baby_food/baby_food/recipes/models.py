@@ -12,7 +12,7 @@ class BaseRecipe(models.Model):
         max_length=10,
         choices=(
             ('SOUP', 'SOUP'),
-            ('MAIN_DISH', 'MAIN_DISH'),
+            ('MAIN DISH', 'MAIN DISH'),
             ('DESSERT', 'DESSERT'),
         ),
     )
@@ -20,6 +20,7 @@ class BaseRecipe(models.Model):
         max_length=3,
         default='YES',
         editable=False,
+        blank=True,
     )
     ingredients = models.CharField(
         max_length=300,
@@ -28,10 +29,6 @@ class BaseRecipe(models.Model):
     weight = models.PositiveIntegerField(
         default=200,
         editable=False,
-    )
-
-    image_url = models.URLField(
-        null=True,
         blank=True,
     )
 
@@ -44,14 +41,13 @@ class Recipe(BaseRecipe):
 
 
 class RecipeWithoutAllergens(BaseRecipe):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, kwargs)
 
-        allergens = models.CharField(
-            max_length=2,
-            default='NO',
-            editable=False,
-        )
+    allergens = models.CharField(
+        max_length=2,
+        default='NO',
+        editable=False,
+        blank=True,
+    )
 
     class Meta:
         verbose_name_plural = 'Recipes Without Allergens'

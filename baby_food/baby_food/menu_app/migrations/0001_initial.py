@@ -9,7 +9,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('recipes', '0003_alter_recipewithoutallergens_options'),
     ]
 
     operations = [

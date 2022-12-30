@@ -297,6 +297,7 @@
   padding-left: var(--dl-space-space-threeunits);
   padding-right: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-twounits);
+
   justify-content: space-between;
 }
 .register-text4 {
@@ -431,7 +432,7 @@
 
 /*Login/Register Form css*/
 .login-register-div {
-	margin-top: 5%;
+	margin-top: 4%;
 	margin-bottom: 10%;
   margin-left: 50%;
 }

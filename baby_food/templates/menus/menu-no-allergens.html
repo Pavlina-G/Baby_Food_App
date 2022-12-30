@@ -223,18 +223,18 @@
 
         <div class="page-container03">
             {% if menus_first %}
-            {% for menu in menus_first %}
-            <div class="page-container04">
-                <h1 class="page-text010">
-                    <span>{{ menu.date }}</span>
-                    <br/>
-                </h1>
-                <img
-                        src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"
-                        alt="image"
-                        class="page-image01"
-                />
-                <span class="page-text013">
+                {% for menu in menus_first %}
+                    <div class="page-container04">
+                        <h1 class="page-text010">
+                            <span>{{ menu.date }}</span>
+                            <br/>
+                        </h1>
+                        <img
+                                src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"
+                                alt="image"
+                                class="page-image01"
+                        />
+                        <span class="page-text013">
               <span class="page-text014">{{ menu.soup }}</span>
               <br class="page-text015"/>
               <br class="page-text016"/>
@@ -254,20 +254,20 @@
               <br/>
               <br/>
             </span>
-            </div>
-            {% endfor %}
-                {% else %}
+                    </div>
+                {% endfor %}
+            {% else %}
                 <div class="page-container04">
-                <h1 class="page-text010">
-                    <span>HOLIDAY</span>
-                    <br/>
-                </h1>
-                <img
-                        src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"
-                        alt="image"
-                        class="page-image01"
-                />
-                <span class="page-text013">
+                    <h1 class="page-text010">
+                        <span>HOLIDAY</span>
+                        <br/>
+                    </h1>
+                    <img
+                            src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"
+                            alt="image"
+                            class="page-image01"
+                    />
+                    <span class="page-text013">
               <span class="page-text014">The menu will be uploaded soon.</span>
               <br class="page-text015"/>
               <br class="page-text016"/>Please check again later!
@@ -287,24 +287,29 @@
               <br/>
               <br/>
             </span>
-            </div>
-        {% endif %}
+                </div>
+                <img
+                        src="{% static 'public/playground_assets/mom_lets_cook-900h.webp' %}"
+                        alt="mom-cooks"
+                        class="page-image2-mom"
+                />
+            {% endif %}
 
         </div>
         <div class="page-container09">
-        {% if menus_second %}
-            {% for menu in menus_second %}
-            <div class="page-container10">
-                <h1 class="page-text120">
-                    <span>{{ menu.date }}</span>
-                    <br/>
-                </h1>
-                <img
-                        src="{% static 'public/playground_assets/babyfood1-superjumbo-300h.jpg' %}"
-                        alt="image"
-                        class="page-image06"
-                />
-                <span class="page-text123">
+            {% if menus_second %}
+                {% for menu in menus_second %}
+                    <div class="page-container10">
+                        <h1 class="page-text120">
+                            <span>{{ menu.date }}</span>
+                            <br/>
+                        </h1>
+                        <img
+                                src="{% static 'public/playground_assets/babyfood1-superjumbo-300h.jpg' %}"
+                                alt="image"
+                                class="page-image06"
+                        />
+                        <span class="page-text123">
               <span class="page-text124">{{ menu.soup }}</span>
               <br class="page-text125"/>
               <br class="page-text126"/>
@@ -324,364 +329,12 @@
               <br/>
               <br/>
             </span>
-            </div>
-            {% endfor %}
-        {% endif %}
-
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
+    </section>
 </div>
-</div>
-
-
-{#{% for menu in menus %}#}
-{#            <div class="menu-no-allergens-container04" style="position: relative; flex-direction: row; alignment: left">#}
-{##}
-{##}
-{#                <div class="menu-no-allergens-container05">#}
-{#                    <img#}
-{#                            src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"#}
-{#                            alt="image"#}
-{#                            class="menu-no-allergens-image02"#}
-{#                    />#}
-{#                </div>#}
-{##}
-{#                <h1 class="menu-no-allergens-text003">#}
-{#                    <span>{{ menu.date }}</span>#}
-{#                    <br/>#}
-{#                </h1>#}
-{#                <span class="menu-no-allergens-text006">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>{{ menu.soup }}</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#        <span>{{ menu.main_dish }}</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#        <span>{{ menu.dessert }}</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#            </div>#}
-{#        {% endfor %}#}
-
-
-{#<div class="menu-no-allergens-container06">#}
-{#    <div class="menu-no-allergens-container07">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image03"#}
-{#        />#}
-{#    </div>#}
-{#    <h1 class="menu-no-allergens-text026">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#    <span class="menu-no-allergens-text029">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container08">#}
-{#    <div class="menu-no-allergens-container09">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image04"#}
-{#        />#}
-{#    </div>#}
-{#    <h1 class="menu-no-allergens-text049">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#    <span class="menu-no-allergens-text052">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container10">#}
-{#    <div class="menu-no-allergens-container11">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image05"#}
-{#        />#}
-{#    </div>#}
-{#    <h1 class="menu-no-allergens-text072">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#    <span class="menu-no-allergens-text075">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container12">#}
-{#    <div class="menu-no-allergens-container13">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image06"#}
-{#        />#}
-{#    </div>#}
-{#    <h1 class="menu-no-allergens-text095">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#    <span class="menu-no-allergens-text098">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container14">#}
-{#    <div class="menu-no-allergens-container15">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/stage_1_and_2_baby_food-200h.webp' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image07"#}
-{#        />#}
-{#    </div>#}
-{#    <span class="menu-no-allergens-text118">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#    <h1 class="menu-no-allergens-text138">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container16">#}
-{#    <div class="menu-no-allergens-container17">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/stage_1_and_2_baby_food-200h.webp' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image08"#}
-{#        />#}
-{#    </div>#}
-{#    <span class="menu-no-allergens-text141">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#    <h1 class="menu-no-allergens-text161">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container18">#}
-{#    <div class="menu-no-allergens-container19">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/stage_1_and_2_baby_food-200h.webp' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image09"#}
-{#        />#}
-{#    </div>#}
-{#    <span class="menu-no-allergens-text164">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#    <h1 class="menu-no-allergens-text184">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container20">#}
-{#    <div class="menu-no-allergens-container21">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/stage_1_and_2_baby_food-200h.webp' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image10"#}
-{#        />#}
-{#    </div>#}
-{#    <span class="menu-no-allergens-text187">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#    <h1 class="menu-no-allergens-text207">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#</div>#}
-{#<div class="menu-no-allergens-container22">#}
-{#    <div class="menu-no-allergens-container23">#}
-{#        <img#}
-{#                src="{% static 'public/playground_assets/stage_1_and_2_baby_food-200h.webp' %}"#}
-{#                alt="image"#}
-{#                class="menu-no-allergens-image11"#}
-{#        />#}
-{#    </div>#}
-{#    <span class="menu-no-allergens-text210">#}
-{#            <span>Soup:</span>#}
-{#            <br/>#}
-{#            <span>Add the soup here</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Main Dish:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <span>Dessert:</span>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#            <br/>#}
-{#          </span>#}
-{#    <h1 class="menu-no-allergens-text230">#}
-{#        <span>Date here</span>#}
-{#        <br/>#}
-{#    </h1>#}
-{#</div>#}
 
 <footer class="menu-no-allergens-footer">
           <span class="menu-no-allergens-text233">
@@ -690,6 +343,7 @@
           </span>
     <div class="menu-no-allergens-icon-group1"></div>
 </footer>
+{% if request.user.is_authenticated %}
 <a href="{% url 'profile details' pk=request.user.pk %}" class="menu-no-allergens-link">
     <h1 class="menu-no-allergens-text236">
         <span>Alle​rgy-Free Menu</span>
@@ -699,8 +353,17 @@
         <br/>
     </h1>
 </a>
-</section>
-
+{% else %}
+<a href="{% url 'sign up'  %}" class="menu-no-allergens-link">
+    <h1 class="menu-no-allergens-text236">
+        <span>Alle​rgy-Free Menu</span>
+        <span>-</span>
+        <span>Get Vouchers</span>
+        <br/>
+        <br/>
+    </h1>
+</a>
+{% endif %}
 
 <script
         data-section-id="navbar"

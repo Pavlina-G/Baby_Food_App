@@ -750,6 +750,21 @@
     object-fit: cover;
     border-radius: var(--dl-radius-radius-radius8);
 }
+.page-image011 {
+    width: 160px;
+    height: 170px;
+    align-self: center;
+    margin-top: var(--dl-space-space-unit);
+    object-fit: fill;
+    border-radius: var(--dl-radius-radius-radius8);
+}
+.page-image2-mom {
+  width: auto;
+  margin-top: 42px;
+  object-fit: cover;
+  margin-left: var(--dl-space-space-twounits);
+  border-radius: var(--dl-radius-radius-radius8);
+}
 
 .page-text013 {
     width: 160px;

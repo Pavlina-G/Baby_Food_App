@@ -203,55 +203,41 @@
                 <h1>Sign Up</h1>
                 <!-- Start Register Form -->
                 <form method="post" action="{% url 'sign up' %}">
-                                    {{ form.username.errors }}
+                    {{ form.username.errors }}
                     {{ form.username|placeholder:'Username: ' }}
-                                    {{ form.email.errors }}
+                    {{ form.email.errors }}
                     {{ form.email|placeholder:'Email: ' }}
-                                 {{ form.number_of_children.errors }}
+                    {{ form.number_of_children.errors }}
                     {{ form.number_of_children|placeholder:'Number of Children: ' }}
-                                    {{ form.password1.errors }}
+                    {{ form.password1.errors }}
                     {{ form.password1|placeholder:'Password: ' }}
-                                    {{ form.password2.errors }}
+                    {{ form.password2.errors }}
                     {{ form.password2|placeholder:'Repeat password: ' }}
                     <!-- Register Button -->
                     <button type="submit">Register</button>
+                    <button type="button"><a href="{% url 'sign in' %}">Already registered? Sign In</a></button>
                     {% csrf_token %}
                     <img src="{% static 'public/playground_assets/profile-icon.jpg' %}"
-                     class="img-fluid" alt="Sample image" width="318px" height="250px">
+                         class="img-fluid" alt="Sample image" width="318px" height="250px">
                 </form>
-
 
             </div>
         </div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
+    </section>
 
-{#            <span class="register-text3">Register</span>#}
-{#            <form method="post" action="{% url 'sign up'%}" name="register-form" class="register-form">#}
-{#                  {{ form.email }}#}
-{#                  {{ form.password1 }}#}
-{#                  {{ form.password2 }}#}
-{#                <button type="submit">Register</button>#}
-{#                  {% csrf_token %}#}
-{#            </form>#}
-{#        </div>#}
-<footer class="register-footer">
+    <footer class="register-footer" style="bottom: -180px">
           <span class="register-text4">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>
           </span>
-    <div class="register-icon-group1"></div>
-</footer>
-</section>
-</div>
-<script
-        data-section-id="navbar"
-        src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
-></script>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <div class="register-icon-group1"></div>
+    </footer>
+
+    <script
+            data-section-id="navbar"
+            src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
+    ></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 </html>

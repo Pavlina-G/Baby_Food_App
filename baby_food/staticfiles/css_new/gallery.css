@@ -522,19 +522,93 @@
     width: var(--dl-size-size-xsmall);
     height: var(--dl-size-size-xsmall);
 }
+.page-container03 {
+    top: 250px;
+    left: 550px;
+    /*width: 100%;*/
+    width: 1000px;
+    bottom: 212px;
+    height: 538px;
+    display: flex;
+    position: absolute;
+    align-self: flex-end;
+    align-items: flex-start;
+}
 
+.page-container04 {
+    flex: 0 0 auto;
+    width: 260px;
+    height: 538px;
+    display: flex;
+    align-items: flex-start;
+    padding-right: 0px;
+    flex-direction: column;
+}
+
+.page1-container3 {
+    margin-top: 150px;
+  top: 250px;
+  left: 550px;
+  width: 1000px;
+  bottom: 212px;
+  height: 505px;
+  display: flex;
+  position: absolute;
+  align-self: flex-end;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  margin-bottom: 245px;
+}
+.page1-gallery {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 922px;
+  bottom: 0px;
+  height: 490px;
+  margin: auto;
+  display: grid;
+  padding: var(--dl-space-space-threeunits);
+  grid-gap: var(--dl-space-space-unit);
+  position: absolute;
+  max-width: var(--dl-size-size-maxwidth);
+  align-self: flex-end;
+  border-radius: var(--dl-radius-radius-radius8);
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gallery-card1-image {
+  width: 100%;
+  height: 100%;
+  align-self: flex-start;
+  object-fit: cover;
+  border-radius: var(--dl-radius-radius-radius8);
+}
+
+.page-image01 {
+    width: 260px;
+    height: 470px;
+    align-self: center;
+    margin-top: var(--dl-space-space-unit);
+    object-fit: cover;
+    border-radius: var(--dl-radius-radius-radius8);
+}
 .menus-home-container4 {
     top: 252px;
     right: 550px;
-    width: 381px;
-    height: 255px;
+    width: 1000px;
+    bottom: 212px;
+    height: 505px;
     display: flex;
     position: absolute;
+    align-self: flex-end;
     align-items: flex-start;
-    margin-left: 0px;
-    margin-right: var(--dl-space-space-twounits);
-    border-radius: var(--dl-radius-radius-radius4);
-    justify-content: flex-start;
+    margin-bottom: 245px;
+    /*margin-left: 0px;*/
+    /*margin-right: var(--dl-space-space-twounits);*/
+    /*border-radius: var(--dl-radius-radius-radius4);*/
+    /*justify-content: flex-start;*/
 }
 
 .menus-home-image2 {

@@ -14,3 +14,6 @@ class IndexView(views.TemplateView):
 
 def locations_map(request):
     return render(request, 'common/../../templates/nicepage/locations.html')
+
+class GalleryView(views.TemplateView):
+    template_name = 'common/gallery.html'

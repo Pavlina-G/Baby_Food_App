@@ -240,19 +240,19 @@
                         />
                         <span class="page-text013">
               <span class="page-text014">{{ menu.soup }}</span>
-              <br class="page-text015"/>
+                            <br class="page-text015"/>( {{ menu.soup.ingredients|lower }} )
               <br class="page-text016"/>
               <br class="page-text017"/>
               <br class="page-text018"/>
               <br class="page-text019"/>
               <span class="page-text020">{{ menu.main_dish }}</span>
-              <br class="page-text021"/>
+              <br class="page-text021"/>( {{ menu.main_dish.ingredients|lower }} )
               <br class="page-text022"/>
               <br class="page-text023"/>
               <br class="page-text024"/>
               <br class="page-text025"/>
               <span class="page-text026">{{ menu.dessert }}</span>
-              <br/>
+              <br/>( {{ menu.dessert.ingredients|lower }} )
               <br/>
               <br/>
               <br/>
@@ -315,19 +315,19 @@
                         />
                         <span class="page-text123">
               <span class="page-text124">{{ menu.soup }}</span>
-              <br class="page-text125"/>
+              <br class="page-text125"/>( {{ menu.soup.ingredients|lower }} )
               <br class="page-text126"/>
               <br class="page-text127"/>
               <br class="page-text128"/>
               <br class="page-text129"/>
               <span class="page-text130">{{ menu.main_dish }}</span>
-              <br class="page-text131"/>
+              <br class="page-text131"/>( {{ menu.main_dish.ingredients|lower }} )
               <br class="page-text132"/>
               <br class="page-text133"/>
               <br class="page-text134"/>
               <br class="page-text135"/>
               <span class="page-text136">{{ menu.dessert }}</span>
-              <br/>
+              <br/>( {{ menu.dessert.ingredients|lower }} )
               <br/>
               <br/>
               <br/>
@@ -347,15 +347,27 @@
           </span>
     <div class="menu-no-allergens-icon-group1"></div>
 </footer>
-<a href="{% url 'profile details' pk=request.user.pk %}" class="menu-no-allergens-link">
-    <h1 class="menu-no-allergens-text236">
-        <span>Menu With Allergens 10M-18M</span>
-        <span>-</span>
-        <span>Get Vouchers</span>
-        <br/>
-        <br/>
-    </h1>
-</a>
+{% if request.user.is_authenticated %}
+    <a href="{% url 'profile details' pk=request.user.pk %}" class="menu-no-allergens-link">
+        <h1 class="menu-no-allergens-text236">
+            <span>Menu With Allergens 10M-18M</span>
+            <span>-</span>
+            <span>Get Vouchers</span>
+            <br/>
+            <br/>
+        </h1>
+    </a>
+{% else %}
+    <a href="{% url 'sign up' %}" class="menu-no-allergens-link">
+        <h1 class="menu-no-allergens-text236">
+            <span>Menu With Allergens 10M-18M</span>
+            <span>-</span>
+            <span>Get Vouchers</span>
+            <br/>
+            <br/>
+        </h1>
+    </a>
+{% endif %}
 
 
 <script

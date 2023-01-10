@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Menus</title>
+    <title>Gallery</title>
     <meta
             property="og:title"
             content="menus-home - Electric Cylindrical Llama"
@@ -357,14 +357,39 @@
             </div>
         </header>
 
-        <div class="page-container03">
-            <div class="page-container04" style="margin-top: 150px; width: 270px; height: 400px; ">
-                <img
-                        src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"
-                        alt="image"
-                        class="page-image01" style="height: 100%; width: 100%; border-radius: 20px"
-{#                        class="gallery-card1-image"#}
-                />
+
+        <div class="page-container03" style="left: 700px;">
+{#        <h1 class="page-text011">BABY FOOD GALLERY</h1>#}
+
+            {% for photo in paginated_photos %}
+
+                <div class="page-container04" style="width: 280px; height: 400px; ">
+
+                    <img src="{{ photo.picture.url }}" alt="recipe image"
+                         class="page-image01" style="height: 90%; width: 96%; border-radius: 20px"
+                    />
+                </div>
+            {% endfor %}
+                <div class="page1-text10" style="margin-top: 400px; margin-left: -32%">
+
+                {% if paginated_photos.has_previous %}
+                    {% if paginated_photos.previous_page_number == 1 %}
+                        <a href="?page=1">First</a>
+                    {% else %}
+                        <a href="?page=1">First</a>
+                        <a href="?page={{ paginated_photos.previous_page_number }}">Previous</a>
+                    {% endif %}
+                {% endif %}
+                <span >Page {{ paginated_photos.number }} of {{ paginated_photos.paginator.num_pages }}</span>
+
+                {% if paginated_photos.has_next %}
+                    {% if paginated_photos.next_page_number == paginated_photos.paginator.num_pages %}
+                        <a href="?page={{ paginated_photos.next_page_number }}">Last</a>
+                    {% else %}
+                        <a href="?page={{ paginated_photos.next_page_number }}">Next</a>
+                        <a href="?page={{ paginated_photos.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
 

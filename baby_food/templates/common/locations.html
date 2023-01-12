@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Gallery</title>
+    <title>Locations</title>
     <meta
             property="og:title"
             content="menus-home - Electric Cylindrical Llama"
@@ -125,7 +125,7 @@
 <body>
 <div>
     {#        {% if request.user.is_authenticated %}#}
-    <link href="{% static 'css_new/gallery.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css_new/locations.css' %}" rel="stylesheet"/>
 
     <section class="menus-home-container">
         <header data-role="Header" class="menus-home-header">
@@ -356,51 +356,90 @@
                 </div>
             </div>
         </header>
+        <label class="page1-text10" style="margin-top: 100px; margin-left: 100px; font-weight: bold; font-size: 18px">Locations<br>
+            <select class="page1-select" style="font-size: 16px; border-radius: 7px; padding: 6px">
+                <option value="Option 1">Address 1 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 11 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 111 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 12 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 13 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 14 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 15 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 16 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 17 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 148 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 149 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 145 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 144 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 143 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 142 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 141 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 150 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 160 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 170 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 180 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 190 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 199 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 1409 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 1">Address 1408 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
+                </option>
+                <option value="Option 2">Address 2</option>
+                <option value="">Address 3</option>
+            </select>
+
+        </label>
+
+        <div class="page1-container3">
 
 
-        <div class="page-container03" style="left: 700px; height: 450px">
-{#        <h1 class="page-text011">BABY FOOD GALLERY</h1>#}
-
-            {% for photo in paginated_photos %}
-
-                <div class="page-container04" style="width: 280px; height: 400px; ">
-
-                    <img src="{{ photo.picture.url }}" alt="recipe image"
-                         class="page-image01" style="height: 90%; width: 96%; border-radius: 20px"
-                    />
-                </div>
-            {% endfor %}
-                <div class="page1-text10" style="margin-top: 400px; margin-left: -32%">
-
-                {% if paginated_photos.has_previous %}
-                    {% if paginated_photos.previous_page_number == 1 %}
-                        <a href="?page=1">First</a>
-                    {% else %}
-                        <a href="?page=1">First</a>
-                        <a href="?page={{ paginated_photos.previous_page_number }}">Previous</a>
-                    {% endif %}
-                {% endif %}
-                <span >Page {{ paginated_photos.number }} of {{ paginated_photos.paginator.num_pages }}</span>
-
-                {% if paginated_photos.has_next %}
-                    {% if paginated_photos.next_page_number == paginated_photos.paginator.num_pages %}
-                        <a href="?page={{ paginated_photos.next_page_number }}">Last</a>
-                    {% else %}
-                        <a href="?page={{ paginated_photos.next_page_number }}">Next</a>
-                        <a href="?page={{ paginated_photos.paginator.num_pages }}">Last</a>
-                    {% endif %}
-                {% endif %}
+            <div class="page1-container4">
             </div>
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d94091.18826474364!2d27.381926013759827!3d42.52662713685086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a69266f9fc9d91%3A0x400a01269bf4df0!2sBurgas!5e0!3m2!1sen!2sbg!4v1673473001978!5m2!1sen!2sbg"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="page1-iframe"></iframe>
         </div>
 
-        <footer class="menus-home-footer">
+        <text class="page1-contact" style="">
+            <strong>Contacts:</strong><br>
+            Burgas, main address<br>
+            Phone number: 0888777888
+        </text>
+</div>
+
+
+<footer class="menus-home-footer">
           <span class="menus-home-text13">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>
           </span>
-            <div class="menus-home-icon-group1"></div>
-        </footer>
-    </section>
+    <div class="menus-home-icon-group1"></div>
+</footer>
+</section>
 </div>
 <script
         data-section-id="navbar"

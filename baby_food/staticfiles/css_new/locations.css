@@ -1,3 +1,16 @@
+/*.map-container{*/
+/*  overflow:hidden;*/
+/*  padding-bottom:56.25%;*/
+/*  position:relative;*/
+/*  height:0;*/
+/*}*/
+/*.map-container iframe{*/
+/*  left:0;*/
+/*  top:0;*/
+/*  height:100%;*/
+/*  width:100%;*/
+/*  position:absolute;*/
+/*}*/
 .navigation-links-nav {
     flex: 0 0 auto;
     display: flex;
@@ -390,7 +403,6 @@
     background-size: cover;
     justify-content: flex-start;
     background-image: url("../public/playground_assets/index_image-1500w.jpg");
-    /*background-position: top left;*/
 }
 
 .menus-home-header {
@@ -531,8 +543,7 @@
     /*width: 1000px;*/
     width: 800px;
     bottom: 212px;
-    /*height: 538px;*/
-    /*height: 300px;*/
+    height: 538px;
     display: flex;
     position: absolute;
     align-self: flex-end;
@@ -550,21 +561,106 @@
     flex-direction: column;
 }
 
+/*.page1-container3 {*/
+/*    margin-top: 150px;*/
+/*    top: 250px;*/
+/*    left: 600px;*/
+/*    width: 1000px;*/
+/*    bottom: 212px;*/
+/*    height: 505px;*/
+/*    display: flex;*/
+/*    position: absolute;*/
+/*    align-self: flex-end;*/
+/*    align-items: flex-start;*/
+/*    border-color: var(--dl-color-gray-black);*/
+/*    border-width: 1px;*/
+/*    margin-bottom: 245px;*/
+/*}*/
+
 .page1-container3 {
-    margin-top: 150px;
     top: 250px;
-    left: 600px;
-    width: 1000px;
-    bottom: 212px;
+    left: 505px;
+    width: 940px;
+    bottom: 300px;
     height: 400px;
     display: flex;
     position: absolute;
     align-self: flex-end;
     align-items: flex-start;
-    border-color: var(--dl-color-gray-black);
-    border-width: 1px;
-    /*margin-bottom: 245px;*/
-    margin-bottom: 0px;
+    /*border-color: var(--dl-color-gray-black);*/
+    /*border-width: 1px;*/
+}
+
+.page1-container4 {
+    margin-top: 60px;
+    width: 960px;
+    height: 320px;
+    display: flex;
+    background-size: cover;
+    background-image: url("../public/playground_assets/burgas_58764-500h.jpg");
+    background-position: left;
+    border-radius: 10px;
+}
+.page1-contact {
+    color: #0d796c;
+    width: 300px;
+    position: absolute;
+    font-size: 14px;
+    text-align: right;
+    bottom: 80px;
+    right: 125px;
+    /*align-self: end;*/
+    border-radius: var(--dl-radius-radius-radius8);
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+.page1-iframe {
+    margin-top: 60px;
+    margin-left: 5px;
+    width: 960px;
+    height: 320px;
+    border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+    .page1-container3 {
+        top: 250px;
+        width: 729px;
+        height: 540px;
+        margin-bottom: 0px;
+    }
+
+    .page1-container4 {
+        margin-top: 60px;
+        width: 1000px;
+        height: 450px;
+        align-self: flex-end;
+        background-size: cover;
+        background-position: top left;
+    }
+
+    .page1-iframe {
+        width: 1000px;
+        height: 450px;
+        align-self: flex-end;
+    }
+
+    .page1-select {
+        /*top: 400px;*/
+        /*top: var(--dl-space-space-threeunits);*/
+        left: 0px;
+        position: absolute;
+    }
+    .page1-text10 {
+        /*top: 1px;*/
+      /*top: 300px;*/
+        color: #387f98;
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+    }
+
 }
 
 .page1-gallery {

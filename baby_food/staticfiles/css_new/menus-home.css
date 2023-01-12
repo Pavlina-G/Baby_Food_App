@@ -384,12 +384,14 @@
     align-items: center;
     /*border-color: #17835c;*/
     /*border-width: 1px;*/
-    border-color: transparent;
-    border-width: 0px;
+    /*border-color: transparent;*/
+    /*border-width: 0px;*/
     flex-direction: column;
     background-size: cover;
     justify-content: flex-start;
     background-image: url("../public/playground_assets/index_image-1500w.jpg");
+    /*background-position: top left;*/
+    /*background-repeat: no-repeat;*/
 }
 
 .menus-home-header {

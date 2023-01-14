@@ -597,7 +597,7 @@
     height: 320px;
     display: flex;
     background-size: cover;
-    background-image: url("../public/playground_assets/burgas_58764-500h.jpg");
+    background-image: url("../public/playground_assets/burgas-3.jpg");
     background-position: left;
     border-radius: 10px;
 }
@@ -607,7 +607,7 @@
     position: absolute;
     font-size: 14px;
     text-align: right;
-    bottom: 80px;
+    bottom: 60px;
     right: 125px;
     /*align-self: end;*/
     border-radius: var(--dl-radius-radius-radius8);

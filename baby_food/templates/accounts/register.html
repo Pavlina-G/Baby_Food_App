@@ -130,7 +130,7 @@
                 <div class="register-container2">
                     <div class="register-nav">
                         <nav
-                                class="navigation-links-nav navigation-links-root-class-name9"
+                                class="navigation-links-nav navigation-links-root-class-name9" style="left: -100px"
                         >
                             {% include 'partials/header-nav.html' %}
                         </nav>
@@ -218,7 +218,7 @@
                     <button type="button"><a href="{% url 'sign in' %}">Already registered? Sign In</a></button>
                     {% csrf_token %}
                     <img src="{% static 'public/playground_assets/profile-icon.jpg' %}"
-                         class="img-fluid" alt="Sample image" width="318px" height="250px">
+                         class="img-fluid" alt="Sample image" width="318px" height="220px">
                 </form>
 
             </div>
@@ -226,7 +226,7 @@
 
     </section>
 
-    <footer class="register-footer" style="bottom: -180px">
+    <footer class="register-footer" style="bottom: -100px">
           <span class="register-text4">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>

@@ -715,7 +715,7 @@
 
 .page-container03 {
     top: 250px;
-    left: 550px;
+    left: 500px;
     /*width: 100%;*/
     width: 1000px;
     bottom: 212px;
@@ -728,8 +728,10 @@
 
 .page-container04 {
     flex: 0 0 auto;
-    width: 190px;
-    height: 538px;
+    /*width: 190px;*/
+    width: 200px;
+    /*height: 538px;*/
+    height: 500px;
     display: flex;
     align-items: flex-start;
     padding-right: 0px;
@@ -741,6 +743,7 @@
     width: 170px;
     align-self: center;
     text-align: center;
+    font-size: 21px;
 }
 
 .page-image01 {
@@ -1168,7 +1171,7 @@
 
 .page-container09 {
     top: 850px;
-    left: 550px;
+    left: 500px;
     width: 1000px;
     /*width: 100%;*/
     bottom: 242px;
@@ -1181,8 +1184,8 @@
 
 .page-container10 {
     flex: 0 0 auto;
-    width: 190px;
-    height: 538px;
+    width: 200px;
+    height: 500px;
     display: flex;
     align-items: flex-start;
     padding-right: 0px;
@@ -1194,6 +1197,7 @@
     width: 170px;
     align-self: center;
     text-align: center;
+    font-size: 21px;
 }
 
 .page-image06 {
@@ -1876,6 +1880,7 @@
     align-self: flex-end;
     text-align: left;
     font-family: ABeeZee;
+    font-size: 24px;
 }
 
 .menu-no-allergens-text236:hover {

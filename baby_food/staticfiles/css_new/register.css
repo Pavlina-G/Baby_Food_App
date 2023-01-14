@@ -75,7 +75,9 @@
 
 .navigation-links-root-class-name9 {
   top: 0px;
-  left: 0px;
+  /*left: 0px;*/
+  left: -100px;
+  /*left: 20px;*/
   position: absolute;
 }
 @media(max-width: 1200px) {
@@ -89,7 +91,8 @@
   }
   .navigation-links-root-class-name9 {
     top: top;
-    left: 0px;
+    /*left: 0px;*/
+    left: -100px;
     right: 0px;
     margin: auto;
     position: absolute;
@@ -291,13 +294,13 @@
   bottom: 0px;
   display: flex;
   position: absolute;
+  /*position: relative;*/
   max-width: var(--dl-size-size-maxwidth);
   align-items: center;
   padding-top: var(--dl-space-space-twounits);
   padding-left: var(--dl-space-space-threeunits);
   padding-right: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-twounits);
-
   justify-content: space-between;
 }
 .register-text4 {
@@ -434,18 +437,19 @@
 .login-register-div {
 	margin-top: 4%;
 	margin-bottom: 10%;
-  margin-left: 50%;
+  margin-left: 60%;
 }
 
 .login-register-box, .second-option {
 	display: block;
-	width: 400px;
+	width: 380px;
 	/*background-color: rgb(255, 255, 255);*/
 	background-color: transparent;
 	border: 1px solid rgb(156, 152, 152);
-	padding: 40px;
-	margin-bottom: 15px;
-	border-radius: 3px;
+	/*padding: 40px;*/
+	padding: 30px;
+	margin-bottom: 35px;
+	border-radius: 8px;
 	border: 1px solid;
 	box-shadow: 1px 2px 3px #888888;
 }
@@ -453,9 +457,9 @@
 .login-register-box h1 {
 	font-family: Inter;
     color: #21595c;
-	font-size: 40px;
+	font-size: 30px;
 	text-align: center;
-	margin-top: -10px;
+	margin-top: -20px;
 }
 
 .login-register-box label {

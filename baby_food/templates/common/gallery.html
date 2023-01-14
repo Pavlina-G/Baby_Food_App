@@ -143,7 +143,7 @@
                     <div class="menus-home-nav">
                         {% if request.user.is_authenticated %}
                             <nav
-                                    class="navigation-links-nav navigation-links-root-class-name11"
+                                    class="navigation-links-nav navigation-links-root-class-name11" style="left: -100px"
                             >
 
                                 <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
@@ -227,7 +227,7 @@
                             </nav>
                         {% else %}
                             <nav
-                                    class="navigation-links-nav navigation-links-root-class-name17"
+                                    class="navigation-links-nav navigation-links-root-class-name17" style="left: -100px"
                             >
                                 <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
                                 <a
@@ -358,7 +358,7 @@
         </header>
 
 
-        <div class="page-container03" style="left: 700px; height: 450px">
+        <div class="page-container03" style="left: 600px; height: 450px">
 {#        <h1 class="page-text011">BABY FOOD GALLERY</h1>#}
 
             {% for photo in paginated_photos %}

@@ -178,7 +178,7 @@
 .navigation-links-dropdown-toggle2:hover {
     fill: #fff;
     color: #fff;
-   background-color: #b7d9d0;
+    background-color: #b7d9d0;
 }
 
 .navigation-links-text4 {
@@ -228,9 +228,9 @@
     /*font-size: 14px;*/
     font-style: normal;
     font-weight: bold;
-  transition: 0.3s;
-  color: #0f8e74;;
-  font-size: 16px;
+    transition: 0.3s;
+    color: #0f8e74;;
+    font-size: 16px;
 }
 
 .navigation-links-dropdown3 {
@@ -268,9 +268,9 @@
     /*font-size: 14px;*/
     font-style: normal;
     font-weight: bold;
-  transition: 0.3s;
-  color: #0f8e74;;
-  font-size: 16px;
+    transition: 0.3s;
+    color: #0f8e74;;
+    font-size: 16px;
 }
 
 
@@ -522,6 +522,7 @@
     background-color: var(--dl-color-gray-white);
     border-radius: var(--dl-radius-radius-radius4);
 }
+
 .profile-details-text-info {
     text-align: left;
     left: 109px;
@@ -536,7 +537,7 @@
 .profile-details-form {
     /*width: 301px;*/
     width: 301px;
-    height: 469px;  /*to change if needed*/
+    height: 469px; /*to change if needed*/
     display: contents;
     position: absolute;
     text-align: left;
@@ -580,7 +581,7 @@
 }
 
 .profile-details-footer {
-    left: 100px;
+    left: 0px;
     width: 100%;
     display: flex;
     position: relative;
@@ -748,62 +749,61 @@
 
 
 .login-register-div {
-	margin-top: 8%;
-	margin-bottom: 10%;
-  margin-left: 48%;
-
+    margin-top: 8%;
+    margin-bottom: 0%;
+    margin-left: 48%;
 }
 
 .login-register-box, .second-option {
-	display: block;
-	width: 580px;
-	/*background-color: rgb(255, 255, 255);*/
-	background-color: transparent;
-	border: 1px solid rgb(156, 152, 152);
-	padding: 30px;
-	margin-bottom: 15px;
-	border-radius: 3px;
-	border: 1px solid;
-	box-shadow: 1px 2px 3px #888888;
+    display: block;
+    width: 580px;
+    /*background-color: rgb(255, 255, 255);*/
+    background-color: transparent;
+    border: 1px solid rgb(156, 152, 152);
+    padding: 30px;
+    margin-bottom: 55px;
+    border-radius: 3px;
+    border: 1px solid;
+    box-shadow: 1px 2px 3px #888888;
 }
 
 .login-register-box h1 {
-	font-family: Inter;
+    font-family: Inter;
     color: #21595c;
-	font-size: 30px;
-	text-align: center;
-	margin-top: -10px;
+    font-size: 30px;
+    text-align: center;
+    margin-top: -10px;
 }
 
 .login-register-box label {
-	display: none;
+    display: none;
 }
 
 .login-register-box input {
-	/*background-color: rgb(240, 230, 230);*/
-	background-color: white;
-	border: 0.1px solid rgb(186, 184, 184);
-	border-radius: 3px;
-	height: 30px;
-	width: 100%;
-	padding-left: 2px;
-	margin-top: 10px;
+    /*background-color: rgb(240, 230, 230);*/
+    background-color: white;
+    border: 0.1px solid rgb(186, 184, 184);
+    border-radius: 3px;
+    height: 30px;
+    width: 100%;
+    padding-left: 2px;
+    margin-top: 10px;
 }
 
 .login-register-box button {
-	background-color: rgb(31, 169, 148);
-	color: white;
-	font-weight: bold;
-	border: none;
-	width: 50%;
-	border-radius: 3px;
-	margin-top: 10px;
-	height: 30px;
+    background-color: rgb(31, 169, 148);
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 57%;
+    border-radius: 3px;
+    margin-top: 10px;
+    height: 30px;
     margin-left: 109px;
 
 }
 
 .second-option {
-	text-align: center;
-	padding: 0px;
+    text-align: center;
+    padding: 0px;
 }

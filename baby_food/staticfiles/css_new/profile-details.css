@@ -750,17 +750,17 @@
 .login-register-div {
 	margin-top: 8%;
 	margin-bottom: 10%;
-  margin-left: 50%;
+  margin-left: 48%;
 
 }
 
 .login-register-box, .second-option {
 	display: block;
-	width: 500px;
+	width: 580px;
 	/*background-color: rgb(255, 255, 255);*/
 	background-color: transparent;
 	border: 1px solid rgb(156, 152, 152);
-	padding: 40px;
+	padding: 30px;
 	margin-bottom: 15px;
 	border-radius: 3px;
 	border: 1px solid;

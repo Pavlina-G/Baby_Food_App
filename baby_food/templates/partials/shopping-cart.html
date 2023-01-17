@@ -1,0 +1,142 @@
+{% load static %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container padding-bottom-3x mb-1">
+    <!-- Alert-->
+{#    <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;"><span#}
+{#            class="alert-close" data-dismiss="alert">Shopping Cart</span>#}
+{#    </div>#}
+    <!-- Shopping Cart-->
+    <div class="table-responsive shopping-cart" style="margin-top: 37px;">
+        <table class="table" style="">
+            <thead>
+            <tr>
+                <th style="color: #0f8e74; width: 150px; font-size: 18px">Shopping Cart</th>
+{#                <th><img src="{% static 'public/playground_assets/shopping-stroller.png' %}" style="width: 50px; height: 30px"></th>#}
+                <th class="text-center">Menu</th>
+                <th class="text-center">Child Name</th>
+                <th class="text-center">Age Range</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Subtotal</th>
+                <th class="text-center">Remove</th>
+{#                <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear</a></th>#}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="product-item">
+                        <a class="product-thumb" href="#"><img
+                                src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
+                                alt="Product" style="width: 100px; height: 80px"></a>
+                        <div class="product-info">
+
+                            <h4 class="product-title">
+                <td class="text-center text-lg text-medium">
+                    <select class="form-control" style="">
+                        <option>Alle​rgy-Free Menu</option>
+                        <option>Menu With Allergens</option>
+                    </select>
+                </td>
+                </h4>
+                <td class="text-center text-lg text-medium">
+                    <select class="form-control">
+                        <option>child name</option>
+                        <option>child name</option>
+                        <option>child name</option>
+                    </select>
+                </td>
+
+                <td class="text-center text-lg text-medium">
+                    <select class="form-control">
+                        <option>10M-18M</option>
+                        <option>18M-36M</option>
+                        <option>10M-36M</option>
+                    </select>
+                </td>
+
+                </td>
+                <td class="text-center">
+                    <div class="count-input">
+                        <select class="form-control">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                </td>
+                <td class="text-center text-lg text-medium">43.90</td>
+                <td class="text-center text-lg text-medium">18.00</td>
+                <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title=""
+                                           data-original-title="Remove item"><i class="fa fa-trash" style="color: #0d796c"></i></a></td>
+            </tr>
+{#Second item#}
+             <tr>
+                <td>
+                    <div class="product-item">
+                        <a class="product-thumb" href="#"><img
+                                src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
+                                alt="Product" style="width: 100px; height: 80px"></a>
+                        <div class="product-info">
+
+                            <h4 class="product-title">
+                <td class="text-center text-lg text-medium">
+                    <select class="form-control">
+                        <option>Alle​rgy-Free Menu</option>
+                        <option>Menu With Allergens</option>
+                    </select>
+                </td>
+                </h4>
+                <td class="text-center text-lg text-medium">
+                    <select class="form-control">
+                        <option>child name</option>
+                        <option>child name</option>
+                        <option>child name</option>
+                    </select>
+                </td>
+
+                <td class="text-center text-lg text-medium">
+                    <select class="form-control">
+                        <option>10M-18M</option>
+                        <option>18M-36M</option>
+                        <option>10M-36M</option>
+                    </select>
+                </td>
+
+                </td>
+                <td class="text-center">
+                    <div class="count-input">
+                        <select class="form-control">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                </td>
+                <td class="text-center text-lg text-medium">43.90</td>
+                <td class="text-center text-lg text-medium">18.00</td>
+                <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title=""
+                                           data-original-title="Remove item"><i class="fa fa-trash" style="color: #0d796c"></i></a></td>
+            </tr>
+{#Third item#}
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="shopping-cart-footer" style="text-align: right; margin-right: 20px; margin-bottom: 10px; margin-top: -25px">
+        <div class="column text-lg">Subtotal BGN: <span class="text-medium" style="color: mediumvioletred"><b>289.68</b></span></div>
+    </div>
+    <div class="shopping-cart-footer" style="text-align: right; margin-right: 20px;">
+        <div class="column"><a class="btn btn-primary" style="background-color: lightseagreen" href="#" data-toast="" data-toast-type="success"
+                               data-toast-position="topRight" data-toast-icon="icon-circle-check"
+                               data-toast-title="Your cart" data-toast-message="is updated successfully!">Update
+            Cart</a> <a class="btn btn-success" style="background-color: darkcyan" href="#">Checkout</a></div>
+    </div>
+</div>

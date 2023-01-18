@@ -1,8 +1,10 @@
 {% load static %}
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <div class="container padding-bottom-3x mb-1">
     <!-- Alert-->
@@ -14,10 +16,11 @@
         <table class="table" style="">
             <thead>
             <tr>
-                <th style="color: #0f8e74; width: 150px; font-size: 18px">Shopping Cart</th>
+                <th style="color: #0f8e74; width: 100px; font-size: 18px">Shopping Cart</th>
                 {#                <th><img src="{% static 'public/playground_assets/shopping-stroller.png' %}" style="width: 50px; height: 30px"></th>#}
                 <th class="text-center">No.</th>
                 <th class="text-center" style="">Menu</th>
+                <th class="text-center">Date</th>
                 <th class="text-center">Child ID</th>
                 <th class="text-center" style="">Age Range</th>
                 <th class="text-center">Quantity</th>
@@ -33,26 +36,39 @@
                     <div class="product-item">
                         <a class="product-thumb" href="#"><img
                                 src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
-                                alt="Product" style="width: 100px; height: 80px"></a>
+                                alt="Product" style="width: 90px; height: 70px"></a>
                         <div class="product-info">
 
                             <h4 class="product-title">
-                            </h4>
+
                 <td class="text-center text-lg text-medium" style="width: 30px;">1.
 
                 </td>
                 <td class="text-center text-lg text-medium" >
-                    <select class="form-control" style="font-size: 15px; width: 150px">
+                    <select class="form-control" style="font-size: 15px; width: 140px">
                         <option>Alle​rgy-Free Menu</option>
                         <option>Menu With Allergens</option>
                     </select>
+{#                    <label><b>Date:</b>#}
+{#                        <select class="form-control" style="font-size: 14px; width: 150px">#}
+{#                            <option>01.01.2023</option>#}
+{#                            <option>02.01.2023</option>#}
+{#                        </select>#}
+{#                    </label>#}
+                </td>
+                <td class="text-center text-lg text-medium" >
+                    <select class="form-control" style="font-size: 14px; width: 100px">
+                        <option>01.01.2023</option>
+                        <option>02.01.2023</option>
+                    </select>
+
                 </td>
                 </h4>
                 <td class="text-center text-lg text-medium">
-                    <select class="form-control" style="font-size: 15px">
-                        <option>child name</option>
-                        <option>child name</option>
-                        <option>child name</option>
+                    <select class="form-control" style="font-size: 15px; width: 65px">
+                        <option>1</option>
+                        <option>20</option>
+                        <option>4484</option>
                     </select>
                 </td>
 
@@ -67,15 +83,15 @@
                 </td>
                 <td class="text-center">
                     <div class="count-input">
-                        <select class="form-control" style="font-size: 15px; width: 50px">
+                        <select class="form-control" style="font-size: 15px; width: 40px">
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
                         </select>
                     </div>
                 </td>
-                <td class="text-center text-lg text-medium">43.90</td>
-                <td class="text-center text-lg text-medium">18.00</td>
+                <td class="text-center text-lg text-medium">3.50</td>
+                <td class="text-center text-lg text-medium">3.50</td>
                 <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title=""
                                            data-original-title="Remove item"><i class="fa fa-trash"
                                                                                 style="color: #0d796c"></i></a></td>

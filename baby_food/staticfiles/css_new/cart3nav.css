@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: row;
     font-size: 20px;
+    font-family: Inter;
 }
 
 .navigation-links-link {
@@ -14,22 +15,27 @@
 
 .navigation-links-link:hover {
     color: #21595c;
+    text-decoration: none;
 }
 
 .navigation-links-link1:hover {
     color: #21595c;
+    text-decoration: none;
 }
 
 .navigation-links-link2:hover {
     color: #21595c;
+    text-decoration: none;
 }
 
 .navigation-links-link3:hover {
     color: #21595c;
+    text-decoration: none;
 }
 
 .navigation-links-link4:hover {
     color: #21595c;
+    text-decoration: none;
 }
 
 
@@ -71,6 +77,7 @@
     display: inline-flex;
     position: relative;
     align-items: center;
+    /*line-height: 1.15;*/
     margin-left: var(--dl-space-space-halfunit);
     padding-top: var(--dl-space-space-halfunit);
     padding-left: var(--dl-space-space-unit);
@@ -90,6 +97,7 @@
     margin-left: var(--dl-space-space-halfunit);
     margin-right: 4px;
     vertical-align: middle;
+    font-family: Inter;
 }
 
 .navigation-links-text:hover {
@@ -139,6 +147,7 @@
     /*color: #fff;*/
     /*color: #21595c;*/
     background-color: #b7d9d0;
+    text-decoration: none;
 }
 
 .navigation-links-text1 {
@@ -179,6 +188,7 @@
     fill: #fff;
     color: #fff;
     background-color: #b7d9d0;
+    text-decoration: none;
 }
 
 .navigation-links-text4 {
@@ -219,6 +229,7 @@
     fill: #fff;
     color: #fff;
     background-color: #b7d9d0;
+    text-decoration: none;
 }
 
 .navigation-links-text5 {
@@ -259,6 +270,7 @@
     fill: #fff;
     color: #fff;
     background-color: #b7d9d0;
+    text-decoration: none;
 }
 
 .navigation-links-text6 {
@@ -378,12 +390,13 @@
 }
 
 .home-text {
- left: 500px;
+    left: 500px;
     color: #22887a;
-    bottom: 18px;
+    bottom: 27px;
     position: absolute;
     font-family: Bangers;
     font-size: 40px;
+    font-weight: bold;
 }
 
 
@@ -492,7 +505,7 @@
     border-style: solid;
     border-color: #2a8387;
     top: 200px;
-    right: 100px;
+    right: 80px;
     /*width: 950px;*/
     width: 65%;
     /*height: 600px;*/

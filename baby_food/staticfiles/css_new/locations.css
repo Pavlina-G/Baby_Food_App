@@ -14,7 +14,7 @@
 .navigation-links-nav {
     flex: 0 0 auto;
     display: flex;
-    align-items: center;
+    align-items: start;
     flex-direction: row;
     font-size: 20px;
 }
@@ -88,6 +88,7 @@
     display: inline-block;
     position: relative;
     border-radius: var(--dl-radius-radius-radius2);
+    margin-top: -7.5px;
 }
 
 .navigation-links-dropdown-toggle {
@@ -1018,4 +1019,12 @@
         margin-right: 0px;
         margin-bottom: var(--dl-space-space-unit);
     }
+}
+
+.profile-pic-view {
+    margin-left: -10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-top: -35px;
 }

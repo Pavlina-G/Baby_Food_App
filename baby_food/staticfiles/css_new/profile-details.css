@@ -1,7 +1,7 @@
 .navigation-links-nav {
     flex: 0 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
     font-size: 20px;
 }
@@ -62,6 +62,7 @@
     display: inline-block;
     position: relative;
     border-radius: var(--dl-radius-radius-radius2);
+    margin-top: -7.5px;
 }
 
 .navigation-links-dropdown-toggle {
@@ -525,6 +526,7 @@
 
 .profile-details-text-info {
     text-align: left;
+    line-height: 1.7;
     left: 109px;
     position: relative;
 
@@ -551,6 +553,7 @@
 }
 
 .profile-details-link {
+    /*color: var(--dl-color-gray-black);*/
     color: var(--dl-color-gray-black);
     width: var(--dl-size-size-medium);
     height: auto;
@@ -581,10 +584,11 @@
 }
 
 .profile-details-footer {
-    left: 0px;
+    left: 100px;
     width: 100%;
+    bottom: 0px;
     display: flex;
-    position: relative;
+    position: absolute;
     max-width: var(--dl-size-size-maxwidth);
     align-items: center;
     padding-top: var(--dl-space-space-twounits);
@@ -749,20 +753,20 @@
 
 
 .login-register-div {
-    margin-top: 8%;
+    margin-top: 3%;
     margin-bottom: 0%;
-    margin-left: 48%;
+    margin-left: 44%;
 }
 
 .login-register-box, .second-option {
     display: block;
-    width: 580px;
+    width: 550px;
     /*background-color: rgb(255, 255, 255);*/
     background-color: transparent;
     border: 1px solid rgb(156, 152, 152);
-    padding: 30px;
+    padding: 20px;
     margin-bottom: 55px;
-    border-radius: 3px;
+    border-radius: 16px;
     border: 1px solid;
     box-shadow: 1px 2px 3px #888888;
 }
@@ -770,9 +774,10 @@
 .login-register-box h1 {
     font-family: Inter;
     color: #21595c;
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
     margin-top: -10px;
+    padding-bottom: 10px;
 }
 
 .login-register-box label {
@@ -806,4 +811,12 @@
 .second-option {
     text-align: center;
     padding: 0px;
+}
+
+.profile-pic-view {
+    margin-left: -10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-top: -35px;
 }

@@ -142,7 +142,7 @@
                 <div class="profile-details-container2">
                     <div class="profile-details-nav">
                         <nav
-                                class="navigation-links-nav navigation-links-root-class-name9" style="left: -100px"
+                                class="navigation-links-nav navigation-links-root-class-name9" style="left: -30px"
                         >
                             <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
                             <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
@@ -221,6 +221,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                         </nav>
                     </div>
                 </div>
@@ -330,6 +331,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                     </nav>
                 </div>
                 <div>
@@ -377,6 +379,9 @@
                       enctype="multipart/form-data">
                     <br>
                     <h2 style="text-align: center">
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                        <i class="fa-solid fa-user-xmark" style="color: lightseagreen"></i>
+
                         Are you sure you want to delete your profile?
                     </h2>
 
@@ -391,7 +396,7 @@
         </div>
 
         <footer class="profile-details-footer">
-          <span class="profile-details-text6" style="margin-top: 8%">
+          <span class="profile-details-text6" style="">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>
           </span>

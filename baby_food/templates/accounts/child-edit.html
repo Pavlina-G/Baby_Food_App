@@ -142,7 +142,7 @@
                 <div class="profile-details-container2">
                     <div class="profile-details-nav">
                         <nav
-                                class="navigation-links-nav navigation-links-root-class-name9" style="left: -100px"
+                                class="navigation-links-nav navigation-links-root-class-name9" style="left: -30px"
                         >
                             <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
                             <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
@@ -221,6 +221,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                         </nav>
                     </div>
                 </div>
@@ -330,6 +331,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                     </nav>
                 </div>
                 <div>

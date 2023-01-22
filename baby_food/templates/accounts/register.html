@@ -217,8 +217,9 @@
                     <button type="submit">Register</button>
                     <button type="button"><a href="{% url 'sign in' %}">Already registered? Sign In</a></button>
                     {% csrf_token %}
+
                     <img src="{% static 'public/playground_assets/profile-icon.jpg' %}"
-                         class="img-fluid" alt="Sample image" width="318px" height="220px">
+                         class="img-fluid" alt="Sample image" width="250px" height="150px" style="border-radius: 50%; margin-top: 10px; margin-left: 8%">
                 </form>
 
             </div>
@@ -226,7 +227,7 @@
 
     </section>
 
-    <footer class="register-footer" style="bottom: -100px">
+    <footer class="register-footer" style="">
           <span class="register-text4">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>

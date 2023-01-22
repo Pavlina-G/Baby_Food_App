@@ -146,7 +146,7 @@
                     <div class="home-nav">
                         <nav
                                 class="navigation-links-nav navigation-links-root-class-name9"
-                                style="left: -100px; "
+                                style="left: -30px; "
                         >
                             <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
                             <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
@@ -155,6 +155,7 @@
 
                             <a href="{% url 'gallery pictures' %}"
                                class="navigation-links-link3"><span><span>Gallery</span></span></a>
+
 
                             <div
                                     data-thq="thq-dropdown"
@@ -226,6 +227,9 @@
                                     </li>
                                 </ul>
                             </div>
+                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+{#                                 style="margin-left: -10px; width: 60px; height: 60px; border-radius: 50%; margin-top: -35px;"#}
+
                         </nav>
                     </div>
                 </div>
@@ -335,6 +339,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                     </nav>
                 </div>
                 <div>

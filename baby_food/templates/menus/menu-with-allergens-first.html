@@ -139,17 +139,27 @@
             </h1>
             <div class="menu-no-allergens-container1">
                 <div class="menu-no-allergens-container2">
-                    <div class="menu-no-allergens-nav" style="left: 948px">
-                        <nav
-                                class="navigation-links-nav navigation-links-root-class-name13"
-                        >
-                            {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
+                        <div class="menu-no-allergens-nav" style="left: 1018px">
+                            <nav
+                                    class="navigation-links-nav navigation-links-root-class-name13"
+
+                            >
+
                                 {% include 'partials/dropdown-nav.html' %}
-                            {% else %}
-                                {% include 'partials/header-nav.html' %}
-                            {% endif %}
-                        </nav>
-                    </div>
+
+                            </nav>
+                        </div>
+                    {% else %}
+                        <div class="menu-no-allergens-nav" style="left: 948px">
+                            <nav
+                                    class="navigation-links-nav navigation-links-root-class-name13" >
+
+                            {% include 'partials/header-nav.html' %}
+
+                            </nav>
+                        </div>
+                    {% endif %}
 
                 </div>
 

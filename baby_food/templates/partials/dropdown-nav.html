@@ -1,3 +1,4 @@
+{% load static %}
 <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
 <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
 <a href="{% url 'locations map' %}" class="navigation-links-link2"><span>Locations</span></a>
@@ -68,3 +69,9 @@
             >
                 <a href="{% url 'sign out' %}" class="navigation-links-link4"><span
                         class="navigation-links-text6">Logout</span></a>
+            </div>
+        </li>
+    </ul>
+</div>
+{#<img class="profile-pic-view" src="{% static 'public/playground_assets/profile-icon.jpg' %}">#}
+<img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">

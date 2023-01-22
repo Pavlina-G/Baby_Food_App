@@ -142,7 +142,7 @@
                 <div class="profile-details-container2">
                     <div class="profile-details-nav">
                         <nav
-                                class="navigation-links-nav navigation-links-root-class-name9" style="left: -100px"
+                                class="navigation-links-nav navigation-links-root-class-name9" style="left: -30px"
                         >
                             <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
                             <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
@@ -221,6 +221,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                         </nav>
                     </div>
                 </div>
@@ -330,6 +331,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                     </nav>
                 </div>
                 <div>
@@ -370,30 +372,30 @@
                 <form method="post" action="{% url 'profile details' pk=request.user.pk %}"
                       enctype="multipart/form-data">
                     <div class="profile_img">
-                        <div class="image">
+                        <div class="image" >
 
                             <!-- Profile Image -->
                             {% if not user.profile.profile_image %}
                                 <img src="{% static 'public/playground_assets/profile-icon-200h.jpg' %}"
                                      alt="img-profile" width="100" height="150"
-                                     style="position: relative; margin-top: 30px;">
+                                     style="position: relative; margin-top: 30px; border-radius: 15%">
                             {% else %}
                                 <img src="{{ user.profile.profile_image.url }}" alt="img-profile" width="100"
-                                     height="150" style="position: relative; margin-top: 30px;">
+                                     height="150" style="position: relative; margin-top: 30px; border-radius: 15%">
                             {% endif %}
                         </div>
                     </div>
-                    <p style="margin-top: -169px">
+                    <p style="margin-top: -199px;">
+{#                    <p style="margin-top: -330px">#}
                         <br>
                         <span class="profile-details-text-info"><b>Username: </b>{{ user.username }}</span>
                         <br>
-                        <br>
                         <span class="profile-details-text-info"><b>Email: </b>{{ user.email }}</span>
                         <br>
-                        <br>
+
                         <span class="profile-details-text-info"><b>First Name: </b>{{ user.profile.first_name }}</span>
                         <br>
-                        <br>
+
                         <span class="profile-details-text-info"><b>Last Name: </b>{{ user.profile.last_name }}</span>
                         <br>
 
@@ -408,10 +410,10 @@
 {#                    {% endif %}#}
                         {% for child in children %}
                             <br>
-                            <br>
+
                             <span class="profile-details-text-info"><b>Child Name: </b>{{ child.first_name }} {{ child.last_name }}</span>
                             <br>
-                            <br>
+
                             <span class="profile-details-text-info"><b>Child Birth Date: </b>{{ child.date_of_birth }}</span>
                             <button type="button" value="edit">
                     <a href="{% url 'child update' user_id=request.user.pk pk=child.pk %}">Edit</a></button>

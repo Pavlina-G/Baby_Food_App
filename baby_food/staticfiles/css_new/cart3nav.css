@@ -505,10 +505,10 @@
     border-radius: 20px;
     border-style: solid;
     border-color: #2a8387;
-    top: 200px;
-    right: 80px;
+    top: 190px;
+    right: 5px;
     /*width: 950px;*/
-    width: 65%;
+    width: 71%;
     /*height: 600px;*/
     display: flex;
     position: absolute;

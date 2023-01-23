@@ -11,16 +11,17 @@
     {#            class="alert-close" data-dismiss="alert">Shopping Cart</span>#}
     {#    </div>#}
     <!-- Shopping Cart-->
-    <div class="table-responsive shopping-cart" style="margin-top: 37px;">
+    <div class="table-responsive shopping-cart" style="margin-top: 37px; right: 0px">
         <table class="table" style="">
             <thead>
             <tr>
-                <th style="color: #0f8e74; width: 100px; font-size: 18px">Shopping Cart</th>
+                <th style="color: #0f8e74; width: 80px; font-size: 18px">Shopping Cart</th>
                 {#                <th><img src="{% static 'public/playground_assets/shopping-stroller.png' %}" style="width: 50px; height: 30px"></th>#}
                 <th class="text-center">No.</th>
                 <th class="text-center" style="">Menu</th>
                 <th class="text-center" style="">Age Range</th>
                 <th class="text-center">Date</th>
+                <th class="text-center">Location</th>
                 <th class="text-center">Child ID</th>
                 <th class="text-center">Quantity</th>
                 <th class="text-center">Price</th>
@@ -35,44 +36,46 @@
                     <div class="product-item">
                         <a class="product-thumb" href="#"><img
                                 src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
-                                alt="Product" style="width: 90px; height: 70px; border-radius: 5px"></a>
+                                alt="Product" style="width: 80px; height: 60px; border-radius: 5px"></a>
                         <div class="product-info">
 
                             <h4 class="product-title">
 
-                <td class="text-center text-lg text-medium" style="width: 30px;">1.
-
-                </td>
+                <td class="text-center text-lg text-medium" style="width: 10px;">
+                1.
+            </td>
                 <td class="text-center text-lg text-medium" >
-                    <select class="form-control" style="font-size: 15px; width: 140px">
+                    <select class="form-control" style="font-size: 15px; width: 115px">
                         <option>Alle​rgy-Free Menu</option>
                         <option>Menu With Allergens</option>
                     </select>
-{#                    <label><b>Date:</b>#}
-{#                        <select class="form-control" style="font-size: 14px; width: 150px">#}
-{#                            <option>01.01.2023</option>#}
-{#                            <option>02.01.2023</option>#}
-{#                        </select>#}
-{#                    </label>#}
+
                 </td>
 
                 <td class="text-center text-lg text-medium">
-                    <select class="form-control" style="font-size: 15px; width: 100px">
+                    <select class="form-control" style="font-size: 14px; width: 93px">
                         <option>10M-18M</option>
                         <option>18M-36M</option>
                         <option>10M-36M</option>
                     </select>
                 </td>
                  <td class="text-center text-lg text-medium" >
-                    <select class="form-control" style="font-size: 14px; width: 100px">
+                    <select class="form-control" style="font-size: 14px; width: 97px">
                         <option>01.01.2023</option>
                         <option>02.01.2023</option>
                     </select>
 
                 </td>
+                <td class="text-center text-lg text-medium" >
+                    <select class="form-control" style="font-size: 14px; width: 90px">
+                        <option>Address 1</option>
+                        <option>Address 2</option>
+                    </select>
+
+                </td>
                 </h4>
                 <td class="text-center text-lg text-medium">
-                    <select class="form-control" style="font-size: 15px; width: 65px">
+                    <select class="form-control" style="font-size: 14px; width: 65px">
                         <option>1</option>
                         <option>20</option>
                         <option>4484</option>
@@ -84,7 +87,7 @@
                 </td>
                 <td class="text-center">
                     <div class="count-input">
-                        <select class="form-control" style="font-size: 15px; width: 40px">
+                        <select class="form-control" style="font-size: 14px; width: 40px">
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>

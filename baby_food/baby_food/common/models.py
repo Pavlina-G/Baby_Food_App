@@ -21,3 +21,19 @@ class Gallery(models.Model):
 
     class Meta:
         verbose_name_plural = 'Gallery'
+
+
+class Location(models.Model):
+
+    city = models.CharField(
+        max_length=20,
+        default='Burgas',
+        # editable=False,
+    )
+
+    address = models.CharField(
+        max_length=200,
+    )
+
+    def __str__(self):
+        return f'{self.city}, {self.address}'

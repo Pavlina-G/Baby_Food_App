@@ -50,7 +50,9 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
         default=True,
     )
 
-    number_of_children = models.PositiveIntegerField()
+    number_of_children = models.PositiveIntegerField(
+        default=1,
+    )
 
     # User credentials consist of `email` and `password`
     # USERNAME_FIELD = 'email'
@@ -101,6 +103,12 @@ class Profile(models.Model):
         default='profile_pics/profile-icon.jpg'
     )
 
+    def __str__(self):
+        if self.first_name and self.last_name:
+            return f'{self.first_name} {self.last_name}'
+        else:
+            return self.user.username
+
 
 class Child(models.Model):
     first_name = models.CharField(
@@ -119,8 +127,12 @@ class Child(models.Model):
         on_delete=models.CASCADE,
     )
 
+    class Meta:
+        verbose_name_plural = 'Children'
+
     def __str__(self):
-        return f'Email: {self.parent.user.username} Child: {self.first_name} {self.last_name}'
+        return f'Child: {self.first_name} {self.last_name}'
+        # return f'Email: {self.parent.user.username} Child: {self.first_name} {self.last_name}'
 
 
 

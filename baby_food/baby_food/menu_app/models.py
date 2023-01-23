@@ -41,7 +41,8 @@ class BaseMenu(models.Model):
     # )
 
 class Menu(BaseMenu):
-    pass
+    def __str__(self):
+        return f'Menu with Allergens'
 
 
 class MenuWithoutAllergens(BaseMenu):
@@ -74,3 +75,6 @@ class MenuWithoutAllergens(BaseMenu):
 
     class Meta:
         verbose_name_plural = 'Menu Without Allergens'
+
+    def __str__(self):
+        return f'Allergy Free Menu'

@@ -7,6 +7,8 @@ from baby_food.menu_app.models import Menu, MenuWithoutAllergens
 class MenuAdmin(admin.ModelAdmin):
     list_display = ('date', 'age', 'soup', 'main_dish', 'dessert')
     list_filter = ('age', 'date',)
+    def __str__(self):
+        return
 
 
 @admin.register(MenuWithoutAllergens)

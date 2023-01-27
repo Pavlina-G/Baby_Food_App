@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from baby_food.common.models import Gallery, Location
+from baby_food.common.models import Gallery, Location, Category
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Gallery)

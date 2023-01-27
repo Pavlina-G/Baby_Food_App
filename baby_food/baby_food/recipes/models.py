@@ -1,27 +1,33 @@
 from django.db import models
 
+from baby_food.common.models import Category
 
-class BaseRecipe(models.Model):
-    class Meta:
-        abstract = True
+
+class Recipe(models.Model):
+
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='recipe_category'
+    )
 
     name = models.CharField(
         max_length=50,
+        unique=True,
     )
+
     dish_type = models.CharField(
-        max_length=10,
+        max_length=25,
         choices=(
             ('SOUP', 'SOUP'),
             ('MAIN DISH', 'MAIN DISH'),
             ('DESSERT', 'DESSERT'),
+            ('Allergy-Free SOUP', 'Allergy-Free SOUP'),
+            ('Allergy-Free MAIN DISH', 'Allergy-Free MAIN DISH'),
+            ('Allergy-Free DESSERT', 'Allergy-Free DESSERT'),
         ),
     )
-    allergens = models.CharField(
-        max_length=3,
-        default='YES',
-        editable=False,
-        blank=True,
-    )
+
     ingredients = models.CharField(
         max_length=300,
     )
@@ -35,19 +41,3 @@ class BaseRecipe(models.Model):
     def __str__(self):
         return f'{self.dish_type}: {self.name}'
 
-
-class Recipe(BaseRecipe):
-    pass
-
-
-class RecipeWithoutAllergens(BaseRecipe):
-
-    allergens = models.CharField(
-        max_length=2,
-        default='NO',
-        editable=False,
-        blank=True,
-    )
-
-    class Meta:
-        verbose_name_plural = 'Recipes Without Allergens'

@@ -1,18 +1,12 @@
 from django.contrib import admin
 
-from baby_food.recipes.models import Recipe, RecipeWithoutAllergens
+from baby_food.recipes.models import Recipe
 
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'dish_type')
-    list_filter = ('dish_type',)
+    list_display = ('name', 'dish_type', 'category',)
+    list_filter = ('dish_type', 'category',)
 
-
-@admin.register(RecipeWithoutAllergens)
-class RecipeWithoutAllergens(admin.ModelAdmin):
-    list_display = ('name', 'dish_type')
-    list_filter = ('dish_type',)
-
-
-
+    def get_allergy_free_recipes(self):
+        return self.objects.filter(category_id=1)

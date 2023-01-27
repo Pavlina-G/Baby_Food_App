@@ -1,11 +1,10 @@
 from django.db import models
 
-from baby_food.recipes.models import Recipe, RecipeWithoutAllergens
+from baby_food.common.models import Category
+from baby_food.recipes.models import Recipe
 
 
-class BaseMenu(models.Model):
-    class Meta:
-        abstract = True
+class Menu(models.Model):
 
     date = models.DateField(
     )
@@ -14,13 +13,22 @@ class BaseMenu(models.Model):
         choices=(
             ('10M-18M', '10M-18M'),
             ('18M-36M', '18M-36M'),
+            ('10M-36M', '10M-36M'),
         ),
     )
+
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='menu_category'
+    )
+
     soup = models.ForeignKey(
         Recipe,
         on_delete=models.DO_NOTHING,
         related_name='menu_soup',
     )
+
     main_dish = models.ForeignKey(
         Recipe,
         on_delete=models.DO_NOTHING,
@@ -32,49 +40,11 @@ class BaseMenu(models.Model):
         on_delete=models.DO_NOTHING,
         related_name='menu_dessert',
     )
+
     price = models.PositiveIntegerField(
         default=3.00,
         editable=False,
     )
-    # quantity = models.PositiveIntegerField(
-    #     default=1,
-    # )
-
-class Menu(BaseMenu):
-    def __str__(self):
-        return f'Menu with Allergens'
-
-
-class MenuWithoutAllergens(BaseMenu):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-    age = models.CharField(
-        max_length=10,
-        choices=(
-            ('10M-36M', '10M-36M'),
-        ),
-    )
-
-    soup = models.ForeignKey(
-        RecipeWithoutAllergens,
-        on_delete=models.DO_NOTHING,
-        related_name='menu_wa_soup',
-    )
-    main_dish = models.ForeignKey(
-        RecipeWithoutAllergens,
-        on_delete=models.DO_NOTHING,
-        related_name='menu_wa_main_dish',
-        verbose_name='main dish',
-    )
-    dessert = models.ForeignKey(
-        RecipeWithoutAllergens,
-        on_delete=models.DO_NOTHING,
-        related_name='menu_wa_dessert',
-    )
-
-    class Meta:
-        verbose_name_plural = 'Menu Without Allergens'
 
     def __str__(self):
-        return f'Allergy Free Menu'
+        return f'Category {self.category} Date: {self.date}'

@@ -4,7 +4,7 @@ from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 
 from baby_food.accounts.models import Profile
-from baby_food.menu_app.models import MenuWithoutAllergens, Menu
+from baby_food.menu_app.models import Menu
 
 
 def menu_home(request):
@@ -14,7 +14,7 @@ def menu_home(request):
 def menu_with_allergens_first(request):
     user = request.user
     # menus = MenuWithoutAllergens.objects.filter(date__gt=(datetime.date.today() + datetime.timedelta(days=10)))
-    menus = Menu.objects.filter(age__exact='10M-18M')
+    menus = Menu.objects.filter(age__exact='10M-18M', category_id=2)
     try:
         profile = Profile.objects.get(user_id=user.id)
     except Profile.DoesNotExist:
@@ -37,7 +37,7 @@ def menu_with_allergens_first(request):
 def menu_with_allergens_last(request):
     user = request.user
     # menus = Menu.objects.filter(age__exact='18M-36M', date__gt=(datetime.date.today() + datetime.timedelta(days=10)))
-    menus = Menu.objects.filter(age__exact='18M-36M')
+    menus = Menu.objects.filter(age__exact='18M-36M', category_id=2)
     try:
         profile = Profile.objects.get(user_id=user.id)
     except Profile.DoesNotExist:
@@ -60,7 +60,7 @@ def menu_with_allergens_last(request):
 def menu_no_allergens(request):
     user = request.user
     # menus = MenuWithoutAllergens.objects.filter(date__gt=(datetime.date.today() + datetime.timedelta(days=10)))
-    menus = MenuWithoutAllergens.objects.all()
+    menus = Menu.objects.filter(age__exact='10M-36M', category_id=1)
     try:
         profile = Profile.objects.get(user_id=user.id)
     except Profile.DoesNotExist:

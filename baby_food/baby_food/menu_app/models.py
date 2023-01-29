@@ -5,7 +5,6 @@ from baby_food.recipes.models import Recipe
 
 
 class Menu(models.Model):
-
     date = models.DateField(
     )
     age = models.CharField(
@@ -42,9 +41,24 @@ class Menu(models.Model):
     )
 
     price = models.PositiveIntegerField(
-        default=3.00,
+        default=3.50,
         editable=False,
     )
 
     def __str__(self):
-        return f'Category {self.category} Date: {self.date}'
+        return f'Allergy-Free Menu: {self.date}' if self.category_id == 1 else f'Menu With Allergens: {self.date}'
+
+    @staticmethod
+    def get_menu_by_id(menu_id):
+        return Menu.objects.filter(id=menu_id)
+
+    @staticmethod
+    def get_all_menus():
+        return Menu.objects.all()
+
+    @staticmethod
+    def get_all_menus_by_category_id(category_id):
+        if category_id:
+            return Menu.objects.filter(category=category_id)
+        else:
+            return Menu.get_all_menus()

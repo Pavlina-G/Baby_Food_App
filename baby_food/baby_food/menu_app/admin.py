@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+
 from baby_food.menu_app.models import Menu
 from baby_food.recipes.models import Recipe
 

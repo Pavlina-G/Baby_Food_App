@@ -1,8 +1,7 @@
+from django.core import validators
 from django.db import models
 
-
 class Category(models.Model):
-
     category_name = models.CharField(
         max_length=50,
     )
@@ -13,8 +12,8 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
-class Gallery(models.Model):
 
+class Gallery(models.Model):
     picture = models.ImageField(
         upload_to='recipe_pics',
     )
@@ -33,7 +32,6 @@ class Gallery(models.Model):
 
 
 class Location(models.Model):
-
     city = models.CharField(
         max_length=20,
         default='Burgas',
@@ -46,3 +44,7 @@ class Location(models.Model):
 
     def __str__(self):
         return f'{self.city}, {self.address}'
+
+
+
+

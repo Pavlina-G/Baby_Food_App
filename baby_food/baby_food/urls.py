@@ -11,7 +11,8 @@ urlpatterns = [
     path('accounts/', include('baby_food.accounts.urls')),
     path('menu_app/', include('baby_food.menu_app.urls')),
     path('recipes/', include('baby_food.recipes.urls')),
-    path('cart/', include('baby_food.cart.urls')),
+    path('order/', include('baby_food.order.urls')),
+    path('cart/', include('baby_food.shopping_cart.urls')),
 ]
 
 if settings.DEBUG:

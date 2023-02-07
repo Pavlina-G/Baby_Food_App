@@ -1,3 +1,4 @@
+{% load placeholders %}
 {% load static %}
 
 {#<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">#}
@@ -31,75 +32,95 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
-                    <div class="product-item">
-                        <a class="product-thumb" href="#"><img
-                                src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
-                                alt="Product" style="width: 80px; height: 60px; border-radius: 5px"></a>
-                        <div class="product-info">
+            {#                        Total Length :: {{request.session.cart|length}}#}
 
-                            <h4 class="product-title">
+            {#Cart Detail::#}
+            {% for key,value in request.session.cart.items %}
+                <tr>
+                    <td>
+                        <div class="product-item">
+                            <a class="product-thumb" href="#"><img
+                                    src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
+                                    alt="Product" style="width: 80px; height: 60px; border-radius: 5px"></a>
+                            <div class="product-info">
 
-                <td class="text-center text-lg text-medium" style="width: 10px;">
-                1.
-            </td>
-                <td class="text-center text-lg text-medium" >
-                    <select class="form-control" style="font-size: 15px; width: 115px">
-                        <option>Alle​rgy-Free Menu</option>
-                        <option>Menu With Allergens</option>
-                    </select>
+                                <h4 class="product-title">
 
-                </td>
-
-                <td class="text-center text-lg text-medium">
-                    <select class="form-control" style="font-size: 14px; width: 93px">
-                        <option>10M-18M</option>
-                        <option>18M-36M</option>
-                        <option>10M-36M</option>
-                    </select>
-                </td>
-                 <td class="text-center text-lg text-medium" >
-                    <select class="form-control" style="font-size: 14px; width: 97px">
-                        <option>01.01.2023</option>
-                        <option>02.01.2023</option>
-                    </select>
-
-                </td>
-                <td class="text-center text-lg text-medium" >
-                    <select class="form-control" style="font-size: 14px; width: 90px">
-                        <option>Address 1</option>
-                        <option>Address 2</option>
-                    </select>
-
-                </td>
-                </h4>
-                <td class="text-center text-lg text-medium">
-                    <select class="form-control" style="font-size: 14px; width: 65px">
-                        <option>1</option>
-                        <option>20</option>
-                        <option>4484</option>
-                    </select>
-                </td>
-
-
-
-                </td>
-                <td class="text-center">
-                    <div class="count-input">
-                        <select class="form-control" style="font-size: 14px; width: 40px">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
+                    <td class="text-center text-lg text-medium" style="width: 10px;">
+                        {{ key }}.
+                    </td>
+                    <td class="text-center text-lg text-medium">
+                        <select class="form-control" style="font-size: 15px; width: 115px">
+                            {% if value.name in 'Allergy-Free Menu' %}:
+                                <option name="1">Alle​rgy-Free Menu</option>
+                            {% else %}
+                                <option name="2">Menu With Allergens</option>
+                            {% endif %}
                         </select>
-                    </div>
-                </td>
-                <td class="text-center text-lg text-medium">3.50</td>
-                <td class="text-center text-lg text-medium">3.50</td>
-                <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title=""
-                                           data-original-title="Remove item"><i class="fa fa-trash"
-                                                                                style="color: #0d796c"></i></a></td>
-            </tr>
+
+                    </td>
+
+                    <td class="text-center text-lg text-medium">
+                        <select class="form-control" style="font-size: 14px; width: 93px">
+                            {% if value.date in '10M-18M' %}
+                            <option>10M-18M</option>
+                            {% elif value.date in '10M-18M' %}
+                            <option>18M-36M</option>
+                            {% else %}
+                            <option>10M-36M</option>
+                            {% endif %}
+                        </select>
+                    </td>
+                    <td class="text-center text-lg text-medium">
+                        <select class="form-control" style="font-size: 14px; width: 97px">
+                            <option type="text">{{ value.date }}</option>
+{#                            <option>01.01.2023</option>#}
+{#                            <option>02.01.2023</option>#}
+                        </select>
+
+                    </td>
+                    <td class="text-center text-lg text-medium">
+                        <select class="form-control" style="font-size: 14px; width: 90px">
+                            <option>Address 1</option>
+                            <option>Address 2</option>
+                        </select>
+
+                    </td>
+                    </h4>
+                    <td class="text-center text-lg text-medium">
+                        <select class="form-control" style="font-size: 14px; width: 100px;  height:60px; padding: 3px" multiple>
+{#                            {% for child_id in request.user.number_of_children|times %}#}
+
+{#                                {% endfor %}#}
+                            {% if value.kids %}
+                                {% for key, value in value.kids.items %}
+                                    <option>{{ key }}-{{ value }}</option>
+                                {% endfor %}
+                            {% else %}
+                                <option>Add Child To Your Profile</option>
+                            {% endif %}
+                        </select>
+                    </td>
+
+
+                    </td>
+                    <td class="text-center">
+                        <div class="count-input">
+                            <select class="form-control" style="font-size: 14px; width: 40px">
+                                <option>{{ value.quantity }}</option>
+                                <option>0</option>
+{#                                <option>2</option>#}
+                            </select>
+                        </div>
+                    </td>
+{#                    <td class="text-center text-lg text-medium">3.50</td>#}
+                    <td class="text-center text-lg text-medium">{{ value.price|floatformat:2  }}</td>
+                    <td class="text-center text-lg text-medium">{{ value.price|multiply:value.quantity|floatformat:2 }}</td>
+                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title=""
+                                               data-original-title="Remove item"><i class="fa fa-trash"
+                                                                                    style="color: #0d796c"></i></a></td>
+                </tr>
+            {% endfor %}
             {#Second item#}
 
             {#Third item#}
@@ -109,8 +130,8 @@
         </table>
     </div>
     <div class="shopping-cart-footer"
-         style="text-align: right; margin-right: 10px; margin-bottom: 10px; margin-top: -25px">
-        <div class="column text-lg">Subtotal BGN: <span class="text-medium" style="color: mediumvioletred"><b>289.68</b></span>
+         style="text-align: right; margin-right: 10px; margin-bottom: 10px; margin-top: 25px">
+        <div class="column text-lg">Subtotal BGN: <span class="text-medium" style="color: mediumvioletred"><b>{{ cart.get_total_price|floatformat:2 }}</b></span>
         </div>
     </div>
     <div class="shopping-cart-footer" style="text-align: right; margin-right: 10px;">

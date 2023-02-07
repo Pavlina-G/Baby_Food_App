@@ -5,6 +5,16 @@ from baby_food.recipes.models import Recipe
 
 
 class Menu(models.Model):
+    menu_type = (
+        ('Allergy-Free Menu', 'Allergy-Free Menu'),
+        ('Menu With Allergens', 'Menu With Allergens'),
+    )
+
+    name = models.CharField(
+        max_length=30,
+        choices=menu_type,
+    )
+
     date = models.DateField(
     )
     age = models.CharField(
@@ -40,7 +50,7 @@ class Menu(models.Model):
         related_name='menu_dessert',
     )
 
-    price = models.PositiveIntegerField(
+    price = models.FloatField(
         default=3.50,
         editable=False,
     )
@@ -62,3 +72,5 @@ class Menu(models.Model):
             return Menu.objects.filter(category=category_id)
         else:
             return Menu.get_all_menus()
+
+

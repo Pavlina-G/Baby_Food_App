@@ -38,6 +38,11 @@ class Recipe(models.Model):
         blank=True,
     )
 
+    added_on = models.DateField(
+        auto_now=True,
+    )
+
     def __str__(self):
         return f'{self.dish_type}: {self.name}'
+
 

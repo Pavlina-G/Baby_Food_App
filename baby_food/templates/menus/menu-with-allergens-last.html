@@ -243,6 +243,9 @@
                     <div class="page-container04">
                         <h1 class="page-text010">
                             <span>{{ menu.date }}</span>
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                {% endif %}
                             <br/>
                         </h1>
                         <img
@@ -318,6 +321,9 @@
                     <div class="page-container10">
                         <h1 class="page-text120">
                             <span>{{ menu.date }}</span>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                {% endif %}
                             <br/>
                         </h1>
                         <img

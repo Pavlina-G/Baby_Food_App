@@ -246,28 +246,32 @@
                 {% for menu in menus_first %}
                     <div class="page-container04">
                         <h1 class="page-text010">
-                            <span>{{ menu.date }}</span>
+                            <span>{{ menu.date }}
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                {% endif %}
                             <br/>
                         </h1>
+
                         <img
                                 src="{% static 'public/playground_assets/baby_food_purees3-200h.jpg' %}"
                                 alt="image"
                                 class="page-image01"
                         />
                         <span class="page-text013">
-              <span class="page-text014">{{ menu.soup }}</span>
+              <span class="page-text014">{{ menu.soup.name }}</span>
               <br class="page-text015"/>( {{ menu.soup.ingredients|lower }} )
 {#              <br class="page-text016"/>#}
 {#              <br class="page-text017"/>#}
               <br class="page-text018"/>
               <br class="page-text019"/>
-              <span class="page-text020">{{ menu.main_dish }}</span>
+              <span class="page-text020">{{ menu.main_dish.name }}</span>
               <br class="page-text021"/>( {{ menu.main_dish.ingredients|lower }} )
 {#              <br class="page-text022"/>#}
 {#              <br class="page-text023"/>#}
               <br class="page-text024"/>
               <br class="page-text025"/>
-              <span class="page-text026">{{ menu.dessert }}</span>
+              <span class="page-text026">{{ menu.dessert.name }}</span>
               <br/>( {{ menu.dessert.ingredients|lower }} )
 {#              <br/>#}
 {#              <br/>#}
@@ -322,28 +326,32 @@
                     <div class="page-container10">
                         <h1 class="page-text120">
                             <span>{{ menu.date }}</span>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                {% endif %}
                             <br/>
                         </h1>
+
                         <img
                                 src="{% static 'public/playground_assets/babyfood1-superjumbo-300h.jpg' %}"
                                 alt="image"
-                                class="page-image06"
+                                class="page-image06" style="height: 120px"
                         />
                         <span class="page-text123">
-              <span class="page-text124">{{ menu.soup }}</span>
+              <span class="page-text124">{{ menu.soup.name }}</span>
               <br class="page-text125"/>( {{ menu.soup.ingredients|lower }} )
 {#              <br class="page-text126"/>#}
 {#              <br class="page-text127"/>#}
 {#              <br class="page-text128"/>#}
               <br class="page-text128"/>
               <br class="page-text129"/>
-              <span class="page-text130">{{ menu.main_dish }}</span>
+              <span class="page-text130">{{ menu.main_dish.name }}</span>
               <br class="page-text131"/>( {{ menu.main_dish.ingredients|lower }} )
 {#              <br class="page-text132"/>#}
 {#              <br class="page-text133"/>#}
               <br class="page-text134"/>
               <br class="page-text135"/>
-              <span class="page-text136">{{ menu.dessert }}</span>
+              <span class="page-text136">{{ menu.dessert.name }}</span>
               <br/>( {{ menu.dessert.ingredients|lower }} )
 {#              <br/>#}
 {#              <br/>#}

@@ -153,9 +153,9 @@
                     {% else %}
                         <div class="menu-no-allergens-nav" style="left: 948px">
                             <nav
-                                    class="navigation-links-nav navigation-links-root-class-name13" >
+                                    class="navigation-links-nav navigation-links-root-class-name13">
 
-                            {% include 'partials/header-nav.html' %}
+                                {% include 'partials/header-nav.html' %}
 
                             </nav>
                         </div>
@@ -233,6 +233,17 @@
                 </div>
             </div>
         </header>
+        {% if messages %}
+
+            <div class='messages' id="hideMessage"
+                 style="margin-right: -42%; color: mediumvioletred; font-size: 16px; font-style: italic">
+
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+
+            </div>
+        {% endif %}
 
 
         <div class="page-container03">
@@ -243,7 +254,7 @@
                             <span>{{ menu.date }}</span>
                             {% if request.user.is_authenticated %}
                                 <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
-                                {% endif %}
+                            {% endif %}
                             <br/>
                         </h1>
                         <img
@@ -322,7 +333,7 @@
                             <span>{{ menu.date }}</span>
                             {% if request.user.is_authenticated %}
                                 <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
-                                {% endif %}
+                            {% endif %}
                             <br/>
                         </h1>
                         <img
@@ -365,7 +376,7 @@
     <div class="menu-no-allergens-icon-group1"></div>
 </footer>
 {% if request.user.is_authenticated %}
-{#    <a href="{% url 'profile details' pk=request.user.pk %}" class="menu-no-allergens-link">#}
+    {#    <a href="{% url 'profile details' pk=request.user.pk %}" class="menu-no-allergens-link">#}
     <a href="{% url 'cart details' %}" class="menu-no-allergens-link">
         <h1 class="menu-no-allergens-text236">
             <span>Menu With Allergens 10M-18M</span>
@@ -393,5 +404,12 @@
         src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
 ></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script>
+    var message_ele = document.getElementById("hideMessage");
+
+    setTimeout(function () {
+        message_ele.style.display = "none";
+    }, 1000);
+</script>
 </body>
 </html>

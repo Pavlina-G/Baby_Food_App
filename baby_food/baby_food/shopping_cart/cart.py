@@ -24,6 +24,10 @@ class Cart(object):
         for m in self.cart.keys():
             self.cart[str(m)]['menu'] = Menu.objects.get(pk=m)
 
+        for item in self.cart.values():
+            yield item
+
+
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
 
@@ -33,8 +37,8 @@ class Cart(object):
 
     def add(self, menu, quantity=1, update_quantity=False):
         menu_id = str(menu.id)
-        user_id = self.request.user.id
-        children = Child.objects.filter(parent_id=user_id)
+        user = self.request.user
+        children = Child.objects.filter(parent_id=user.id)
         kids = {}
 
         for child in children:
@@ -42,20 +46,20 @@ class Cart(object):
 
         if menu_id not in self.cart:
             self.cart[menu_id] = {
-
                 'quantity': 1,
                 'kids': kids,
                 'menu_id': menu_id,
                 'price': menu.price,
                 'name': menu.name,
                 'date': menu.date.strftime("%d.%m.%Y"),
+                'location': user.profile.location.address,
                 'age': str(menu.age),
             }
 
         # if update_quantity:
         else:
             self.cart[menu_id]['quantity'] += int(quantity)
-            # self.cart[menu_id]['price'] = self.cart[menu_id]['quantity'] * (menu.price)
+            # self.cart[menu_id]['price'] += float(menu.price)
 
             if self.cart[menu_id]['quantity'] == 0:
                 self.remove(menu)

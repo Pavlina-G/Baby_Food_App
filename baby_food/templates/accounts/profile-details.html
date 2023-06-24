@@ -399,14 +399,17 @@
                         <span class="profile-details-text-info"><b>Last Name: </b>{{ user.profile.last_name }}</span>
                         <br>
 
+                        <span class="profile-details-text-info"><b>Location: </b>{{ user.profile.location }}</span>
+                        <br>
+
                     <button type="button" value="edit">
                     <a href="{% url 'profile edit' pk=request.user.pk %}">Edit</a></button>
-                    <br>
-                    <br>
+{#                    <br>#}
+
 {#                        {% if total_children %}#}
 {#                        <span class="profile-details-text-info"><b>Number of Children: </b>{{ total_children }}</span>#}
 {#                    {% else %}#}
-                        <span class="profile-details-text-info"><b>Number of Children: </b>{{ user.number_of_children }}</span>
+{#                        <span class="profile-details-text-info" style=""><b>Number of Children: </b>{{ user.number_of_children }}</span>#}
 {#                    {% endif %}#}
                         {% for child in children %}
                             <br>

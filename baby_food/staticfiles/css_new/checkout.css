@@ -4,7 +4,7 @@
     align-items: flex-start;
     flex-direction: row;
     font-size: 20px;
-    font-family: Inter;
+    left: -30px;
 }
 
 .navigation-links-link {
@@ -15,27 +15,22 @@
 
 .navigation-links-link:hover {
     color: #21595c;
-    text-decoration: none;
 }
 
 .navigation-links-link1:hover {
     color: #21595c;
-    text-decoration: none;
 }
 
 .navigation-links-link2:hover {
     color: #21595c;
-    text-decoration: none;
 }
 
 .navigation-links-link3:hover {
     color: #21595c;
-    text-decoration: none;
 }
 
 .navigation-links-link4:hover {
     color: #21595c;
-    text-decoration: none;
 }
 
 
@@ -68,6 +63,7 @@
     display: inline-block;
     position: relative;
     border-radius: var(--dl-radius-radius-radius2);
+    /*align-items: flex-start;*/
     margin-top: -7.5px;
 }
 
@@ -77,8 +73,8 @@
     width: 100%;
     display: inline-flex;
     position: relative;
-    align-items: center;
-    /*line-height: 1.15;*/
+    align-items: flex-start;
+    /*align-items: start;*/
     margin-left: var(--dl-space-space-halfunit);
     padding-top: var(--dl-space-space-halfunit);
     padding-left: var(--dl-space-space-unit);
@@ -92,13 +88,12 @@
     color: #0f8e74;;
     font-size: 20px;
     font-style: normal;
-    text-align: center;
+    text-align: start;
     /*font-weight: 400;*/
     font-weight: bold;
     margin-left: var(--dl-space-space-halfunit);
     margin-right: 4px;
     vertical-align: middle;
-    font-family: Inter;
 }
 
 .navigation-links-text:hover {
@@ -148,7 +143,6 @@
     /*color: #fff;*/
     /*color: #21595c;*/
     background-color: #b7d9d0;
-    text-decoration: none;
 }
 
 .navigation-links-text1 {
@@ -189,7 +183,6 @@
     fill: #fff;
     color: #fff;
     background-color: #b7d9d0;
-    text-decoration: none;
 }
 
 .navigation-links-text4 {
@@ -230,7 +223,6 @@
     fill: #fff;
     color: #fff;
     background-color: #b7d9d0;
-    text-decoration: none;
 }
 
 .navigation-links-text5 {
@@ -271,7 +263,6 @@
     fill: #fff;
     color: #fff;
     background-color: #b7d9d0;
-    text-decoration: none;
 }
 
 .navigation-links-text6 {
@@ -289,7 +280,7 @@
 
 .navigation-links-root-class-name9 {
     top: 0px;
-    left: 0px;
+    left: -30px;
     position: absolute;
 }
 
@@ -364,9 +355,7 @@
     flex-direction: column;
     background-size: cover;
     justify-content: flex-start;
-    background-color: #f3f2f9;
-
-    /*background-image: url("../public/playground_assets/index_image-1500w.jpg");*/
+    background-image: url("../public/playground_assets/index_image-1500w.jpg");
 }
 
 .home-header {
@@ -395,13 +384,11 @@
 .home-text {
     left: 500px;
     color: #22887a;
-    bottom: 27px;
+    bottom: 28px;
     position: absolute;
     font-family: Bangers;
     font-size: 40px;
-    font-weight: bold;
 }
-
 
 .home-container1 {
     flex: 0 0 auto;
@@ -505,22 +492,17 @@
 .home-container4 {
     /*border-radius: var(--dl-radius-radius-radius4);*/
     border-radius: 20px;
-    border-style: solid;
-    border-color: #2a8387;
-    /*overflow: hidden;*/
-    top: 150px;
-    right: 5px;
-    /*width: 1180px;*/
-    width: 90%;
-    /*height: 600px;*/
+    top: 250px;
+    right: 150px;
+    width: 636px;
+    height: 466px;
     display: flex;
     position: absolute;
     align-items: flex-start;
     background-size: cover;
     justify-content: flex-start;
-    background-image: url("");
+    /*background-image: url("../public/playground_assets/baby_food_jars3-400h.png");*/
     background-position: center;
-    margin-bottom: 2rem;
 }
 
 /*.home-container5 {*/
@@ -553,11 +535,9 @@
 .home-footer {
     left: 100px;
     width: 100%;
-    bottom: 0;
-    margin-top: 5%;
+    bottom: 0%;
     display: flex;
     position: fixed;
-    /*position: absolute;*/
     max-width: var(--dl-size-size-maxwidth);
     align-items: center;
     padding-top: var(--dl-space-space-twounits);
@@ -727,5 +707,3 @@
     border-radius: 50%;
     margin-top: -35px;
 }
-
-

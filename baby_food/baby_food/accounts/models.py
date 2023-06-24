@@ -10,6 +10,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.contrib.auth import models as auth_models
 from baby_food.accounts.managers import AppUserManager
+from baby_food.common.models import Location
 from baby_food.menu_app.models import Menu
 
 
@@ -103,7 +104,12 @@ class Profile(models.Model):
         upload_to='profile_pics',
         default='profile_pics/profile-icon.jpg'
     )
-
+    location = models.ForeignKey(
+        Location,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
     # orders = models.ManyToManyField(Menu, blank=True)
 
     def __str__(self):

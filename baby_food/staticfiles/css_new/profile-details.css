@@ -526,8 +526,9 @@
 
 .profile-details-text-info {
     text-align: left;
-    line-height: 1.7;
+    line-height: 1.6;
     left: 109px;
+    top:5px;
     position: relative;
 
     /*margin-top: var(--dl-space-space-halfunit);*/

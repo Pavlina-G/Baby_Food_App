@@ -376,8 +376,9 @@
 
                     {% for field in profile_form %}
                         {{ field.label }}
+                        {{ field }}
                     {% endfor %}
-                    {{ profile_form }}
+{#                    {{ profile_form }}#}
                 <button type="submit" value="edit">Update Profile</button>
 {#                 <button type="submit" value="edit">#}
 {#                    <a href="{% url 'profile edit' pk=request.user.pk %}">Update Profile Details</a></button>#}

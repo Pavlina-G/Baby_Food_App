@@ -1,17 +1,19 @@
 import re
 from datetime import datetime
 
+
 from django.core import validators
 from django.db import models
-#
+
 from baby_food.accounts.models import Profile, Child
 from baby_food.common.models import Location
-# from baby_food.common.models import Location
+
 from baby_food.menu_app.models import Menu
 
 
 class Order(models.Model):
-    user = models.ForeignKey(
+
+    customer = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
     )
@@ -21,14 +23,21 @@ class Order(models.Model):
     paid = models.BooleanField(
         default=False,
     )
+    address = models.ForeignKey(
+        Location,
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
-        return f'{self.user} - cart_id: {self.id}'
+        return f'{self.customer} - cart_id: {self.id}'
+
 
 
 class OrderItem(models.Model):
     MIN_PRICE = 0.00
     CURRENT_PRICE = 3.50
+
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
     product = models.ForeignKey(
         Menu,
@@ -44,12 +53,14 @@ class OrderItem(models.Model):
             validators.MinValueValidator(MIN_PRICE),
         )
     )
+    # address = models.ForeignKey(
+    #     Location,
+    #     on_delete=models.CASCADE
+    # )
 
-    address = models.ForeignKey(
-        Location,
-        on_delete=models.CASCADE,
+    address = models.CharField(
+        max_length=200,
     )
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
     @property
     def total_price(self):

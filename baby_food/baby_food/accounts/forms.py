@@ -1,9 +1,11 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model, authenticate
+from django.core.exceptions import ValidationError
 
 from django.utils.translation import gettext_lazy as _
 
 from baby_food.accounts.models import Profile, AppUser, Child
+from baby_food.common.models import Location
 
 UserModel = get_user_model()
 
@@ -36,6 +38,7 @@ class SignUpForm(auth_forms.UserCreationForm):
             user=user,
         )
         children_numbers = user.number_of_children
+
         if commit:
             profile.save()
             for _ in range(children_numbers):
@@ -97,11 +100,13 @@ class BaseProfileForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={
                 'placeholder': 'Last Name',
             }),
+
         }
         labels = {
             'first_name': 'First Name',
             'last_name': 'Last Name',
-            'profile_image': 'Profile Image'
+            'profile_image': 'Profile Image',
+            'location': 'Location',
         }
 
 
@@ -141,8 +146,4 @@ class ChildForm(BaseChildForm):
 
 
 class ChildEditForm(BaseChildForm):
-   pass
-
-
-
-
+    pass

@@ -1,36 +1,31 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css_new/checkout1.css' %}"/>
+<link rel="stylesheet" href="{% static 'css_new/checkout-form.css' %}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <div class="checkout-card">
-    <h2 class="checkout-card-title">Payment Details</h2>
-    <form class="checkout-card-form" role="form" method="post" action="">
-        <label for="cardHolder" class="checkout-card-form-label">Card Holder Name</label>
+    <h2 class="checkout-card-title">Order Details</h2>
+    <form class="checkout-card-form" role="form" method="post" action="{% url 'create order' %}">
+{#        {{ form.as_p }}#}
 
-        <input type="text" name="cardHolder" id="cardHolder" class="checkout-card-form-input"
-               placeholder="Enter your name">
+        <label for="cardHolder" class="checkout-card-form-label">Customer</label>
+{#        <input type="text" name="cardHolder" id="cardHolder" class="checkout-card-form-input"#}
+{#               placeholder="Enter your name">#}
+        {{ form.customer }}
 
-        <label for="cardNumber" class="checkout-card-form-label">CARD NUMBER</label>
-
-        <input type="number" name="cardNumber" id="cardNumber" class="checkout-card-form-input"
-               placeholder="Enter your card number">
-        <div class="card-input-wrapper">
-            <label id="expLabel" class="checkout-card-form-label">EXPIRY DATE</label>
-
-
-            <input type="number" name="expMM" class="checkout-card-form-input exp ccv-label" placeholder="MM"> /
-            <input type="number" name="expYY" class="checkout-card-form-input exp ccv-label" placeholder="YY">
-        </div>
-
-        <label id="ccvLabel" class="checkout-card-form-label ccv-label">CCV</label>
-        <input type="password" name="CCV" id="card-ccv" class="checkout-card-form-input exp" placeholder="123">
-
-
+        <label for="cardNumber" class="checkout-card-form-label">Address</label>
+        {{ form.address }}
+{#        <a href="{% url 'cart details' %}" class="checkout-card-form-link-info order-final-info">Order Details#}
         <div class="checkout-card-form-final-info">
-            <a href="{% url 'cart details' %}" class="checkout-card-form-link-info">Final Payment
-                <span id="card-total-amount">{{ cart.get_total_price|floatformat:2 }} BGN</span>
+            <a href="{% url 'cart details' %}" class="checkout-card-form-link-info order-final-info">
+{#                Order Details#}
+                <i class="fa-solid fa-receipt" style="color: #f1f4fa; margin-top: 2.5%"></i>
+                <span id="card-total-amount"> Total amount: {{ cart.get_total_price|floatformat:2 }} BGN</span>
             </a>
         </div>
-        <button type="submit" id="card-pay-btn">Pay</button>
+        <button type="submit" id="card-pay-btn">Submit Order</button>
+{#        <input type="submit" value="Pay" id="card-pay-btn">#}
+
         {% csrf_token %}
     </form>
 </div>

@@ -137,16 +137,19 @@
     </div>
     <div class="shopping-cart-footer" style="text-align: right; margin-right: 10px;">
         {% if request.session.cart.items %}
-        <div class="column"><a class="btn btn-primary" style="background-color: lightseagreen;" href="#" data-toast=""
-                               data-toast-type="success"
-                               data-toast-position="topRight" data-toast-icon="icon-circle-check"
-                               data-toast-title="Your cart" data-toast-message="is updated successfully!">Update
-            Cart</a>
+        <div class="column">
+{#            <a class="btn btn-primary" style="background-color: lightseagreen;" href="#" data-toast=""#}
+{#                               data-toast-type="success"#}
+{#                               data-toast-position="topRight" data-toast-icon="icon-circle-check"#}
+{#                               data-toast-title="Your cart" data-toast-message="is updated successfully!">Update#}
+{#            Cart</a>#}
 
 
 
 {#            <a class="btn btn-success" style="background-color: darkcyan;" href="{% url 'create order' %}">Checkout</a></div>#}
-            <a class="btn btn-success" style="background-color: darkcyan;" href="{% url 'pay order' %}">Checkout</a></div>
+
+{#            <input type="submit" class="btn btn-success" style="background-color: darkcyan;" value="Checkout" ></div>#}
+            <a class="btn btn-success" style="background-color: darkcyan;" href="{% url 'create order' %}">Checkout</a></div>
             {% else %}
             <div class="column"><a class="btn btn-primary" style="background-color: lightseagreen;" href="{% url 'menus home' %}" data-toast=""
                                data-toast-type="success"

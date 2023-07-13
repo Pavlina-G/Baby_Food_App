@@ -5,7 +5,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 from baby_food.accounts.models import Profile, AppUser, Child
-from baby_food.common.models import Location
 
 UserModel = get_user_model()
 

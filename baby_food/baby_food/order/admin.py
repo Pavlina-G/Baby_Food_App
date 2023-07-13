@@ -1,7 +1,7 @@
 from totalsum.admin import TotalsumAdmin
 
 from django.contrib import admin
-from baby_food.order.models import Order, OrderItem
+from baby_food.order.models import Order,OrderItem
 
 
 @admin.register(Order)

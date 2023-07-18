@@ -31,15 +31,16 @@
 {#        <input type="password" name="CCV" id="card-ccv" class="checkout-card-form-input exp" placeholder="123">#}
 
 
-        <div class="checkout-card-form-final-info">
+        <div class="checkout-card-form-final-info ">
 {#            <a href="{% url 'cart details' %}" class="checkout-card-form-link-info">Final Payment#}
 {#                <span id="card-total-amount">{{ cart.get_total_price|floatformat:2 }} BGN</span>#}
 {#            </a>#}
-            <a href="{% url 'cart details' %}" class="checkout-card-form-link-info order-final-info">
+{#            <a href="{% url 'cart details' %}" class="checkout-card-form-link-info order-final-info">#}
 {#                Order Details#}
-                <i class="fa-solid fa-receipt" style="color: #f1f4fa; margin-top: 2.5%"></i>
-                <span id="card-total-amount"> Total amount: {{ cart.get_total_price|floatformat:2 }} BGN</span>
-            </a>
+{#                <i class="fa-solid fa-receipt" style="color: #f1f4fa; margin-top: "></i>#}
+{#                <span id="card-total-amount"> Total amount: {{ cart.get_total_price|floatformat:2 }} BGN</span>#}
+                <span id="card-total-amount " class="checkout-card-form-link-info pay-info-text" style="margin-top: 5%; margin-bottom: 5%"> Total amount: {{ order.order_amount|floatformat:2 }} BGN</span>
+{#            </a>#}
         </div>
         <button type="submit" id="card-pay-btn">Pay</button>
 {#        <input type="submit" value="Pay" id="card-pay-btn">#}

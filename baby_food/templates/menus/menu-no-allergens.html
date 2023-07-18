@@ -258,7 +258,7 @@
                         <h1 class="page-text010">
                             <span>{{ menu.date }}
                                 {% if request.user.is_authenticated %}
-                                    <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                    <a class="add-cart-link" href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
                                 {% endif %}
                             <br/>
                         </h1>
@@ -337,7 +337,7 @@
                         <h1 class="page-text120">
                             <span>{{ menu.date }}</span>
                             {% if request.user.is_authenticated %}
-                                <a href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                <a class="add-cart-link" href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
                             {% endif %}
                             <br/>
                         </h1>
@@ -388,7 +388,7 @@
         <h1 class="menu-no-allergens-text236">
             <span>Alle​rgy-Free Menu</span>
             <span>-</span>
-            <span>Get Vouchers</span>
+            <span>Go to the Shopping cart</span>
             <br/>
             <br/>
         </h1>
@@ -398,7 +398,7 @@
         <h1 class="menu-no-allergens-text236">
             <span>Alle​rgy-Free Menu</span>
             <span>-</span>
-            <span>Get Vouchers</span>
+            <span>Go to the Shopping cart</span>
             <br/>
             <br/>
         </h1>

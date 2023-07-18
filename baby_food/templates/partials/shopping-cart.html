@@ -16,13 +16,13 @@
         <table class="table" style="">
             <thead style="">
             <tr>
-                <th style="color: #0f8e74; width: 80px; font-size: 18px;">Shopping Cart</th>
+                <th style="color: #0f8e74; width: 80px; font-size: 18px; text-align: center">Shopping Cart</th>
                 {#                <th><img src="{% static 'public/playground_assets/shopping-stroller.png' %}" style="width: 50px; height: 30px"></th>#}
                 <th class="text-center">No.</th>
                 <th class="text-center" style="">Menu</th>
                 <th class="text-center" style="">Age Range</th>
                 <th class="text-center">Date</th>
-                <th class="text-center">Location</th>
+{#                <th class="text-center">Location</th>#}
                 <th class="text-center">Children</th>
                 <th class="text-center">Quantity</th>
                 <th class="text-center">Price</th>
@@ -41,12 +41,12 @@
                         <div class="product-item">
                             <a class="product-thumb" href="#"><img
                                     src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
-                                    alt="Product" style="width: 90px; height: 60px; border-radius: 5px"></a>
+                                    alt="Product" style="width: 80px; height: 58px; border-radius: 5px"></a>
                             <div class="product-info">
 
                                 <h4 class="product-title">
 
-                    <td class="text-center text-lg text-medium" style="width: 10px;">
+                    <td class="text-center text-lg text-medium" style="width: 20px;">
                         {{ key }}.
                     </td>
                     <td class="text-center text-lg text-medium">
@@ -72,24 +72,24 @@
                         </select>
                     </td>
                     <td class="text-center text-lg text-medium">
-                        <select class="form-control" style="font-size: 14px; width: 97px">
+                        <select class="form-control" style="font-size: 14px; width: 100px">
                             <option type="text">{{ value.date }}</option>
 {#                            <option>01.01.2023</option>#}
 {#                            <option>02.01.2023</option>#}
                         </select>
 
                     </td>
-                    <td class="text-center text-lg text-medium">
-                        <select class="form-control" style="font-size: 14px; width: 90px">
-                            <option type="text">{{ value.location }}</option>
+{#                    <td class="text-center text-lg text-medium">#}
+{#                        <select class="form-control" style="font-size: 14px; width: 90px">#}
+{#                            <option type="text">{{ value.location }}</option>#}
 {#                            <option>Address 1</option>#}
 {#                            <option>Address 2</option>#}
-                        </select>
-
-                    </td>
+{#                        </select>#}
+{##}
+{#                    </td>#}
                     </h4>
                     <td class="text-center text-lg text-medium">
-                        <select class="form-control" style="font-size: 14px; width: 100px;  height:60px; padding: 3px" multiple>
+                        <select class="form-control" style="font-size: 14px; width: 80px;  height:54px; padding: 3px" multiple>
 {#                            {% for child_id in request.user.number_of_children|times %}#}
 
 {#                                {% endfor %}#}
@@ -149,6 +149,7 @@
 {#            <a class="btn btn-success" style="background-color: darkcyan;" href="{% url 'create order' %}">Checkout</a></div>#}
 
 {#            <input type="submit" class="btn btn-success" style="background-color: darkcyan;" value="Checkout" ></div>#}
+
             <a class="btn btn-success" style="background-color: darkcyan;" href="{% url 'create order' %}">Checkout</a></div>
             {% else %}
             <div class="column"><a class="btn btn-primary" style="background-color: lightseagreen;" href="{% url 'menus home' %}" data-toast=""

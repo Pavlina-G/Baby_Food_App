@@ -19,7 +19,8 @@
         <div class="checkout-card-form-final-info">
             <a href="{% url 'cart details' %}" class="checkout-card-form-link-info order-final-info">
 {#                Order Details#}
-                <i class="fa-solid fa-receipt" style="color: #f1f4fa; margin-top: 2.5%"></i>
+{#                <i class="fa-solid fa-receipt" style="color: #f1f4fa; margin-top: 2.5%"></i>#}
+                <i class="fa-solid fa-cart-shopping" style="color: #f1f4fa; margin-top: 2.5%"></i>
                 <span id="card-total-amount"> Total amount: {{ cart.get_total_price|floatformat:2 }} BGN</span>
             </a>
         </div>
@@ -28,4 +29,6 @@
 
         {% csrf_token %}
     </form>
+
 </div>
+

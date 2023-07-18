@@ -1,6 +1,7 @@
 import random
 
 from django import forms
+from django.core.checks import messages
 
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -32,21 +33,23 @@ def create_order(request):
             order.customer = order_customer
             order.address = customer_address
             order.order_amount = total_amount
+            if order.order_amount > 0:
+                order.save()
+                messages.success = (request, f'Your order number is {order.pk}')
+                for item in cart:
+                    OrderItem.objects.create(
+                        order=order,
+                        product=item['menu'],
+                        price=item['price'],
+                        quantity=item['quantity'],
+                        address=item['location']
+                    )
 
-            order.save()
+                cart.clear()
 
-            for item in cart:
-                OrderItem.objects.create(
-                    order=order,
-                    product=item['menu'],
-                    price=item['price'],
-                    quantity=item['quantity'],
-                    address=item['location']
-                )
-
-            # cart.clear()
-
-            return redirect('pay order')
+                return redirect('pay order')
+            else:
+                return redirect('cart details')
 
         # to add error message
 
@@ -63,7 +66,7 @@ def pay_order(request):
     user_pk = request.user.pk
     customer = Profile.objects.get(user_id=user_pk)
     order = Order.objects.filter(customer=customer).last()
-    cart = Cart(request)
+    # cart = Cart(request)
 
     if request.method == 'POST':
         payment_form = OrderPayForm(request.POST)
@@ -78,17 +81,17 @@ def pay_order(request):
             order.paid = True
             order.save()
 
-            cart.clear()
+            # cart.clear()
 
             return redirect('created order')
         else:
-
-            return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form})
+            #add error message template
+            return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
 
     else:
         payment_form = OrderPayForm(request.POST)
 
-        return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form})
+        return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
 
 
 # Order details view - to add
@@ -97,7 +100,9 @@ def created_order(request):
     user_pk = request.user.pk
     order_customer = Profile.objects.get(user_id=user_pk)
     order_number = Order.objects.filter(customer=order_customer).last()
+    orders = Order.objects.filter(customer=order_customer, paid=True).order_by('-created_at')[:10]
     # customer_address = Location.objects.get(pk=order_customer.location_id)
     context = {'order_number': order_number}
+    context['orders'] = orders
 
     return render(request, 'orders/created_order.html', context)

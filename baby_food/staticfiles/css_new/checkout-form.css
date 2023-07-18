@@ -93,14 +93,17 @@ input[type=number] {
 }
 .checkout-card-form-final-info {
     display: flex;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
+    margin-top: -4%;
 
 }
 .checkout-card-form-link-info:hover {
     /*background-color: rgba(38, 127, 168, 0.73);*/
     background-color: #004687;
 }
-
+.pay-info-text:hover{
+    background-color: #267fa8;
+}
 .checkout-card-form-link-info {
     text-decoration: none;
     color: white;
@@ -113,7 +116,7 @@ input[type=number] {
     background-color: #267fa8;
     /*font-size: 16px;*/
     font-family: "Helvetica Neue", sans-serif;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 #card-pay-btn:hover {
@@ -136,4 +139,5 @@ input[type=number] {
 .order-final-info {
     margin-top: 25px;
     margin-bottom: 20px;
+    justify-content: space-around;
 }

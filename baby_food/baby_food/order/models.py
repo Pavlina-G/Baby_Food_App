@@ -10,8 +10,8 @@ from django.core import validators
 from baby_food.menu_app.models import Menu
 
 
-def create_new_payment_number():
-    return str(datetime.now().date()) + '-' + str(random.randint(10000000, 99999999))
+def create_new_payment_number(pk):
+    return str(datetime.now().date()) + '-' + str(pk)
 
 
 class Order(models.Model):
@@ -46,7 +46,7 @@ class Order(models.Model):
 
     @property
     def payment_ref_number(self):
-        return f"Pay-Ref-Num-{self.customer.user_id}-{self.customer.user.username.upper()[0]}-{create_new_payment_number()}"
+        return f"{self.customer.user_id}-{self.customer.user.username.upper()[0]}-{create_new_payment_number(self.pk)}"
 
     # payment_number = models.CharField(
     #     # validators=[validators.MinLengthValidator(12), validators.MaxLengthValidator(12)],

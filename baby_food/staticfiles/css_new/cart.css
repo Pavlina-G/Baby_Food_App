@@ -87,7 +87,7 @@ select.form-control {
 .order-table .count-input {
     display: inline-block;
     width: 100%;
-    width: 86px
+    /*width: 86px*/
 }
 
 .shopping-cart .product-item,
@@ -236,5 +236,7 @@ select.form-control {
 .form-control-sm:not(textarea) {
     height: 36px;
 }
+
+
 
 

@@ -744,12 +744,21 @@
     width: 170px;
     align-self: center;
     text-align: center;
+    line-height: 1.6;
     font-size: 21px;
 }
 
+.add-cart-link {
+    color: rgb(31, 103, 120);
+    background-color: rgba(185, 206, 197, 0.31);
+    padding: 2% 4%;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
 .page-image01 {
-    width: 160px;
-    height: 150px;
+    width: 80%;
+    height: 20%;
     align-self: center;
     margin-top: var(--dl-space-space-unit);
     object-fit: cover;
@@ -778,6 +787,7 @@
     align-self: center;
     margin-top: var(--dl-space-space-unit);
     text-align: center;
+    line-height: 1.25;
 }
 
 .page-text014 {
@@ -1201,6 +1211,7 @@
     align-self: center;
     text-align: center;
     font-size: 21px;
+    line-height: 1.6;
 }
 
 .page-image06 {

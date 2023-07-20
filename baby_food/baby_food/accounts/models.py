@@ -54,6 +54,7 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
 
     number_of_children = models.PositiveIntegerField(
         default=1,
+        validators=[validators.MinValueValidator(1), validators.MaxValueValidator(5)],
     )
 
     # User credentials consist of `email` and `password`
@@ -93,11 +94,15 @@ class Profile(models.Model):
     )
 
     first_name = models.CharField(
-        max_length=30
+        max_length=30,
+        blank=False,
+        null=True
     )
 
     last_name = models.CharField(
-        max_length=30
+        max_length=30,
+        blank=False,
+        null=True
     )
 
     profile_image = models.ImageField(
@@ -108,7 +113,7 @@ class Profile(models.Model):
         Location,
         on_delete=models.CASCADE,
         null=True,
-        blank=True,
+        blank=False,
     )
     # orders = models.ManyToManyField(Menu, blank=True)
 
@@ -121,11 +126,15 @@ class Profile(models.Model):
 
 class Child(models.Model):
     first_name = models.CharField(
-        max_length=30
+        max_length=30,
+        blank=False,
+        null=True
     )
 
     last_name = models.CharField(
-        max_length=30
+        max_length=30,
+        blank=False,
+        null=True
     )
 
     date_of_birth = models.DateField(

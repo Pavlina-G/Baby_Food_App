@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.http import request
+from django.shortcuts import redirect
 
 from baby_food.accounts.models import Child
 from baby_food.menu_app.models import Menu
@@ -42,7 +43,10 @@ class Cart(object):
         kids = {}
 
         for child in children:
-            kids[f'{child.id}'] = f'{child.first_name} {child.last_name}'
+            if child.first_name is None or child.first_name is None:
+                return
+            else:
+                kids[f'{child.id}'] = f'{child.first_name} {child.last_name}'
 
         if menu_id not in self.cart:
             self.cart[menu_id] = {

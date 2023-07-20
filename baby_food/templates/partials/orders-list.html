@@ -117,7 +117,7 @@
                         {% if not order.paid %}
                             <a href="{% url 'pay order' order_pk=order.pk %}"><i class="fa-brands fa-cc-amazon-pay"
                                                                                  style="color: #0982c3;"></i></a>
-                            <a href="{% url 'pay order' order_pk=order.pk %}"><i class="fa-solid fa-trash-can"
+                            <a href="{% url 'delete order' pk=order.pk %}" id="remove-unpaid-order-btn" ><i class="fa-solid fa-trash-can"
                                                                                  style="color: #b70968;"></i></a>
                         {% endif %}
 
@@ -165,4 +165,5 @@
             {#        {% endif %}#}
         </div>
     </div>
+
 

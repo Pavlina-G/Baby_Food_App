@@ -359,22 +359,23 @@
                 </div>
             </div>
         </header>
-        <div class="home-container4">
-          <span class="home-text03">
+        <div class="home-container4 home-container4-new">
+          <span class="home-text03 home-text03-new">
             <br/>
               {% if object.profile.first_name %}
-            <span class="home-text05">Hello, <span style="color: #2a8387">{{ object.profile.first_name|capfirst }} </span>!<br>Welcome to Baby &amp; Toddler Food!</span>
+            <span class="home-text05">Hello, <span style="color: #124e51; font-weight: bold; font-style: italic">{{ object.profile.first_name|capfirst }} </span>!<br>Welcome to Baby &amp; Toddler Food!</span>
 {#            <span class="home-text05">Hello, <span style="color: #2a8387">{{ object.username|capfirst }}</span>!<br>Welcome to Baby &amp; Toddler Food!</span>#}
               {% else %}
                   <span class="home-text05">Hello, <span style="color: #2a8387">{{ object.username|capfirst }}</span>! <br>Welcome to Baby &amp; Toddler Food!</span>
               {% endif %}
-            <br/>
+            <br>
             <span>
-              Review or update your profile and have a look at our menus.
+                <br>
+                <p>In case you log in for the first time, please update your profile <a class="add-profile-data" href="{% url 'profile edit' pk=request.user.pk %}">here</a> !</p>
+                Otherwise, have a look at our menus and make your order.
             </span>
-            <br/>
-            <span>Have a nice stay :)</span>
-            <br/>
+
+            <span style="display: block; margin-top: 1%">THANK YOU and HAVE A NICE STAY :)</span>
           </span>
         </div>
         <footer class="home-footer">

@@ -29,6 +29,7 @@ class SignUpForm(auth_forms.UserCreationForm):
                     'placeholder': 'Email: ',
                 },
             ),
+
         }
 
     def save(self, commit=True):

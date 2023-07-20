@@ -4,7 +4,7 @@ from django import forms
 from django.core.checks import messages
 
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from multi_form_view import MultiModelFormView
 from django.views import generic as views
 
@@ -97,13 +97,11 @@ def pay_order(request, order_pk):
 
 # Order details view - to add
 def created_order(request):
-    # cart = Cart(request)
     user_pk = request.user.pk
     order_customer = Profile.objects.get(user_id=user_pk)
     order = Order.objects.filter(customer=order_customer).last()
     orders = Order.objects.filter(customer=order_customer, ).order_by('-created_at')[:10]
 
-    # customer_address = Location.objects.get(pk=order_customer.location_id)
     context = {'order': order, 'orders': orders}
 
     return render(request, 'orders/created_order.html', context)
@@ -116,3 +114,12 @@ def order_details(request, pk):
     context = {'order_items': order_items, 'order': order}
 
     return render(request, 'orders/order-details.html', context)
+
+
+def delete_order(request, pk):
+    order = Order.objects.get(pk=pk)
+
+    order.delete()
+    # success_message = "Your order has been deleted"
+
+    return redirect('created order')

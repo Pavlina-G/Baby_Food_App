@@ -491,7 +491,7 @@
 
 .home-container4 {
     /*border-radius: var(--dl-radius-radius-radius4);*/
-    border-radius: 20px;
+    border-radius: 30px;
     top: 250px;
     right: 150px;
     width: 636px;
@@ -501,8 +501,27 @@
     align-items: flex-start;
     background-size: cover;
     justify-content: flex-start;
-    background-image: url("../public/playground_assets/baby_food_jars3-400h.png");
+    /*background-image: url("../public/playground_assets/baby_food_jars3-400h.png");*/
     background-position: center;
+}
+.add-profile-data {
+    font-style: italic;
+    font-weight: bold;
+    color: #236a89;
+    text-decoration: underline;
+}
+
+.home-container4-new:before {
+    content: "";
+    background-image: url("../public/playground_assets/baby_food_jars3-400h.png");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.6;
+    border-radius: 30px;
 }
 
 /*.home-container5 {*/
@@ -519,16 +538,22 @@
     top: 0px;
     /*right: -5px;*/
     position: absolute;
-    margin-right: 10%;
+    /*margin-right: 10%;*/
     font-style: normal;
     text-align: center;
     font-family: ABeeZee;
     font-weight: 400;
-    margin-left: 12%;
+    /*margin-left: 12%;*/
+}
+
+.home-text03-new {
+    line-height: 1.4;
+    width: 100%;
+
 }
 
 .home-text05 {
-    color: #40a49e;
+    color: #137974;
     font-family: ABeeZee;
 }
 

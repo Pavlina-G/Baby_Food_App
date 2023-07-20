@@ -76,7 +76,6 @@ class OrderPayForm(forms.ModelForm):
                 attrs={
                     'class': 'checkout-card-form-input exp',
                     'placeholder': '123',
-                    # 'type': 'number',
                 }
             ),
 

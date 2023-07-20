@@ -1,0 +1,159 @@
+{% load placeholders %}
+{% load static %}
+
+<div class="container padding-bottom-3x mb-1">
+    <!-- Alert-->
+    {#    <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;"><span#}
+    {#            class="alert-close" data-dismiss="alert">Shopping Cart</span>#}
+    {#    </div>#}
+    <!-- Shopping Cart-->
+    <div class="table-responsive shopping-cart" style="margin-top: 32px; right: 5px; max-height: 400px">
+        <table class="table" style="">
+            <thead style="">
+            <tr>
+                <th style="color: #0f8e74; width: 80px; font-size: 18px; text-align: center">Order details</th>
+                {#                <th><img src="{% static 'public/playground_assets/shopping-stroller.png' %}" style="width: 50px; height: 30px"></th>#}
+                <th class="text-center">Item No.</th>
+                <th class="text-center" style="">Menu</th>
+                <th class="text-center" style="">Age Range</th>
+                <th class="text-center">Date</th>
+                {#                <th class="text-center">Location</th>#}
+                {#                <th class="text-center">Children</th>#}
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Subtotal</th>
+                <th class="text-center">Order Paid</th>
+{#                <th class="text-center">Pay</th>#}
+                {#                <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear</a></th>#}
+            </tr>
+            </thead>
+            <tbody style="">
+            {#                        Total Length :: {{request.session.cart|length}}#}
+
+            {#Cart Detail::#}
+            {% for item in order_items %}
+
+                <tr>
+                    <td>
+                        <div class="product-item">
+                            <a class="product-thumb" href="#"><img
+                                    src="{% static 'public/playground_assets/baby_food_bowls.jpg' %}"
+                                    alt="Product" style="width: 80px; height: 36px; border-radius: 5px"></a>
+                            <div class="product-info">
+
+                                <h4 class="product-title">
+
+                    <td class="text-center text-lg text-medium" style="width: 20px;">
+                        {{ forloop.counter }}.
+                    </td>
+                    <td class="text-center text-lg text-medium ">
+
+                        <select class="form-control" style="font-size: 15px; width: 150px">
+                            {#                            {% if value.name in 'Allergy-Free Menu' %}:#}
+                            <option name="1">{{ item.product.name }}</option>
+                            {#                                <option name="1">Alle​rgy-Free Menu</option>#}
+                            {#                            {% else %}#}
+                            {#                                <option name="2">Menu With Allergens</option>#}
+                            {#                            {% endif %}#}
+                        </select>
+
+                    </td>
+
+                    <td class="text-center text-lg text-medium">
+                        <select class="form-control" style="font-size: 14px; width: 93px">
+                            {#                            {% if value.date in '10M-18M' %}#}
+                            <option>{{ item.product.age }}</option>
+                            {#                            {% elif value.date in '18M-36M' %}#}
+                            {#                            <option>18M-36M</option>#}
+                            {#                            {% else %}#}
+                            {#                            <option>10M-36M</option>#}
+                            {#                            {% endif %}#}
+                        </select>
+                    </td>
+                    <td class="text-center text-lg text-medium">
+                        <select class="form-control" style="font-size: 14px; width: 120px">
+                            <option type="text">{{ item.product.date }}</option>
+                            {#                            <option>01.01.2023</option>#}
+                            {#                            <option>02.01.2023</option>#}
+                        </select>
+
+                    </td>
+                    {#                    <td class="text-center text-lg text-medium">#}
+                    {#                        <select class="form-control" style="font-size: 14px; width: 90px">#}
+                    {#                            <option type="text">{{ value.location }}</option>#}
+                    {#                            <option>Address 1</option>#}
+                    {#                            <option>Address 2</option>#}
+                    {#                        </select>#}
+                    {##}
+                    {#                    </td>#}
+                    </h4>
+{#                    <td class="text-center text-lg text-medium">#}
+{#                        <select class="form-control" style="font-size: 14px; width: 80px;  height:54px; padding: 3px"#}
+{#                                multiple>#}
+                            {#                            {% for child_id in request.user.number_of_children|times %}#}
+{##}
+                            {#                                {% endfor %}#}
+{##}
+{#                            <option>{{ item.quantity }}</option>#}
+{##}
+{#                        </select>#}
+{#                    </td>#}
+
+
+                    </td>
+                    <td class="text-center">
+                        <div class="count-input">
+                            <select class="form-control" style="font-size: 14px; width: 40px">
+                                <option>{{ item.quantity }}</option>
+                                {#                                <option>0</option>#}
+                                {#                                <option>2</option>#}
+                            </select>
+                        </div>
+                    </td>
+                    {#                    <td class="text-center text-lg text-medium">3.50</td>#}
+                    {#                    <td class="text-center text-lg text-medium">{{ value.price|floatformat:2  }}</td>#}
+                                        <td class="text-center text-lg text-medium">{{ item.total_price|floatformat:2 }}</td>
+                                        <td class="text-center text-lg text-medium">{{ order.paid }}</td>
+{#                                        <td class="text-center"><a class="remove-from-cart" href="{% url 'pay order' pk=order.pk %}" data-toggle="tooltip" title=""#}
+{#                                                                   data-original-title="Pay"><i class="fa-solid fa-rectangle-list" style="color: #17aeae;"></i></a></td>#}
+                </tr>
+            {% endfor %}
+            {#Second item#}
+
+            {#Third item#}
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="shopping-cart-footer"
+         style="text-align: right; margin-right: 10px; margin-bottom: 10px; margin-top: 25px">
+        <div class="column text-lg">Total BGN: <span class="text-medium"
+                                                        style="color: mediumvioletred"><b>{{ order.order_amount|floatformat:2 }}</b></span>
+        </div>
+    </div>
+    <div class="shopping-cart-footer" style="text-align: right; margin-right: 10px;">
+        {% if request.session.cart.items %}
+            <div class="column">
+                {#            <a class="btn btn-primary" style="background-color: lightseagreen;" href="#" data-toast=""#}
+                {#                               data-toast-type="success"#}
+                {#                               data-toast-position="topRight" data-toast-icon="icon-circle-check"#}
+                {#                               data-toast-title="Your cart" data-toast-message="is updated successfully!">Update#}
+                {#            Cart</a>#}
+
+
+                {#            <a class="btn btn-success" style="background-color: darkcyan;" href="{% url 'create order' %}">Checkout</a></div>#}
+
+                {#            <input type="submit" class="btn btn-success" style="background-color: darkcyan;" value="Checkout" ></div>#}
+
+                <a class="btn btn-success" style="background-color: darkcyan;"
+                   href="{% url 'create order' %}">Checkout</a></div>
+        {% else %}
+            <div class="column">
+            <a class="btn btn-primary" style="background-color: lightseagreen;" href="{% url 'created order' %}"
+               data-toast=""
+               data-toast-type="success"
+               data-toast-position="topRight" data-toast-icon="icon-circle-check"
+               data-toast-title="Your cart" data-toast-message="is empty!">Go to your Orders</a>
+        {% endif %}
+        </div>
+    </div>

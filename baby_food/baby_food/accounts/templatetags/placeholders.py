@@ -13,6 +13,7 @@ def placeholder(field, text):
 def times(number):
     return range(number)
 
+
 @register.filter()
 def multiply(value, arg):
     return float(value) * arg

@@ -47,7 +47,7 @@ def create_order(request):
 
                 cart.clear()
 
-                return redirect('pay order')
+                return redirect('pay order', order.id)
             else:
                 return redirect('cart details')
 
@@ -62,10 +62,11 @@ def create_order(request):
         return render(request, 'orders/create_order.html', {'form': form})
 
 
-def pay_order(request):
+def pay_order(request, order_pk):
     user_pk = request.user.pk
     customer = Profile.objects.get(user_id=user_pk)
-    order = Order.objects.filter(customer=customer).last()
+    order = Order.objects.filter(customer=customer, pk=order_pk).last()
+    # order = Order.objects.filter(customer=customer).last()
     # cart = Cart(request)
 
     if request.method == 'POST':
@@ -85,7 +86,7 @@ def pay_order(request):
 
             return redirect('created order')
         else:
-            #add error message template
+            # add error message template
             return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
 
     else:
@@ -99,10 +100,19 @@ def created_order(request):
     # cart = Cart(request)
     user_pk = request.user.pk
     order_customer = Profile.objects.get(user_id=user_pk)
-    order_number = Order.objects.filter(customer=order_customer).last()
-    orders = Order.objects.filter(customer=order_customer, paid=True).order_by('-created_at')[:10]
+    order = Order.objects.filter(customer=order_customer).last()
+    orders = Order.objects.filter(customer=order_customer, ).order_by('-created_at')[:10]
+
     # customer_address = Location.objects.get(pk=order_customer.location_id)
-    context = {'order_number': order_number}
-    context['orders'] = orders
+    context = {'order': order, 'orders': orders}
 
     return render(request, 'orders/created_order.html', context)
+
+
+def order_details(request, pk):
+    order = Order.objects.get(pk=pk)
+    order_items = order.orderitem_set.all()
+
+    context = {'order_items': order_items, 'order': order}
+
+    return render(request, 'orders/order-details.html', context)

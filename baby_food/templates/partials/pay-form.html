@@ -4,7 +4,7 @@
 
 <div class="checkout-card">
     <h2 class="checkout-card-title">Payment Details</h2>
-    <form class="checkout-card-form" role="form" method="post" action="{% url 'pay order' %}">
+    <form class="checkout-card-form" role="form" method="post" action="{% url 'pay order' order_pk=order.pk %}">
 {#    <form class="checkout-card-form" role="form" method="post" action="{% url 'create order' %}">#}
 
 

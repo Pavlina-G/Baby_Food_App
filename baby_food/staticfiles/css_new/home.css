@@ -248,7 +248,7 @@
 }
 .home-container4 {
   /*border-radius: var(--dl-radius-radius-radius4);*/
-  border-radius: 20px;
+  border-radius: 40px;
   top: 250px;
   right: 150px;
   width: 636px;
@@ -280,12 +280,15 @@
   font-family: ABeeZee;
   font-weight: 400;
   margin: 0 5px;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 .home-text05 {
   color: #40a49e;
+  font-weight: bold;
   font-family: ABeeZee;
+  line-height: 1.7;
 }
+
 .home-footer {
   left: 100px;
   width: 100%;

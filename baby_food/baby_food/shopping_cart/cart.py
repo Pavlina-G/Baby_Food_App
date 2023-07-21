@@ -48,6 +48,9 @@ class Cart(object):
             else:
                 kids[f'{child.id}'] = f'{child.first_name} {child.last_name}'
 
+        if not user.profile.location:
+            return
+
         if menu_id not in self.cart:
             self.cart[menu_id] = {
                 'quantity': 1,

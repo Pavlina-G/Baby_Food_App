@@ -5,6 +5,7 @@ from django.db import models
 
 from baby_food.accounts.models import Profile, Child
 from baby_food.common.models import Location
+from baby_food.common import validators as my_validators
 from django.core import validators
 
 from baby_food.menu_app.models import Menu
@@ -131,8 +132,10 @@ class Payments(models.Model):
         blank=False,
         null=False,
         validators=[
-            validators.MinValueValidator(1000000000000000), validators.MaxValueValidator(9999999999999999)]
-
+            # validators.MinValueValidator(1000000000000000),
+            # validators.MaxValueValidator(9999999999999999),
+            my_validators.validate_card_number,
+        ]
     )
 
     card_expiry_month = models.PositiveIntegerField(

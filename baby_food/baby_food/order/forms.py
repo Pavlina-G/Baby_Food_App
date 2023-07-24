@@ -44,16 +44,17 @@ class OrderPayForm(forms.ModelForm):
                 attrs={
                     'placeholder': 'Enter card holder name',
                     'class': 'checkout-card-form-input',
-
                 }
             ),
+
             'card_number': forms.NumberInput(
                 attrs={
                     'class': 'checkout-card-form-input',
                     'placeholder': "Enter your card number",
                     'id': "cardNumId",
-                    'required': True,
-                    # 'type': 'text',
+                    # 'required': True,
+                    'oninvalid': 'this.setCustomValidity("The card number must contain 16 digits")',
+
                 }
             ),
             'card_expiry_month': forms.Select(

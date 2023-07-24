@@ -357,22 +357,21 @@
                 </div>
             </div>
         </header>
-        <label class="page1-text10" style="margin-top: 100px; margin-left: 100px; font-weight: bold; font-size: 18px">Locations<br>
+        <label class="page1-text10" style="margin-top: 80px; margin-left: 100px; font-weight: bold; font-size: 18px">Locations<br>
             <select class="page1-select" style="font-size: 16px; border-radius: 7px; padding: 6px">
-{#                to add locations from the db#}
-{#               {% for location in locations %}#}
+                {#                to add locations from the db#}
 
-                <option value="Option 1">Address 1 hlfhkldahfladhgldhgkldhagklhdklghldghlkdhgkdshgkjshdgjkdshgkhdg
-                </option>
+                {% for location in locations %}
+                    <option value="{{ location.address }}">{{ forloop.counter }}. {{ location.address }}
+                    </option>
 
-{#                {% endfor %}#}
+                {% endfor %}
 
             </select>
 
         </label>
 
         <div class="page1-container3">
-
 
             <div class="page1-container4">
             </div>

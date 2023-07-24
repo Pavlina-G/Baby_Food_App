@@ -1,8 +1,9 @@
 from django.core.paginator import Paginator
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.views import generic as views
 
-from baby_food.common.models import Gallery
+from baby_food.common.models import Gallery, Location
 
 
 class IndexView(views.TemplateView):
@@ -15,7 +16,10 @@ class IndexView(views.TemplateView):
 
 
 def locations_map(request):
-    return render(request, 'common/locations.html')
+    locations = Location.objects.all()
+    context = {'locations': locations}
+
+    return render(request, 'common/locations.html', context)
 
 
 class GalleryView(views.TemplateView):
@@ -35,5 +39,8 @@ class GalleryView(views.TemplateView):
         context['paginated_photos'] = paginated_photos
         return self.render_to_response(context)
 
+
+def error(request):
+    return render(request, '404.html')
 
 

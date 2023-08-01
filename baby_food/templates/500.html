@@ -1,8 +1,10 @@
+
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Menus</title>
+    <title>Error-500</title>
     <meta
             property="og:title"
             content="menus-home - Electric Cylindrical Llama"
@@ -125,7 +127,7 @@
 <body>
 <div>
     {#        {% if request.user.is_authenticated %}#}
-    <link href="{% static 'css_new/menus-home.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css_new/locations.css' %}" rel="stylesheet"/>
 
     <section class="menus-home-container">
         <header data-role="Header" class="menus-home-header">
@@ -224,12 +226,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                {% if user.profile.profile_image %}
-                                    <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
-                                {% else %}
-                                    <img class="profile-pic-view"
-                                         src="{% static 'public/playground_assets/profile-icon.jpg' %}">
-                                {% endif %}
+                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
                             </nav>
                         {% else %}
                             <nav
@@ -362,51 +359,55 @@
                 </div>
             </div>
         </header>
-        <div class="menus-home-container4">
-            <img
-                    src="{% static 'public/playground_assets/babyfood1-superjumbo-300h.jpg' %}"
-                    alt="image"
-                    class="menus-home-image2"
+
+        <div class="page1-container3 error-container">
+
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'profile home' %}" class="menu-no-allergens-link">
+                    {#                    <h1 class="menu-no-allergens-text236 error-text">#}
+                    <h1 class="error-text">
+                        <span>SOMETHING WENT WRONG</span>
+                        <span>-</span>
+                        <span>Please try again later</span>
+                        <br/>
+                        <br/>
+                    </h1>
+                </a>
+            {% else %}
+                <a href="{% url 'index' %}" class="menu-no-allergens-link">
+                    <h1 class="error-text">
+                        <span>SOMETHING WENT WRONG</span>
+                        <span>-</span>
+                        <span>Please try again later</span>
+                        <br/>
+                        <br/>
+                    </h1>
+                </a>
+            {% endif %}
+
+                <img class="page-image01-error"
+                    src="{% static 'public/playground_assets/error-img.jpg' %}"
+                    alt="error-image"
+
             />
-            <button type="button" class="menus-home-button button">
-                <a href="{% url 'menu_app no allergens' %}">
-                    10M-36M</a>
-            </button>
-            <span class="menus-home-text03">
-            <span>Alle​rgy-Free Menu</span>
-            <br/>
-            <br/>
-            <span style="font-size: 20px;">Age Range:</span>
-          </span>
+
+
+
+
         </div>
-        <div class="menus-home-container5">
-            <img
-                    src="{% static 'public/playground_assets/baby_food_purees31-300h.jpg' %}"
-                    class="menus-home-image3"
-            />
-            <button type="button" class="menus-home-button1 button">
-                <a href="{% url 'menu with allergens 18M' %}">
-                    10M-18M</a>
-            </button>
-            <button type="button" class="menus-home-button2 button">
-                <a href="{% url 'menu with allergens 36M' %}">
-                    18M-36M</a>
-            </button>
-            <span class="menus-home-text08">
-            <span>Menu With Allergens</span>
-            <br/>
-            <br/>
-            <span style="font-size: 20px;">Age Range:</span>
-          </span>
-        </div>
-        <footer class="menus-home-footer">
+
+
+</div>
+
+
+<footer class="menus-home-footer">
           <span class="menus-home-text13">
             <span>© 2022 Baby &amp; Toddler Food@Burgas</span>
             <br/>
           </span>
-            <div class="menus-home-icon-group1"></div>
-        </footer>
-    </section>
+    <div class="menus-home-icon-group1"></div>
+</footer>
+</section>
 </div>
 <script
         data-section-id="navbar"

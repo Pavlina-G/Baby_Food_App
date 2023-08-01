@@ -224,7 +224,12 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                                {% if user.profile.profile_image %}
+                                    <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                                {% else %}
+                                    <img class="profile-pic-view"
+                                         src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                                {% endif %}
                             </nav>
                         {% else %}
                             <nav
@@ -357,7 +362,7 @@
                 </div>
             </div>
         </header>
-        <label class="page1-text10" style="margin-top: 80px; margin-left: 100px; font-weight: bold; font-size: 18px">Locations<br>
+        <label class="page1-text10" style="margin-top: 80px; margin-right: 14%; font-weight: bold; font-size: 18px">Locations<br>
             <select class="page1-select" style="font-size: 16px; border-radius: 7px; padding: 6px">
                 {#                to add locations from the db#}
 

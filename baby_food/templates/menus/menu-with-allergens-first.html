@@ -253,7 +253,8 @@
                         <h1 class="page-text010">
                             <span>{{ menu.date }}</span>
                             {% if request.user.is_authenticated %}
-                                <a class="add-cart-link" href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                <a class="add-cart-link" href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a>
+                                </span>
                             {% endif %}
                             <br/>
                         </h1>
@@ -332,7 +333,8 @@
                         <h1 class="page-text120">
                             <span>{{ menu.date }}</span>
                             {% if request.user.is_authenticated %}
-                                <a class="add-cart-link" href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a></span>
+                                <a class="add-cart-link" href="{% url 'add to cart' pk=menu.pk %}">Add To Cart</a>
+                                </span>
                             {% endif %}
                             <br/>
                         </h1>
@@ -375,7 +377,7 @@
           </span>
     <div class="menu-no-allergens-icon-group1"></div>
 </footer>
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and perms.menu.add_menu %}
     {#    <a href="{% url 'profile details' pk=request.user.pk %}" class="menu-no-allergens-link">#}
     <a href="{% url 'cart details' %}" class="menu-no-allergens-link">
         <h1 class="menu-no-allergens-text236">
@@ -386,6 +388,12 @@
             <br/>
         </h1>
     </a>
+{% elif request.user.is_authenticated and not perms.menu.add_menu %}
+    <h1 class="menu-no-allergens-text236">
+        <span>You have no rights to add menus to the cart</span>
+        <br/>
+        <br/>
+    </h1>
 {% else %}
     <a href="{% url 'sign up' %}" class="menu-no-allergens-link">
         <h1 class="menu-no-allergens-text236">

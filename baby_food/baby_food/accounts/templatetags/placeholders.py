@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.template import Library
 
 register = Library()

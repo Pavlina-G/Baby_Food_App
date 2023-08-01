@@ -1,20 +1,18 @@
-import random
-
-from django import forms
+from django.contrib.auth.decorators import login_required, permission_required
 from django.core.checks import messages
 
 from django.shortcuts import render, redirect
-from django.urls import reverse, reverse_lazy
-from multi_form_view import MultiModelFormView
-from django.views import generic as views
 
 from baby_food.accounts.models import Profile
 from baby_food.common.models import Location
 from baby_food.order.forms import OrderCreateForm, OrderPayForm
 from baby_food.order.models import OrderItem, Order, Payments
+from baby_food.settings import LOGIN_REDIRECT_URL
 from baby_food.shopping_cart.cart import Cart
 
 
+@login_required
+@permission_required('order.add_order', login_url=LOGIN_REDIRECT_URL)
 def create_order(request):
     cart = Cart(request)
     user_pk = request.user.pk
@@ -44,14 +42,11 @@ def create_order(request):
                         quantity=item['quantity'],
                         address=item['location']
                     )
-
                 cart.clear()
 
                 return redirect('pay order', order.id)
             else:
                 return redirect('cart details')
-
-        # to add error message
 
         return render(request, 'orders/create_order.html', {'form': form})
     else:
@@ -62,12 +57,12 @@ def create_order(request):
         return render(request, 'orders/create_order.html', {'form': form})
 
 
+@login_required
+@permission_required('payments.add_payments', login_url=LOGIN_REDIRECT_URL)
 def pay_order(request, order_pk):
     user_pk = request.user.pk
     customer = Profile.objects.get(user_id=user_pk)
     order = Order.objects.filter(customer=customer, pk=order_pk).last()
-    # order = Order.objects.filter(customer=customer).last()
-    # cart = Cart(request)
 
     if request.method == 'POST':
         payment_form = OrderPayForm(request.POST)
@@ -77,6 +72,7 @@ def pay_order(request, order_pk):
 
             payments.order_id = order
             payments.payment_number = order.payment_ref_number
+
             payments.save()
 
             order.paid = True
@@ -85,17 +81,14 @@ def pay_order(request, order_pk):
             # cart.clear()
 
             return redirect('created order')
-        else:
-            # add error message template
-            return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
+        return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
 
     else:
-        payment_form = OrderPayForm(request.POST)
-
+        payment_form = OrderPayForm()
         return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
 
 
-# Order details view - to add
+@login_required
 def created_order(request):
     user_pk = request.user.pk
     order_customer = Profile.objects.get(user_id=user_pk)
@@ -107,6 +100,7 @@ def created_order(request):
     return render(request, 'orders/created_order.html', context)
 
 
+@login_required
 def order_details(request, pk):
     order = Order.objects.get(pk=pk)
     order_items = order.orderitem_set.all()
@@ -116,10 +110,10 @@ def order_details(request, pk):
     return render(request, 'orders/order-details.html', context)
 
 
+@login_required
 def delete_order(request, pk):
     order = Order.objects.get(pk=pk)
 
     order.delete()
-    # success_message = "Your order has been deleted"
 
     return redirect('created order')

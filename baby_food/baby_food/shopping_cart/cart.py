@@ -63,13 +63,13 @@ class Cart(object):
                 'age': str(menu.age),
             }
 
-        # if update_quantity:
-        else:
-            self.cart[menu_id]['quantity'] += int(quantity)
-            # self.cart[menu_id]['price'] += float(menu.price)
-
-            if self.cart[menu_id]['quantity'] == 0:
-                self.remove(menu)
+        # # if update_quantity:
+        # else:
+        #     self.cart[menu_id]['quantity'] += int(quantity)
+        #     # self.cart[menu_id]['price'] += float(menu.price)
+        #
+        #     if self.cart[menu_id]['quantity'] == 0:
+        #         self.remove(menu)
 
         self.save()
 

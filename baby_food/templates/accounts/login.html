@@ -204,20 +204,13 @@
                 <!-- Start Register Form -->
                 <form method="post" action="{% url 'sign in' %}">
 
-                    {{ form.username.errors }}
+                    <p style="font-size: 12px">{{ form.username.errors|striptags }}</p>
                     {{ form.username|placeholder:'Username: ' }}
 
-{#                    {{ form.email.errors }}#}
-{#                    {{ form.email|placeholder:'Email: ' }}#}
-                    {{ form.password.errors }}
+                    <p style="font-size: 12px">{{ form.password.errors|striptags }}</p>
                     {{ form.password|placeholder:'Password: ' }}
-                    {{ form.non_field_errors }}
+                    <p style="font-size: 12px">{{ form.non_field_errors|striptags }}</p>
 
-{#                    {% if form.errors %}#}
-{##}
-{#                        {{ form.errors }}#}
-{##}
-{#                    {% endif %}#}
                     <input name="next" type="hidden" value="{{ next }}">
                     <button type="submit">Sign In</button>
 

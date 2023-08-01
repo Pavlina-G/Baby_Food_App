@@ -1,5 +1,8 @@
-import random
 from datetime import datetime
+
+from django.core.exceptions import ValidationError
+from encrypted_fields import fields
+from django.utils.translation import gettext_lazy as _
 
 from django.db import models
 
@@ -29,8 +32,6 @@ class Order(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True,
     )
-    # order_amount = models.PositiveIntegerField(
-    # )
 
     order_amount = models.DecimalField(
         decimal_places=2,
@@ -48,13 +49,6 @@ class Order(models.Model):
     @property
     def payment_ref_number(self):
         return f"{self.customer.user_id}-{self.customer.user.username.upper()[0]}-{create_new_payment_number(self.pk)}"
-
-    # payment_number = models.CharField(
-    #     # validators=[validators.MinLengthValidator(12), validators.MaxLengthValidator(12)],
-    #     blank=True,
-    #     max_length=50,
-    #     unique=True,
-    # )
 
     def __str__(self):
         return f'{self.customer} - cart_id: {self.pk}'
@@ -105,7 +99,7 @@ class OrderItem(models.Model):
 
 
 class Payments(models.Model):
-    YEAR_CHOICES = [(y, y) for y in range(2023, datetime.now().year + 7)]
+    YEAR_CHOICES = [(y, y) for y in range(datetime.now().year, datetime.now().year + 5)]
     MONTH_CHOICE = [(m, m) for m in range(1, 13)]
 
     order_id = models.OneToOneField(
@@ -126,28 +120,41 @@ class Payments(models.Model):
         max_length=50,
         blank=False,
         null=False,
+        validators=[my_validators.validate_name]
     )
 
     card_number = models.PositiveBigIntegerField(
         blank=False,
         null=False,
         validators=[
-            # validators.MinValueValidator(1000000000000000),
-            # validators.MaxValueValidator(9999999999999999),
             my_validators.validate_card_number,
         ]
     )
 
-    card_expiry_month = models.PositiveIntegerField(
+    card_expiry_year = models.IntegerField(
+        choices=YEAR_CHOICES,
+        validators=[validators.MinValueValidator(datetime.now().year),
+                    validators.MaxValueValidator(datetime.now().year + 5),
+                    ]
+    )
+
+    card_expiry_month = models.IntegerField(
         choices=MONTH_CHOICE,
     )
 
-    card_expiry_year = models.PositiveIntegerField(
-        choices=YEAR_CHOICES,
-        validators=[validators.MinValueValidator(2023), validators.MaxValueValidator(2027)]
+    card_verification_code = fields.EncryptedPositiveIntegerField(
+        validators=[validators.MinValueValidator(000), validators.MaxValueValidator(999),
+                    ],
     )
 
-    card_verification_code = models.PositiveIntegerField(
-        validators=[validators.MinValueValidator(100), validators.MaxValueValidator(999),
-                    ]
+    payment_date = models.DateField(
+        auto_now_add=True,
     )
+
+    def __str__(self):
+        return f'Payment No. {self.payment_number}'
+
+    class Meta:
+        verbose_name_plural = 'Payments'
+
+        ordering = ['-payment_date']

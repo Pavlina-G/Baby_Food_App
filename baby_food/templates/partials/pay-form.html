@@ -1,3 +1,4 @@
+{% load placeholders %}
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'css_new/checkout-form.css' %}"/>
@@ -6,24 +7,36 @@
     <h2 class="checkout-card-title">Payment Details</h2>
     <form class="checkout-card-form" role="form" method="post" action="{% url 'pay order' order_pk=order.pk %}">
         {#    <form class="checkout-card-form" role="form" method="post" action="{% url 'create order' %}">#}
+        <div>
+            <label for="cardHolder" class="checkout-card-form-label">Card Holder Name</label>
+            {#        <input type="text" name="cardHolder" id="cardHolder" class="checkout-card-form-input"#}
+            {#               placeholder="Enter your name">#}
+            {#        {{ payment_form.card_holder }}#}
+            <p class="" style="font-size: 11px; ">{{ payment_form.card_holder.errors|striptags }}</p>
+            {{ payment_form.card_holder }}
 
+        </div>
+        <div>
+            <label for="cardNumber" class="checkout-card-form-label">CARD NUMBER</label>
+            <p style="font-size: 11px; ">{{ payment_form.card_number.errors|striptags }}</p>
+            {{ payment_form.card_number }}
 
-        <label for="cardHolder" class="checkout-card-form-label">Card Holder Name</label>
-        {#        <input type="text" name="cardHolder" id="cardHolder" class="checkout-card-form-input"#}
-        {#               placeholder="Enter your name">#}
-        {{ payment_form.card_holder }}
-
-        <label for="cardNumber" class="checkout-card-form-label">CARD NUMBER</label>
-
-        {{ payment_form.card_number }}
+        </div>
 
         {#        <input type="number" name="cardNumber" id="cardNumber" class="checkout-card-form-input"#}
         {#               placeholder="Enter your card number">#}
         <div class="card-input-wrapper">
-            <label id="expLabel" class="checkout-card-form-label">EXPIRY DATE</label>
+            <div>
+                <label id="expLabel" class="checkout-card-form-label">EXPIRY DATE</label>
 
-            {{ payment_form.card_expiry_month }} /
-            {{ payment_form.card_expiry_year }}
+
+                {{ payment_form.card_expiry_year }} /
+                {{ payment_form.card_expiry_month }}
+                <p style="font-size: 11px;">{{ payment_form.card_expiry_month.errors|striptags }}</p>
+
+            </div>
+
+
             {#            <input type="number" name="expMM" class="checkout-card-form-input exp ccv-label" placeholder="MM"> /#}
             {#            <input type="number" name="expYY" class="checkout-card-form-input exp ccv-label" placeholder="YY">#}
         </div>

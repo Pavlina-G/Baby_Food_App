@@ -138,12 +138,21 @@ class Child(models.Model):
     )
 
     date_of_birth = models.DateField(
-        default=timezone.now
+        blank=False,
+        null=True,
+        validators=[],
     )
     parent = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
     )
+
+    @property
+    def child_full_name(self):
+        if self.first_name and self.last_name:
+            return '{self.first_name} {self.last_name}'
+        else:
+            return 'No child data'
 
     class Meta:
         verbose_name_plural = 'Children'

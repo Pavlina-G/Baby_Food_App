@@ -12,7 +12,11 @@
     <div class="table-responsive shopping-cart" style="margin-top: 32px; right: 5px; max-height: 400px;">
         <table class="table" style="">
             <p class="last-order-info">
+            {% if order %}
                 Your last Order number is <strong>{{ order.id }}</strong>
+            {% else %}
+                No orders
+            {% endif %}
                 {% if order.paid %}
                     with Payment reference number
                     <strong>{{ order.payments.payment_number }}</strong>

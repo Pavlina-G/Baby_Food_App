@@ -1,6 +1,5 @@
-
-
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,7 +225,12 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                                {% if user.profile.profile_image %}
+                                    <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                                {% else %}
+                                    <img class="profile-pic-view"
+                                         src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                                {% endif %}
                             </nav>
                         {% else %}
                             <nav
@@ -385,13 +389,11 @@
                 </a>
             {% endif %}
 
-                <img
-                    src="{% static 'public/playground_assets/error-img.jpg' %}"
-                    alt="image"
+            <img
+                    src="{% static '/public/playground_assets/error-img.jpg' %}"
+                    alt="error-image"
                     class="page-image01-error"
             />
-
-
 
 
         </div>

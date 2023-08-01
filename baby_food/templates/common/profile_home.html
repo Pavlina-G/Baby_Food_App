@@ -217,7 +217,11 @@
                                     </li>
                                 </ul>
                             </div>
+                            {% if user.profile.profile_image %}
                             <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                                {% else %}
+                                <img class="profile-pic-view" src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                            {% endif %}
                         </nav>
                     </div>
                 </div>
@@ -326,7 +330,11 @@
                                     </li>
                                 </ul>
                             </div>
+                            {% if user.profile.profile_image %}
                             <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                                {% else %}
+                                <img class="profile-pic-view" src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                            {% endif %}
                         </nav>
                 </div>
                 <div>

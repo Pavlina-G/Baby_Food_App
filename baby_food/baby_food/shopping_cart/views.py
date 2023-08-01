@@ -1,10 +1,11 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 
 from baby_food.accounts.models import Child, Profile
-from baby_food.common.models import Location
 from baby_food.menu_app.models import Menu
-from baby_food.order.forms import OrderCreateForm
+
+from baby_food.settings import LOGIN_REDIRECT_URL
 from baby_food.shopping_cart.cart import Cart
 
 
@@ -13,6 +14,8 @@ def cart_details(request):
     return render(request, 'shopping_cart/cart.html')
 
 
+@login_required
+@permission_required('menu.add_menu', login_url=LOGIN_REDIRECT_URL)
 def add_to_cart(request, pk):
     cart = Cart(request)
     menu = Menu.objects.get(pk=pk)
@@ -26,7 +29,7 @@ def add_to_cart(request, pk):
         return redirect(request.META.get('HTTP_REFERER', '/'))
 
     for child in children:
-        if child.first_name is None or child.first_name is None:
+        if child.first_name is None or child.last_name is None:
             messages.info(request, 'Update your profile! Add children data!')
             return redirect(request.META.get('HTTP_REFERER', '/'))
 

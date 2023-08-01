@@ -376,8 +376,9 @@
                     {% for field in child_form %}
                             {{ field.label }}
                         {% endfor %}
-                        {{ child_form }}
                         {{ child_form.errors }}
+                        {{ child_form }}
+
                         <button type="submit" value="edit">Update Child</button>
 
 

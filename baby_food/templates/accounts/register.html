@@ -203,15 +203,15 @@
                 <h1>Sign Up</h1>
                 <!-- Start Register Form -->
                 <form method="post" action="{% url 'sign up' %}">
-                    {{ form.username.errors }}
+                    <p style="font-size: 12px">{{ form.username.errors|striptags }}</p>
                     {{ form.username|placeholder:'Username: ' }}
-                    {{ form.email.errors }}
+                    <p style="font-size: 12px">{{ form.email.errors|striptags }}</p>
                     {{ form.email|placeholder:'Email: ' }}
-                    {{ form.number_of_children.errors }}
+                    <p style="font-size: 12px">{{ form.number_of_children.errors|striptags }}</p>
                     {{ form.number_of_children|placeholder:'Number of Children: ' }}
-                    {{ form.password1.errors }}
+                    <p style="font-size: 12px">{{ form.password1.errors|striptags }}</p>
                     {{ form.password1|placeholder:'Password: ' }}
-                    {{ form.password2.errors }}
+                    <p style="font-size: 12px">{{ form.password2.errors|striptags }}</p>
                     {{ form.password2|placeholder:'Repeat password: ' }}
                     <!-- Register Button -->
                     <button type="submit">Register</button>

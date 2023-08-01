@@ -4,6 +4,7 @@ from baby_food.accounts.forms import SignUpForm, UserEditForm
 from baby_food.accounts.models import AppUser, Profile, Child
 from django.contrib.auth import admin as auth_admin, get_user_model
 
+
 UserModel = get_user_model()
 
 
@@ -12,16 +13,17 @@ class AppUserAdmin(auth_admin.UserAdmin):
     ordering = ('email',)
     list_display = ['username', 'email', 'date_joined', 'last_login']
     list_filter = ()
-    form = SignUpForm
-    add_form = UserEditForm
+    form = UserEditForm
+    add_form = SignUpForm
+
     fieldsets = (
         (
             None,
             {
                 'fields': (
                     'username',
-                    'password1',
-                    'password2',
+                    # 'password1',
+                    # 'password2',
                 ),
             }),
         (
@@ -45,32 +47,22 @@ class AppUserAdmin(auth_admin.UserAdmin):
                 ),
             },
         ),
-        # (
-        #     'Important dates',
-        #     {
-        #         'fields': (
-        #             'last_login',
-        #             # 'date_joined',
-        #         ),
-        #     },
-        # ),
-    )
 
-    # add_fieldsets = (
-    #     (None, {
-    #         'classes': ('wide',),
-    #         # 'fields': ('username',)
-    #     }
-    #      ),
-    # )
+    )
 
     def get_form(self, request, obj=None, **kwargs):
         return super().get_form(request, obj, **kwargs)
+
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Child)
 class ChildAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('__str__', 'parent')
+    list_filter = ('parent',)
+    list_select_related = ['parent']
+
+    search_fields = ('parent_id__first_name', 'parent_id__last_name', 'first_name', 'last_name')

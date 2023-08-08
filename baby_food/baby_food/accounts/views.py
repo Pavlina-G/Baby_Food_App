@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.forms import modelformset_factory, inlineformset_factory
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic as views
@@ -12,6 +12,7 @@ from multi_form_view import MultiModelFormView
 from baby_food.accounts.forms import SignInForm, SignUpForm, ProfileForm, UserForm, ChildForm, ProfileEditForm, \
     ChildEditForm
 from baby_food.accounts.models import Profile, AppUser, Child
+from baby_food.common.utils import is_staff
 
 UserModel = get_user_model()
 
@@ -45,6 +46,13 @@ class ProfileHomeView(views.DetailView):
     def get_object(self, queryset=None):
         return self.request.user
 
+    def get_context_data(self, **kwargs):
+        context = super(ProfileHomeView, self).get_context_data(**kwargs)
+        context['is_staff'] = is_staff(self.request)
+        return context
+
+
+
 
 class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
     form_classes = {
@@ -63,7 +71,6 @@ class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
     def get_form_kwargs(self):
         kwargs = super(ProfileDetailsFormView, self).get_form_kwargs()
         kwargs['user_form']['prefix'] = 'user'
-        # kwargs['profile_form']['prefix'] = 'profile'
         kwargs['child_form']['prefix'] = 'child'
         return kwargs
 
@@ -92,7 +99,6 @@ class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
 
     def get_context_data(self, **kwargs):
         user = AppUser.objects.get(pk=self.request.user.pk)
-        # profile = Profile.objects.get(user_id=self.request.user.pk)
         profile = get_object_or_404(Profile, user_id=self.request.user.pk)
 
         context = super().get_context_data(**kwargs)
@@ -112,8 +118,7 @@ def get_child_by_user_id(pk, parent_id):
 def profile_edit(request, pk):
     user = request.user
 
-    # profile = get_object_or_404(Profile, user_id=user.pk)
-    profile = Profile.objects.get(user_id=user.pk)
+    profile = get_object_or_404(Profile, user_id=user.pk)
 
     if request.method == 'POST':
         profile_form = ProfileEditForm(request.POST, request.FILES, instance=profile)
@@ -137,6 +142,9 @@ def profile_edit(request, pk):
 def child_update(request, user_id, pk):
     user = request.user
     child = Child.objects.get(pk=pk, parent_id=user_id)
+
+    if user.pk != user_id:
+        return redirect('profile home')
 
     if request.method == 'POST':
         child_form = ChildEditForm(request.POST, request.FILES, instance=child)

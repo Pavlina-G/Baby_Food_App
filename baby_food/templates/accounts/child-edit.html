@@ -221,7 +221,12 @@
                                     </li>
                                 </ul>
                             </div>
-                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% if user.profile.profile_image %}
+                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% else %}
+                                <img class="profile-pic-view"
+                                     src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                            {% endif %}
                         </nav>
                     </div>
                 </div>
@@ -331,7 +336,12 @@
                                 </li>
                             </ul>
                         </div>
-                        <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                        {% if user.profile.profile_image %}
+                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                        {% else %}
+                            <img class="profile-pic-view"
+                                 src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                        {% endif %}
                     </nav>
                 </div>
                 <div>
@@ -370,16 +380,18 @@
 
                 <h1>Child Update</h1>
                 <!-- Start Register Form -->
-                <form  method="post" action="{% url 'child update' pk=child_pk user_id=request.user.pk %}"
+                <form method="post" action="{% url 'child update' pk=child_pk user_id=request.user.pk %}"
                       enctype="multipart/form-data">
 
                     {% for field in child_form %}
-                            {{ field.label }}
-                        {% endfor %}
-                        {{ child_form.errors }}
-                        {{ child_form }}
+                        {{ field.label }}
+                    {% endfor %}
+                    {{ child_form.errors }}
+                    {{ child_form }}
+                    {{ child_form.date_of_birth.errors }}
 
-                        <button type="submit" value="edit">Update Child</button>
+
+                    <button type="submit" value="edit">Update Child</button>
 
 
                     {% csrf_token %}

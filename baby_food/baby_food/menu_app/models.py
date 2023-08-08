@@ -5,14 +5,11 @@ from baby_food.recipes.models import Recipe
 
 
 class Menu(models.Model):
-    menu_type = (
-        ('Allergy-Free Menu', 'Allergy-Free Menu'),
-        ('Menu With Allergens', 'Menu With Allergens'),
-    )
 
-    name = models.CharField(
-        max_length=30,
-        choices=menu_type,
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='menu_category'
     )
 
     date = models.DateField(
@@ -24,12 +21,6 @@ class Menu(models.Model):
             ('18M-36M', '18M-36M'),
             ('10M-36M', '10M-36M'),
         ),
-    )
-
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.CASCADE,
-        related_name='menu_category'
     )
 
     soup = models.ForeignKey(

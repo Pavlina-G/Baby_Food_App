@@ -3,11 +3,9 @@ from datetime import datetime
 
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import SelectDateWidget
-from django.http import HttpRequest
 
-from baby_food.accounts.models import Profile
-from baby_food.order.models import Order, OrderItem, Payments
+
+from baby_food.order.models import Order, Payments
 
 from django.utils.translation import gettext_lazy as _
 
@@ -38,17 +36,8 @@ class OrderPayForm(forms.ModelForm):
         month = cleaned_data.get('card_expiry_month')
         year = cleaned_data.get('card_expiry_year')
         if year == datetime.now().year and month < datetime.now().month:
-            # raise ValidationError(_("The month is not valid!"))
             self.add_error('card_expiry_month', ValidationError(_("The month is not valid!")))
-            # self.add_error('card_expiry_month', "The month is not valid!")
         return cleaned_data
-
-    # def clean_card_expiry_month(self):
-    #     selected_month = self.cleaned_data["card_expiry_month"]
-    #
-    #     if self.cleaned_data['card_expiry_year'] == datetime.now().year and selected_month < datetime.now().month:
-    #         raise forms.ValidationError(_("The month is not valid!", code='invalid'))
-    #     return selected_month
 
     class Meta:
         model = Payments

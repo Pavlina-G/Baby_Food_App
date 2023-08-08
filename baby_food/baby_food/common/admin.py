@@ -10,7 +10,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('picture', 'upload_date')
+
 
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):

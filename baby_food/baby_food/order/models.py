@@ -1,8 +1,6 @@
 from datetime import datetime
 
-from django.core.exceptions import ValidationError
 from encrypted_fields import fields
-from django.utils.translation import gettext_lazy as _
 
 from django.db import models
 
@@ -62,7 +60,7 @@ class OrderItem(models.Model):
 
     product = models.ForeignKey(
         Menu,
-        on_delete=models.CASCADE
+        on_delete=models.DO_NOTHING
     )
 
     quantity = models.PositiveIntegerField(

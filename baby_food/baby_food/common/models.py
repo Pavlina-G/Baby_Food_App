@@ -1,6 +1,7 @@
 from django.core import validators
 from django.db import models
 
+
 class Category(models.Model):
     category_name = models.CharField(
         max_length=50,
@@ -28,6 +29,7 @@ class Gallery(models.Model):
         return self.picture.name
 
     class Meta:
+        ordering = ['-upload_date']
         verbose_name_plural = 'Gallery'
 
 
@@ -44,7 +46,3 @@ class Location(models.Model):
 
     def __str__(self):
         return f'{self.city}, {self.address}'
-
-
-
-

@@ -1,23 +1,34 @@
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required
 from django.core.checks import messages
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from baby_food.accounts.models import Profile
 from baby_food.common.models import Location
+from baby_food.common.utils import is_staff
 from baby_food.order.forms import OrderCreateForm, OrderPayForm
-from baby_food.order.models import OrderItem, Order, Payments
-from baby_food.settings import LOGIN_REDIRECT_URL
+from baby_food.order.models import OrderItem, Order
+
 from baby_food.shopping_cart.cart import Cart
 
 
 @login_required
-@permission_required('order.add_order', login_url=LOGIN_REDIRECT_URL)
 def create_order(request):
+
     cart = Cart(request)
     user_pk = request.user.pk
-    order_customer = Profile.objects.get(user_id=user_pk)
-    customer_address = Location.objects.get(pk=order_customer.location_id)
+    order_customer = get_object_or_404(Profile, pk=user_pk)
+
+    if is_staff(request):
+        cart.clear()
+        return redirect('profile home')
+
+    if order_customer.child_set.all().count() == 0:
+        cart.clear()
+        return redirect('profile home')
+
+    customer_address = get_object_or_404(Location, pk=order_customer.location_id)
+
     total_amount = cart.get_total_price()
 
     if request.method == 'POST':
@@ -58,11 +69,13 @@ def create_order(request):
 
 
 @login_required
-@permission_required('payments.add_payments', login_url=LOGIN_REDIRECT_URL)
 def pay_order(request, order_pk):
     user_pk = request.user.pk
     customer = Profile.objects.get(user_id=user_pk)
     order = Order.objects.filter(customer=customer, pk=order_pk).last()
+
+    if is_staff(request):
+        return redirect('profile home')
 
     if request.method == 'POST':
         payment_form = OrderPayForm(request.POST)
@@ -78,8 +91,6 @@ def pay_order(request, order_pk):
             order.paid = True
             order.save()
 
-            # cart.clear()
-
             return redirect('created order')
         return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
 
@@ -89,9 +100,9 @@ def pay_order(request, order_pk):
 
 
 @login_required
-def created_order(request):
+def orders_list(request):
     user_pk = request.user.pk
-    order_customer = Profile.objects.get(user_id=user_pk)
+    order_customer = get_object_or_404(Profile, pk=user_pk)
     order = Order.objects.filter(customer=order_customer).last()
     orders = Order.objects.filter(customer=order_customer, ).order_by('-created_at')[:10]
 

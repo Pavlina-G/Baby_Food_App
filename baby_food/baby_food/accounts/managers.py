@@ -1,5 +1,8 @@
 from django.contrib.auth import base_user
 from django.contrib.auth.hashers import make_password
+from django.core.mail import send_mail
+
+
 # from django.contrib.auth.models import UserManager
 
 
@@ -34,4 +37,5 @@ class AppUserManager(base_user.BaseUserManager):
             raise ValueError("Superuser must have is_superuser=True.")
 
         return self._create_user(email, password, **extra_fields)
+
 

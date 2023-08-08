@@ -57,7 +57,7 @@ class Cart(object):
                 'kids': kids,
                 'menu_id': menu_id,
                 'price': menu.price,
-                'name': menu.name,
+                'name': menu.category.category_name,
                 'date': menu.date.strftime("%d.%m.%Y"),
                 'location': user.profile.location.address,
                 'age': str(menu.age),

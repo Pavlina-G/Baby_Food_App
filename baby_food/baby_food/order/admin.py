@@ -1,3 +1,4 @@
+from django.utils.html import format_html
 from totalsum.admin import TotalsumAdmin
 
 from django.contrib import admin
@@ -6,31 +7,21 @@ from baby_food.order.models import Order, OrderItem, Payments
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('__str__', 'address', 'order_amount', 'total_paid',)
+    list_filter = ('paid', 'address')
 
+    search_fields = (
+        'address__address', 'customer__first_name', 'customer__last_name', 'customer__user__username', 'pk')
 
-class CategoryListFilter(admin.SimpleListFilter):
-    title = 'menu category'
-
-    parameter_name = 'category'
-
-    def lookups(self, request, model_admin):
-        return [
-            ('Allergy Free', 'Allergy Free'),
-            ('With Allergens', 'With Allergens')
-        ]
-
-    def queryset(self, request, queryset):
-        if self.value() == 'Allergy Free':
-            return queryset.filter(product__category=1).order_by('-product')
-        elif self.value() == 'With Allergens':
-            return queryset.filter(product__category=2).order_by('-product')
+    def total_paid(self, obj):
+        if obj.paid:
+            return obj.order_amount
 
 
 @admin.register(OrderItem)
 class OrderItemAdmin(TotalsumAdmin):
-    list_display = ('product', 'quantity', 'total_price', 'address', 'get_menu_date', 'order')
-    list_filter = ('product', 'order', CategoryListFilter, 'address',)
+    list_display = ('product', 'quantity', 'total_price', 'address', 'get_menu_date', 'order',)
+    list_filter = ('product', 'order', 'product__category', 'address',)
 
     search_fields = (
         'product__date', 'address', 'order__pk', 'order__customer__first_name', 'order__customer__last_name',
@@ -71,7 +62,6 @@ class PaymentsAdmin(admin.ModelAdmin):
         #         'fields': (
         #             'card_holder',
         #             'card_number',
-        #             'card_verification_code',
         #         ),
         #     }),
     )

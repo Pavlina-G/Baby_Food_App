@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
+from baby_food.common.validators import validate_birth_date
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.contrib.auth import models as auth_models
@@ -21,9 +22,6 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
         _("username"),
         max_length=150,
         unique=True,
-        # help_text=_(
-        #     "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-        # ),
         validators=[username_validator],
         error_messages={
             "unique": _("A user with that username already exists."),
@@ -57,28 +55,19 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
         validators=[validators.MinValueValidator(1), validators.MaxValueValidator(5)],
     )
 
-    # User credentials consist of `email` and `password`
-    # USERNAME_FIELD = 'email'
-
     objects = UserManager()
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["email", "number_of_children"]
+    # REQUIRED_FIELDS = ["email", "number_of_children"]
+    REQUIRED_FIELDS = ['__all__']
 
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
 
-    def clean(self):
-        super().clean()
-        self.email = self.__class__.objects.normalize_email(self.email)
-
-    def get_user_email(self):
-        return self.email
-
-    def email_user(self, subject, message, from_email=None, **kwargs):
-        send_mail(subject, message, from_email, [self.email], **kwargs)
+    # def email_user(self, subject, message, from_email=None, **kwargs):
+    #     send_mail(subject, message, from_email, [self.email], **kwargs)
 
     # objects = AppUserManager()
 
@@ -140,7 +129,7 @@ class Child(models.Model):
     date_of_birth = models.DateField(
         blank=False,
         null=True,
-        validators=[],
+        validators=[validate_birth_date],
     )
     parent = models.ForeignKey(
         Profile,

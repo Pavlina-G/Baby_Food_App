@@ -143,9 +143,11 @@
                         >
                             <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
                             <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
-                            <a href="{% url 'locations map' %}" class="navigation-links-link2"><span>Locations</span></a>
+                            <a href="{% url 'locations map' %}"
+                               class="navigation-links-link2"><span>Locations</span></a>
 
-                            <a href="{% url 'gallery pictures' %}" class="navigation-links-link3"><span><span>Gallery</span></span></a>
+                            <a href="{% url 'gallery pictures' %}"
+                               class="navigation-links-link3"><span><span>Gallery</span></span></a>
 
                             <div
                                     data-thq="thq-dropdown"
@@ -155,7 +157,7 @@
                                         data-thq="thq-dropdown-toggle"
                                         class="navigation-links-dropdown-toggle"
                                 >
-                                    <span class="navigation-links-text" >Profile</span>
+                                    <span class="navigation-links-text">Profile</span>
 
                                 </div>
                                 <ul
@@ -170,11 +172,12 @@
                                                 data-thq="thq-dropdown-toggle"
                                                 class="navigation-links-dropdown-toggle1"
                                         >
-                                            <a href="{% url 'profile details' pk=request.user.pk %}" class="navigation-links-link4"><span
+                                            <a href="{% url 'profile details' pk=request.user.pk %}"
+                                               class="navigation-links-link4"><span
                                                     class="navigation-links-text1">Profile Details</span></a>
 
-                            <br/>
-                          </span>
+                                            <br/>
+                                            </span>
                                         </div>
                                     </li>
                                     <li
@@ -218,9 +221,10 @@
                                 </ul>
                             </div>
                             {% if user.profile.profile_image %}
-                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
-                                {% else %}
-                                <img class="profile-pic-view" src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% else %}
+                                <img class="profile-pic-view"
+                                     src="{% static 'public/playground_assets/profile-icon.jpg' %}">
                             {% endif %}
                         </nav>
                     </div>
@@ -253,89 +257,91 @@
                         </div>
                     </div>
                     <nav
-                                class="navigation-links-nav navigation-links-root-class-name9"
+                            class="navigation-links-nav navigation-links-root-class-name9"
+                    >
+                        <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
+                        <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
+                        <a href="{% url 'locations map' %}" class="navigation-links-link2"><span>Locations</span></a>
+
+                        <a href="{% url 'index' %}" class="navigation-links-link3"><span><span>Gallery</span></span></a>
+
+                        <div
+                                data-thq="thq-dropdown"
+                                class="navigation-links-thq-dropdown list-item"
                         >
-                            <a href="{% url 'index' %}" class="navigation-links-link"><span>Home</span></a>
-                            <a href="{% url 'menus home' %}" class="navigation-links-link1"><span>Menu</span></a>
-                            <a href="{% url 'locations map' %}" class="navigation-links-link2"><span>Locations</span></a>
-
-                            <a href="{% url 'index' %}" class="navigation-links-link3"><span><span>Gallery</span></span></a>
-
                             <div
-                                    data-thq="thq-dropdown"
-                                    class="navigation-links-thq-dropdown list-item"
+                                    data-thq="thq-dropdown-toggle"
+                                    class="navigation-links-dropdown-toggle"
                             >
-                                <div
-                                        data-thq="thq-dropdown-toggle"
-                                        class="navigation-links-dropdown-toggle"
-                                >
-                                    <span class="navigation-links-text">Profile</span>
-                                </div>
-                                <ul
-                                        data-thq="thq-dropdown-list"
-                                        class="navigation-links-dropdown-list"
-                                >
-                                    <li
-                                            data-thq="thq-dropdown"
-                                            class="navigation-links-dropdown list-item"
-                                    >
-                                        <div
-                                                data-thq="thq-dropdown-toggle"
-                                                class="navigation-links-dropdown-toggle1"
-                                        >
-                                            <a href="{% url 'profile details' pk=request.user.pk %}" class="navigation-links-link4"><span
-                                                    class="navigation-links-text1">Profile Details</span></a>
-
-                            <br/>
-                          </span>
-                                        </div>
-                                    </li>
-                                    <li
-                                            data-thq="thq-dropdown"
-                                            class="navigation-links-dropdown1 list-item"
-                                    >
-                                        <div
-                                                data-thq="thq-dropdown-toggle"
-                                                class="navigation-links-dropdown-toggle2"
-                                        >
-                                            <a href="{% url 'created order' %}" class="navigation-links-link4"><span
-                                                    class="navigation-links-text4">Orders</span></a>
-
-                                        </div>
-                                    </li>
-                                    <li
-                                            data-thq="thq-dropdown"
-                                            class="navigation-links-dropdown2 list-item"
-                                    >
-                                        <div
-                                                data-thq="thq-dropdown-toggle"
-                                                class="navigation-links-dropdown-toggle3"
-                                        >
-                                            <a href="{% url 'cart details' %}" class="navigation-links-link4"><span
-                                                    class="navigation-links-text5">Cart</span></a>
-
-                                        </div>
-                                    </li>
-                                    <li
-                                            data-thq="thq-dropdown"
-                                            class="navigation-links-dropdown3 list-item"
-                                    >
-                                        <div
-                                                data-thq="thq-dropdown-toggle"
-                                                class="navigation-links-dropdown-toggle4"
-                                        >
-                                            <a href="{% url 'sign out' %}" class="navigation-links-link4"><span
-                                                    class="navigation-links-text6">Logout</span></a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <span class="navigation-links-text">Profile</span>
                             </div>
-                            {% if user.profile.profile_image %}
+                            <ul
+                                    data-thq="thq-dropdown-list"
+                                    class="navigation-links-dropdown-list"
+                            >
+                                <li
+                                        data-thq="thq-dropdown"
+                                        class="navigation-links-dropdown list-item"
+                                >
+                                    <div
+                                            data-thq="thq-dropdown-toggle"
+                                            class="navigation-links-dropdown-toggle1"
+                                    >
+                                        <a href="{% url 'profile details' pk=request.user.pk %}"
+                                           class="navigation-links-link4"><span
+                                                class="navigation-links-text1">Profile Details</span></a>
+
+                                        <br/>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li
+                                        data-thq="thq-dropdown"
+                                        class="navigation-links-dropdown1 list-item"
+                                >
+                                    <div
+                                            data-thq="thq-dropdown-toggle"
+                                            class="navigation-links-dropdown-toggle2"
+                                    >
+                                        <a href="{% url 'created order' %}" class="navigation-links-link4"><span
+                                                class="navigation-links-text4">Orders</span></a>
+
+                                    </div>
+                                </li>
+                                <li
+                                        data-thq="thq-dropdown"
+                                        class="navigation-links-dropdown2 list-item"
+                                >
+                                    <div
+                                            data-thq="thq-dropdown-toggle"
+                                            class="navigation-links-dropdown-toggle3"
+                                    >
+                                        <a href="{% url 'cart details' %}" class="navigation-links-link4"><span
+                                                class="navigation-links-text5">Cart</span></a>
+
+                                    </div>
+                                </li>
+                                <li
+                                        data-thq="thq-dropdown"
+                                        class="navigation-links-dropdown3 list-item"
+                                >
+                                    <div
+                                            data-thq="thq-dropdown-toggle"
+                                            class="navigation-links-dropdown-toggle4"
+                                    >
+                                        <a href="{% url 'sign out' %}" class="navigation-links-link4"><span
+                                                class="navigation-links-text6">Logout</span></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        {% if user.profile.profile_image %}
                             <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
-                                {% else %}
-                                <img class="profile-pic-view" src="{% static 'public/playground_assets/profile-icon.jpg' %}">
-                            {% endif %}
-                        </nav>
+                        {% else %}
+                            <img class="profile-pic-view"
+                                 src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                        {% endif %}
+                    </nav>
                 </div>
                 <div>
                     <svg
@@ -371,16 +377,27 @@
           <span class="home-text03 home-text03-new">
             <br/>
               {% if object.profile.first_name %}
-            <span class="home-text05">Hello, <span style="color: #124e51; font-weight: bold; font-style: italic">{{ object.profile.first_name|capfirst }} </span>!<br>Welcome to Baby &amp; Toddler Food!</span>
-{#            <span class="home-text05">Hello, <span style="color: #2a8387">{{ object.username|capfirst }}</span>!<br>Welcome to Baby &amp; Toddler Food!</span>#}
+                  <span class="home-text05">Hello, <span
+                          style="color: #124e51; font-weight: bold; font-style: italic">{{ object.profile.first_name|capfirst }} </span>!<br>Welcome to Baby &amp; Toddler Food!</span>
+                  {#            <span class="home-text05">Hello, <span style="color: #2a8387">{{ object.username|capfirst }}</span>!<br>Welcome to Baby &amp; Toddler Food!</span>#}
               {% else %}
-                  <span class="home-text05">Hello, <span style="color: #2a8387">{{ object.username|capfirst }}</span>! <br>Welcome to Baby &amp; Toddler Food!</span>
+                  <span class="home-text05">Hello, <span
+                          style="color: #2a8387">{{ object.username|capfirst }}</span>! <br>Welcome to Baby &amp; Toddler Food!</span>
               {% endif %}
-            <br>
+              <br>
             <span>
                 <br>
-                <p>In case you log in for the first time, please update your profile <a class="add-profile-data" href="{% url 'profile edit' pk=request.user.pk %}">here</a> !</p>
-                Otherwise, have a look at our menus and make your order.
+                {% if not object.profile.child_set %}
+                    <p>As you have no children registered, you cannot buy menus, but you could have a look at them <a
+                            class="add-profile-data" href="{% url 'menus home' %}">here</a>.</p>
+                    {% elif is_staff %}
+                    <p>As a staff user, you could only have a look at the menus <a
+                            class="add-profile-data" href="{% url 'menus home' %}">here</a>.</p>
+                {% else %}
+                    <p>In case you log in for the first time, please update your profile <a class="add-profile-data"
+                                                                                            href="{% url 'profile edit' pk=request.user.pk %}">here</a>.</p>
+                    Otherwise, have a look at our menus and make your order.
+                {% endif %}
             </span>
 
             <span style="display: block; margin-top: 1%">THANK YOU and HAVE A NICE STAY :)</span>

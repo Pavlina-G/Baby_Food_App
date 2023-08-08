@@ -141,7 +141,7 @@
             </h1>
             <div class="profile-details-container1">
                 <div class="profile-details-container2">
-                    <div class="profile-details-nav" >
+                    <div class="profile-details-nav">
                         <nav
                                 class="navigation-links-nav navigation-links-root-class-name9" style="left: -30px"
                         >
@@ -222,7 +222,12 @@
                                     </li>
                                 </ul>
                             </div>
-                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% if user.profile.profile_image %}
+                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% else %}
+                                <img class="profile-pic-view"
+                                     src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                            {% endif %}
                         </nav>
                     </div>
                 </div>
@@ -332,7 +337,13 @@
                                 </li>
                             </ul>
                         </div>
-                        <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+
+                        {% if user.profile.profile_image %}
+                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                        {% else %}
+                            <img class="profile-pic-view"
+                                 src="{% static 'public/playground_assets/profile-icon.jpg' %}">
+                        {% endif %}
                     </nav>
                 </div>
                 <div>
@@ -378,22 +389,22 @@
                         {{ field.label }}
                         {{ field }}
                     {% endfor %}
-{#                    {{ profile_form }}#}
-                <button type="submit" value="edit">Update Profile</button>
-{#                 <button type="submit" value="edit">#}
-{#                    <a href="{% url 'profile edit' pk=request.user.pk %}">Update Profile Details</a></button>#}
+                    {#                    {{ profile_form }}#}
+                    <button type="submit" value="edit">Update Profile</button>
+                    {#                 <button type="submit" value="edit">#}
+                    {#                    <a href="{% url 'profile edit' pk=request.user.pk %}">Update Profile Details</a></button>#}
 
-{#                    {% for child_form in children_forms %}#}
-{#                        {% for field in child_form %}#}
-{#                        {{ field.label }}#}
-{#                    {% endfor %}#}
-{#                        {{ child_form }}#}
-{#                         <button type="button" value="edit">#}
-{#                    <a href="{% url 'child update' user_id=request.user.pk pk=child_form %}">Update Child Details</a></button>#}
-{#                    {% endfor %}#}
+                    {#                    {% for child_form in children_forms %}#}
+                    {#                        {% for field in child_form %}#}
+                    {#                        {{ field.label }}#}
+                    {#                    {% endfor %}#}
+                    {#                        {{ child_form }}#}
+                    {#                         <button type="button" value="edit">#}
+                    {#                    <a href="{% url 'child update' user_id=request.user.pk pk=child_form %}">Update Child Details</a></button>#}
+                    {#                    {% endfor %}#}
 
 
-{#                    <button type="submit" value="edit">Update Profile</button>#}
+                    {#                    <button type="submit" value="edit">Update Profile</button>#}
                     {% csrf_token %}
                     {#                    <img src="{% static 'public/playground_assets/profile-icon.jpg' %}"#}
                     {#                         class="img-fluid" alt="Sample image" width="318px" height="250px">#}

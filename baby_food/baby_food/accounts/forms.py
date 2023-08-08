@@ -10,7 +10,6 @@ UserModel = get_user_model()
 
 
 class SignUpForm(auth_forms.UserCreationForm):
-    # email = forms.EmailField()
 
     class Meta:
         model = UserModel
@@ -41,9 +40,10 @@ class SignUpForm(auth_forms.UserCreationForm):
 
         if commit:
             profile.save()
-            for _ in range(children_numbers):
-                child = Child(parent=profile)
-                child.save()
+            if children_numbers > 0:
+                for _ in range(children_numbers):
+                    child = Child(parent=profile)
+                    child.save()
 
         return user
 
@@ -56,7 +56,6 @@ class UserEditForm(auth_forms.UserChangeForm):
     class Meta:
         model = UserModel
         exclude = ('date_joined',)
-        # fields = '__all__'
         field_classes = {'username': auth_forms.UsernameField}
 
 

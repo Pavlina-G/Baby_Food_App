@@ -124,7 +124,6 @@
 </head>
 <body>
 <div>
-    {#        {% if request.user.is_authenticated %}#}
     <link href="{% static 'css_new/locations.css' %}" rel="stylesheet"/>
 
     <section class="menus-home-container">
@@ -364,7 +363,6 @@
         </header>
         <label class="page1-text10" style="margin-top: 80px; margin-right: 14%; font-weight: bold; font-size: 18px">Locations<br>
             <select class="page1-select" style="font-size: 16px; border-radius: 7px; padding: 6px">
-                {#                to add locations from the db#}
 
                 {% for location in locations %}
                     <option value="{{ location.address }}">{{ forloop.counter }}. {{ location.address }}
@@ -393,8 +391,6 @@
             Email: test@email.burgas.com<br>
             Phone number: 0888777888
         </text>
-</div>
-
 
 <footer class="menus-home-footer">
           <span class="menus-home-text13">

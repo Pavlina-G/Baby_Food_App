@@ -108,7 +108,7 @@ def orders_list(request):
 
     context = {'order': order, 'orders': orders}
 
-    return render(request, 'orders/created_order.html', context)
+    return render(request, 'orders/orders_list.html', context)
 
 
 @login_required

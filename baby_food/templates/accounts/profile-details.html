@@ -396,36 +396,35 @@
                             {% endif %}
                         </div>
                     </div>
-                    <p style="margin-top: -199px;">
+                    <p style="margin-top: -175px;">
                         {#                    <p style="margin-top: -330px">#}
-                        <br>
-                        <span class="profile-details-text-info"><b>Username: </b>{{ user.username }}</span>
-                        <br>
-                        <span class="profile-details-text-info"><b>Email: </b>{{ user.email }}</span>
-                        <br>
 
-                        <span class="profile-details-text-info"><b>First Name: </b>{{ user.profile.first_name }}</span>
-                        <br>
+                    <p class="profile-details-text-info"><span
+                            class="span-label-details">Username: </span>{{ user.username.get_ }}{{ user.username }}</p>
+                    <p class="profile-details-text-info"><span class="span-label-details">Email: </span>{{ user.email }}
+                    </p>
+                    <p class="profile-details-text-info"><span
+                            class="span-label-details">First Name: </span>{{ user.profile.first_name }}</p>
+                    <p class="profile-details-text-info"><span
+                            class="span-label-details">Last Name: </span>{{ user.profile.last_name }}</p>
+                    <p class="profile-details-text-info"><span
+                            class="span-label-details">Location: </span>{{ user.profile.location }}</p>
 
-                        <span class="profile-details-text-info"><b>Last Name: </b>{{ user.profile.last_name }}</span>
-                        <br>
+                    <button type="button" value="edit">
+                        <a href="{% url 'profile edit' pk=request.user.pk %}">Edit</a></button>
 
-                        <span class="profile-details-text-info"><b>Location: </b>{{ user.profile.location }}</span>
+                    {% for child in children %}
                         <br>
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">Child
+                            Name: </span>{{ child.first_name }} {{ child.last_name }}</p>
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">Child Birth Date: </span>{{ child.date_of_birth }}</p>
 
                         <button type="button" value="edit">
-                            <a href="{% url 'profile edit' pk=request.user.pk %}">Edit</a></button>
+                            <a href="{% url 'child update' user_id=request.user.pk pk=child.pk %}">Edit</a></button>
 
-                        {% for child in children %}
-                            <br>
-                            <span class="profile-details-text-info"><b>Child Name: </b>{{ child.first_name }} {{ child.last_name }}</span>
-                            <br>
-
-                            <span class="profile-details-text-info"><b>Child Birth Date: </b>{{ child.date_of_birth }}</span>
-                            <button type="button" value="edit">
-                                <a href="{% url 'child update' user_id=request.user.pk pk=child.pk %}">Edit</a></button>
-
-                        {% endfor %}
+                    {% endfor %}
 
                     </p>
                     <a href="{% url 'profile delete' pk=request.user.pk %}" type="submit" class="button" style="margin-top: 20px; margin-left: 109px;

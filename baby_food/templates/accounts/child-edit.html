@@ -1,7 +1,7 @@
 {% load placeholders %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Child-Edit</title>
     <meta
@@ -385,11 +385,9 @@
 
                     {% for field in child_form %}
                         {{ field.label }}
+                        {{ field }}
+                        <p style="font-size: 12px; margin-bottom: 8px">{{ field.errors|striptags }}</p>
                     {% endfor %}
-                    {{ child_form.errors }}
-                    {{ child_form }}
-                    {{ child_form.date_of_birth.errors }}
-
 
                     <button type="submit" value="edit">Update Child</button>
 

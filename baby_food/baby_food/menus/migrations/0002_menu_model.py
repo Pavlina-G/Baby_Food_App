@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('recipes', '0002_create_model_Recipe'),
         ('common', '0006_category'),
-        ('menu_app', '0001_initial'),
+        ('menus', '0001_initial'),
     ]
 
     operations = [

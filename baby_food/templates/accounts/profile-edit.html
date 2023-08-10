@@ -388,26 +388,12 @@
                     {% for field in profile_form %}
                         {{ field.label }}
                         {{ field }}
+                        <p style="font-size: 12px; margin-bottom: 8px">{{ field.errors|striptags }}</p>
                     {% endfor %}
-                    {#                    {{ profile_form }}#}
+
                     <button type="submit" value="edit">Update Profile</button>
-                    {#                 <button type="submit" value="edit">#}
-                    {#                    <a href="{% url 'profile edit' pk=request.user.pk %}">Update Profile Details</a></button>#}
 
-                    {#                    {% for child_form in children_forms %}#}
-                    {#                        {% for field in child_form %}#}
-                    {#                        {{ field.label }}#}
-                    {#                    {% endfor %}#}
-                    {#                        {{ child_form }}#}
-                    {#                         <button type="button" value="edit">#}
-                    {#                    <a href="{% url 'child update' user_id=request.user.pk pk=child_form %}">Update Child Details</a></button>#}
-                    {#                    {% endfor %}#}
-
-
-                    {#                    <button type="submit" value="edit">Update Profile</button>#}
                     {% csrf_token %}
-                    {#                    <img src="{% static 'public/playground_assets/profile-icon.jpg' %}"#}
-                    {#                         class="img-fluid" alt="Sample image" width="318px" height="250px">#}
 
                 </form>
 

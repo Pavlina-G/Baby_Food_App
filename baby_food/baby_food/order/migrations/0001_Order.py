@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('common', '0007_alter_category_options'),
-        ('menu_app', '0007_alter_menu_price'),
+        ('menus', '0007_alter_menu_price'),
         ('accounts', '0011_alter_profile_location'),
     ]
 

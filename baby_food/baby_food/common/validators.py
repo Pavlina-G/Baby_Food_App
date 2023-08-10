@@ -23,10 +23,14 @@ def validate_name(value):
             )
 
 
-
 def validate_birth_date(value):
-    start_date = datetime.date(value.year, value.month + 6, value.day)
-    end_date = datetime.date(start_date.year + 3, start_date.month, start_date.day)
+    six_months_days = 182
+    three_years_days = 1095
 
-    if start_date > datetime.datetime.today().date() > end_date:
+    current_date = datetime.date.today()
+    current_age = (current_date - value)
+
+    if current_age.days < six_months_days:
         raise ValidationError(f'The child age should be at least 6-months.')
+    if current_age.days > three_years_days:
+        raise ValidationError(f'The child age should be less than 3-years.')

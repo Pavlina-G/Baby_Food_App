@@ -3,7 +3,7 @@ from django.http import request
 from django.shortcuts import redirect
 
 from baby_food.accounts.models import Child
-from baby_food.menu_app.models import Menu
+from baby_food.menus.models import Menu
 from baby_food.order.models import OrderItem
 
 

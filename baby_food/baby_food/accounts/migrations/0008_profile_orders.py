@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('menu_app', '0004_alter_menu_price'),
+        ('menus', '0004_alter_menu_price'),
         ('accounts', '0007_alter_child_options'),
     ]
 
@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='profile',
             name='orders',
-            field=models.ManyToManyField(blank=True, to='menu_app.menu'),
+            field=models.ManyToManyField(blank=True, to='menus.menu'),
         ),
     ]

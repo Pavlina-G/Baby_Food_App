@@ -3,9 +3,12 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.mail import send_mail
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.urls import reverse, reverse_lazy
+from django.utils.html import strip_tags
 from django.views import generic as views
 from multi_form_view import MultiModelFormView
 
@@ -13,6 +16,7 @@ from baby_food.accounts.forms import SignInForm, SignUpForm, ProfileForm, UserFo
     ChildEditForm
 from baby_food.accounts.models import Profile, AppUser, Child
 from baby_food.common.utils import is_staff
+from baby_food.settings import DEFAULT_FROM_EMAIL
 
 UserModel = get_user_model()
 
@@ -50,8 +54,6 @@ class ProfileHomeView(views.DetailView):
         context = super(ProfileHomeView, self).get_context_data(**kwargs)
         context['is_staff'] = is_staff(self.request)
         return context
-
-
 
 
 class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
@@ -125,7 +127,14 @@ def profile_edit(request, pk):
         if profile_form.is_valid():
             profile_form.save()
 
-        return redirect('profile details', pk=user.pk)
+            return redirect('profile details', pk=user.pk)
+
+        context = {
+            'profile_form': profile_form,
+        }
+
+        return render(request, 'accounts/profile-edit.html',
+                      context, )
 
     else:
         profile_form = ProfileEditForm(instance=profile)
@@ -151,7 +160,13 @@ def child_update(request, user_id, pk):
         if child_form.is_valid():
             child_form.save()
 
-        return redirect('profile details', pk=user.pk)
+            return redirect('profile details', pk=user.pk)
+
+        context = {
+            'child_form': child_form,
+            'child_pk': child.id
+        }
+        return render(request, 'accounts/child-edit.html', context)
 
     else:
         child_form = ChildEditForm(instance=child)
@@ -174,3 +189,20 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'accounts/password_change.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('profile home')
+
+    def form_valid(self, form):
+        form = super(ChangePasswordView, self).form_valid(form)
+        email = self.request.user.email
+
+        email_content = render_to_string('email_templates/password-changed.html', {
+            'user': self.request.user,
+        })
+        send_mail(
+            subject='Password changed',
+            message=strip_tags(email_content),
+            html_message=email_content,
+            from_email=DEFAULT_FROM_EMAIL,
+            recipient_list=[email],
+            fail_silently=True,
+        )
+        return form

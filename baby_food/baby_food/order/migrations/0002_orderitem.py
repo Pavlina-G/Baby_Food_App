@@ -8,7 +8,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('menu_app', '0007_alter_menu_price'),
+        ('menus', '0007_alter_menu_price'),
         ('order', '0001_Order'),
     ]
 
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('price', models.FloatField(default=3.5, validators=[django.core.validators.MinValueValidator(0.0)])),
                 ('address', models.CharField(max_length=200)),
                 ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='order.order')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='menu_app.menu')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='menus.menu')),
             ],
             options={
                 'ordering': ['-product__date'],

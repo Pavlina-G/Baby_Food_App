@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('menu_app', '0008_remove_menu_name'),
+        ('menus', '0008_remove_menu_name'),
         ('order', '0006_alter_payments_card_holder'),
     ]
 
@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='orderitem',
             name='product',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='menu_app.menu'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='menus.menu'),
         ),
     ]

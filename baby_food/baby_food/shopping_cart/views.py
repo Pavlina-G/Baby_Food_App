@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from baby_food.accounts.models import Child, Profile
-from baby_food.menu_app.models import Menu
+from baby_food.menus.models import Menu
 
 from baby_food.shopping_cart.cart import Cart
 
@@ -34,6 +34,11 @@ def add_to_cart(request, pk):
     for child in children:
         if child.first_name is None or child.last_name is None:
             messages.info(request, 'Please update your profile. Add children data.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+        if children.count() > 1 and child.last_menu_date() == menu.date:
+            messages.info(request, f'You are not allowed to buy menus for child {child.child_full_name}')
+        elif children.count() == 1 and child.last_menu_date() == menu.date:
+            messages.info(request, f'You are not allowed to buy menus for child {child.child_full_name}')
             return redirect(request.META.get('HTTP_REFERER', '/'))
 
     cart.add(menu=menu)

@@ -1,18 +1,17 @@
 import datetime
-from datetime import timedelta
+from dateutil.relativedelta import relativedelta
 
 from django.contrib.auth.models import UserManager
-from django.core.mail import send_mail
-from django.utils import timezone
+
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
-from baby_food.common.validators import validate_birth_date
+from baby_food.common.validators import validate_birth_date, validate_name
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.contrib.auth import models as auth_models
-from baby_food.accounts.managers import AppUserManager
+
 from baby_food.common.models import Location
-from baby_food.menu_app.models import Menu
+from baby_food.menus.models import Menu
 
 
 class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
@@ -59,17 +58,11 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, ):
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "username"
-    # REQUIRED_FIELDS = ["email", "number_of_children"]
     REQUIRED_FIELDS = ['__all__']
 
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
-
-    # def email_user(self, subject, message, from_email=None, **kwargs):
-    #     send_mail(subject, message, from_email, [self.email], **kwargs)
-
-    # objects = AppUserManager()
 
     def __str__(self):
         return self.username
@@ -85,13 +78,15 @@ class Profile(models.Model):
     first_name = models.CharField(
         max_length=30,
         blank=False,
-        null=True
+        null=True,
+        validators=[validate_name],
     )
 
     last_name = models.CharField(
         max_length=30,
         blank=False,
-        null=True
+        null=True,
+        validators=[validate_name],
     )
 
     profile_image = models.ImageField(
@@ -104,7 +99,6 @@ class Profile(models.Model):
         null=True,
         blank=False,
     )
-    # orders = models.ManyToManyField(Menu, blank=True)
 
     def __str__(self):
         if self.first_name and self.last_name:
@@ -117,13 +111,15 @@ class Child(models.Model):
     first_name = models.CharField(
         max_length=30,
         blank=False,
-        null=True
+        null=True,
+        validators=[validate_name],
     )
 
     last_name = models.CharField(
         max_length=30,
         blank=False,
-        null=True
+        null=True,
+        validators=[validate_name],
     )
 
     date_of_birth = models.DateField(
@@ -131,6 +127,7 @@ class Child(models.Model):
         null=True,
         validators=[validate_birth_date],
     )
+
     parent = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
@@ -148,8 +145,6 @@ class Child(models.Model):
 
     def __str__(self):
         return f'Child: {self.first_name} {self.last_name}'
-        # return f'Email: {self.parent.user.username} Child: {self.first_name} {self.last_name}'
 
-
-
-    # last_voucher_on = date_of_birth + timedelta(days=365*3)
+    def last_menu_date(self):
+        return self.date_of_birth + relativedelta(years=3)

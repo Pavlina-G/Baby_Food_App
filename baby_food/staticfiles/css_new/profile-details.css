@@ -526,15 +526,22 @@
 
 .profile-details-text-info {
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.4;
     left: 109px;
     top:5px;
     position: relative;
-
-    /*margin-top: var(--dl-space-space-halfunit);*/
-    /*background-color: var(--dl-color-gray-white);*/
-    background-color: white;
+    /*border: 1px solid lightseagreen;*/
+    padding: 0.4px 6px;
+    margin-bottom: 6px;
+    width: 70%;
+    /*background-color: rgb(255, 255, 255);*/
     border-radius: var(--dl-radius-radius-radius4);
+}
+
+.span-label-details {
+    font-style: italic;
+    font-weight: 600;
+    margin-right: 2%;
 }
 
 .profile-details-form {
@@ -796,7 +803,7 @@
     height: 30px;
     width: 100%;
     padding-left: 2px;
-    margin-top: 10px;
+    /*margin-bottom: 15px;*/
 }
 
 .login-register-box button {
@@ -807,8 +814,11 @@
     width: 57%;
     border-radius: 3px;
     margin-top: 10px;
+    margin-bottom: 5px;
     height: 30px;
     margin-left: 109px;
+    /*margin-left: 35%;*/
+
 
 }
 

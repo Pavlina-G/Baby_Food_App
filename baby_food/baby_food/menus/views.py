@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from baby_food.accounts.models import Profile
 from baby_food.common.utils import is_staff, get_context_menus
-from baby_food.menu_app.models import Menu
+from baby_food.menus.models import Menu
 
 
 def menu_home(request):
@@ -13,8 +13,9 @@ def menu_home(request):
 
 def menu_with_allergens_first(request):
     user = request.user
-    menus = Menu.objects.filter(age__exact='10M-18M', category_id=2,
-                                date__gt=(datetime.date.today() + datetime.timedelta(days=12)))
+    # menus = Menu.objects.filter(age__exact='10M-18M', category_id=2,
+    #                             date__gt=(datetime.date.today() + datetime.timedelta(days=12)))
+    menus = Menu.objects.filter(age__exact='10M-18M', category_id=2)
     try:
         profile = Profile.objects.get(user_id=user.id)
     except Profile.DoesNotExist:

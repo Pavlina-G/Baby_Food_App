@@ -10,7 +10,7 @@ urlpatterns = [
     path('bf-admin/', admin.site.urls),
     path('', include('baby_food.common.urls')),
     path('accounts/', include('baby_food.accounts.urls')),
-    path('menu_app/', include('baby_food.menu_app.urls')),
+    path('menus/', include('baby_food.menus.urls')),
     path('recipes/', include('baby_food.recipes.urls')),
     path('order/', include('baby_food.order.urls')),
     path('cart/', include('baby_food.shopping_cart.urls')),

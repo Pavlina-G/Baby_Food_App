@@ -9,7 +9,7 @@ from baby_food.common.models import Location
 from baby_food.common import validators as my_validators
 from django.core import validators
 
-from baby_food.menu_app.models import Menu
+from baby_food.menus.models import Menu
 
 
 def create_new_payment_number(pk):

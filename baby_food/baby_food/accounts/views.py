@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model, login, authenticate
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.views import PasswordChangeView, PasswordResetView, PasswordResetConfirmView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.mail import send_mail
 
@@ -41,6 +41,17 @@ class SignInView(auth_views.LoginView):
 
 class SignOutView(auth_views.LogoutView):
     next_page = reverse_lazy('index')
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'accounts/password_reset.html'
+    from_email = DEFAULT_FROM_EMAIL
+    email_template_name = 'accounts/password-reset-email.html'
+
+
+class ResetPasswordConfirmView(SuccessMessageMixin,PasswordResetConfirmView):
+    template_name = 'accounts/password_reset_confirm.html'
+    success_url = reverse_lazy('password_reset_complete')
 
 
 class ProfileHomeView(views.DetailView):
@@ -186,7 +197,7 @@ class ProfileDeleteView(views.DeleteView):
 
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
-    template_name = 'accounts/password_change.html'
+    template_name = 'accounts/password/../../templates/accounts/password_change.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('profile home')
 

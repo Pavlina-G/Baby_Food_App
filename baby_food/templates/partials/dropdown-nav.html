@@ -41,7 +41,7 @@
                     data-thq="thq-dropdown-toggle"
                     class="navigation-links-dropdown-toggle2"
             >
-                <a href="{% url 'created order' %}" class="navigation-links-link4"><span
+                <a href="{% url 'orders list' %}" class="navigation-links-link4"><span
                         class="navigation-links-text4">Orders</span></a>
 
             </div>
@@ -73,7 +73,6 @@
         </li>
     </ul>
 </div>
-{#<img class="profile-pic-view" src="{% static 'public/playground_assets/profile-icon.jpg' %}">#}
 {% if user.profile.profile_image %}
     <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
 {% else %}

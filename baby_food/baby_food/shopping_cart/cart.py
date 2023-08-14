@@ -1,13 +1,8 @@
 from django.conf import settings
-from django.http import request
-from django.shortcuts import redirect
 
 from baby_food.accounts.models import Child
 from baby_food.menus.models import Menu
-from baby_food.order.models import OrderItem
 
-
-# import product/the menus/
 
 class Cart(object):
     def __init__(self, request):
@@ -28,7 +23,6 @@ class Cart(object):
         for item in self.cart.values():
             yield item
 
-
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
 
@@ -36,7 +30,7 @@ class Cart(object):
         self.session[settings.CART_SESSION_ID] = self.cart
         self.session.modified = True
 
-    def add(self, menu, quantity=1, update_quantity=False):
+    def add(self, menu, quantity=1):
         menu_id = str(menu.id)
         user = self.request.user
         children = Child.objects.filter(parent_id=user.id)
@@ -63,13 +57,8 @@ class Cart(object):
                 'age': str(menu.age),
             }
 
-        # # if update_quantity:
-        # else:
-        #     self.cart[menu_id]['quantity'] += int(quantity)
-        #     # self.cart[menu_id]['price'] += float(menu.price)
-        #
-        #     if self.cart[menu_id]['quantity'] == 0:
-        #         self.remove(menu)
+        else:
+            self.cart[menu_id]['quantity'] += int(quantity)
 
         self.save()
 

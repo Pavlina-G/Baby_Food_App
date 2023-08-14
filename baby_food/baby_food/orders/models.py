@@ -35,7 +35,7 @@ class Order(models.Model):
         decimal_places=2,
         max_digits=6,
         error_messages={
-            "wrong amount": "The order amount must be more than 3 BGN",
+            "wrong amount": "The orders amount must be more than 3 BGN",
         },
         blank=True,
     )
@@ -147,6 +147,7 @@ class Payments(models.Model):
 
     payment_date = models.DateField(
         auto_now_add=True,
+
     )
 
     def __str__(self):

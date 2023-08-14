@@ -1,7 +1,5 @@
 from django.core.paginator import Paginator
-from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
-from django.template import RequestContext
 from django.views import generic as views
 
 from baby_food.common.models import Gallery, Location

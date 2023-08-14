@@ -6,26 +6,22 @@
 <div class="checkout-card">
     <h2 class="checkout-card-title">Order Details</h2>
     <form class="checkout-card-form" role="form" method="post" action="{% url 'create order' %}">
-{#        {{ form.as_p }}#}
 
         <label for="cardHolder" class="checkout-card-form-label">Customer</label>
-{#        <input type="text" name="cardHolder" id="cardHolder" class="checkout-card-form-input"#}
-{#               placeholder="Enter your name">#}
+
         {{ form.customer }}
 
         <label for="cardNumber" class="checkout-card-form-label">Address</label>
         {{ form.address }}
-{#        <a href="{% url 'cart details' %}" class="checkout-card-form-link-info order-final-info">Order Details#}
+
         <div class="checkout-card-form-final-info">
             <a href="{% url 'cart details' %}" class="checkout-card-form-link-info order-final-info">
-{#                Order Details#}
-{#                <i class="fa-solid fa-receipt" style="color: #f1f4fa; margin-top: 2.5%"></i>#}
+
                 <i class="fa-solid fa-cart-shopping" style="color: #f1f4fa; margin-top: 2.5%"></i>
                 <span id="card-total-amount"> Total amount: {{ cart.get_total_price|floatformat:2 }} BGN</span>
             </a>
         </div>
         <button type="submit" id="card-pay-btn">Submit Order</button>
-{#        <input type="submit" value="Pay" id="card-pay-btn">#}
 
         {% csrf_token %}
     </form>

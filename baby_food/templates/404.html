@@ -110,8 +110,7 @@
             href="https://fonts.googleapis.com/css2?family=ABeeZee:ital,wght@0,400;1,400&amp;display=swap"
             data-tag="font"
     />
-    <!--This is the head section-->
-    <!-- <style> ... </style> -->
+
     <style data-section-id="dropdown">
         [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
             display: flex;
@@ -125,7 +124,7 @@
 </head>
 <body>
 <div>
-    {#        {% if request.user.is_authenticated %}#}
+
     <link href="{% static 'css_new/locations.css' %}" rel="stylesheet"/>
 
     <section class="menus-home-container">
@@ -193,7 +192,7 @@
                                                     data-thq="thq-dropdown-toggle"
                                                     class="navigation-links-dropdown-toggle2"
                                             >
-                                                <a href="{% url 'created order' %}" class="navigation-links-link4"><span
+                                                <a href="{% url 'orders list' %}" class="navigation-links-link4"><span
                                                         class="navigation-links-text4">Orders</span></a>
 
                                             </div>
@@ -368,7 +367,7 @@
 
             {% if request.user.is_authenticated %}
                 <a href="{% url 'profile home' %}" class="menu-no-allergens-link">
-                    {#                    <h1 class="menu-no-allergens-text236 error-text">#}
+
                     <h1 class="error-text">
                         <span>SOMETHING WENT WRONG</span>
                         <span>-</span>

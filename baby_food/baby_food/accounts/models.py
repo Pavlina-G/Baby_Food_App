@@ -1,4 +1,3 @@
-import datetime
 from dateutil.relativedelta import relativedelta
 
 from django.contrib.auth.models import UserManager
@@ -93,6 +92,7 @@ class Profile(models.Model):
         upload_to='profile_pics',
         default='profile_pics/profile-icon.jpg'
     )
+
     location = models.ForeignKey(
         Location,
         on_delete=models.CASCADE,

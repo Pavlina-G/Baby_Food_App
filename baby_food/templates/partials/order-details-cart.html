@@ -75,10 +75,6 @@
 
                 </tr>
             {% endfor %}
-            {#Second item#}
-
-            {#Third item#}
-
 
             </tbody>
         </table>
@@ -97,7 +93,7 @@
                    href="{% url 'create order' %}">Checkout</a></div>
         {% else %}
             <div class="column">
-            <a class="btn btn-primary" style="background-color: lightseagreen;" href="{% url 'created order' %}"
+            <a class="btn btn-primary" style="background-color: lightseagreen;" href="{% url 'orders list' %}"
                data-toast=""
                data-toast-type="success"
                data-toast-position="topRight" data-toast-icon="icon-circle-check"

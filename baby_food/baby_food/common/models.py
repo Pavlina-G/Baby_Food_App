@@ -1,4 +1,3 @@
-from django.core import validators
 from django.db import models
 
 
@@ -37,7 +36,6 @@ class Location(models.Model):
     city = models.CharField(
         max_length=20,
         default='Burgas',
-        # editable=False,
     )
 
     address = models.CharField(

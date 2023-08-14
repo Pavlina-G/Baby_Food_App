@@ -106,7 +106,7 @@
             href="https://fonts.googleapis.com/css2?family=ABeeZee:ital,wght@0,400;1,400&amp;display=swap"
             data-tag="font"
     />
-    <!--This is the head section-->
+
     <style data-section-id="dropdown">
         [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
             display: flex;
@@ -116,7 +116,7 @@
             transform: rotate(90deg);
         }
     </style>
-    <!-- <style> ... </style> -->
+
     <link rel="stylesheet" href="{% static 'css_new/style.css' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -188,7 +188,7 @@
                                                 data-thq="thq-dropdown-toggle"
                                                 class="navigation-links-dropdown-toggle2"
                                         >
-                                            <a href="{% url 'created order' %}" class="navigation-links-link4"><span
+                                            <a href="{% url 'orders list' %}" class="navigation-links-link4"><span
                                                     class="navigation-links-text4">Orders</span></a>
 
                                         </div>
@@ -303,7 +303,7 @@
                                             data-thq="thq-dropdown-toggle"
                                             class="navigation-links-dropdown-toggle2"
                                     >
-                                        <a href="{% url 'created order' %}" class="navigation-links-link4"><span
+                                        <a href="{% url 'orders list' %}" class="navigation-links-link4"><span
                                                 class="navigation-links-text4">Orders</span></a>
 
                                     </div>
@@ -379,7 +379,6 @@
               {% if object.profile.first_name %}
                   <span class="home-text05">Hello, <span
                           style="color: #124e51; font-weight: bold; font-style: italic">{{ object.profile.first_name|capfirst }} </span>!<br>Welcome to Baby &amp; Toddler Food!</span>
-                  {#            <span class="home-text05">Hello, <span style="color: #2a8387">{{ object.username|capfirst }}</span>!<br>Welcome to Baby &amp; Toddler Food!</span>#}
               {% else %}
                   <span class="home-text05">Hello, <span
                           style="color: #2a8387">{{ object.username|capfirst }}</span>! <br>Welcome to Baby &amp; Toddler Food!</span>
@@ -387,12 +386,14 @@
               <br>
             <span>
                 <br>
-                {% if not object.profile.child_set %}
-                    <p>As you have no children registered, you cannot buy menus, but you could have a look at them <a
-                            class="add-profile-data" href="{% url 'menus home' %}">here</a>.</p>
-                    {% elif is_staff %}
-                    <p>As a staff user, you could only have a look at the menus <a
-                            class="add-profile-data" href="{% url 'menus home' %}">here</a>.</p>
+
+                {% if request.user.is_superuser %}
+                    <p>As a staff superuser, please go to the ADMIN page <a
+                            class="add-profile-data" href="{% url 'admin:index' %}">here</a>.</p>
+                {% elif is_staff %}
+                    <p>As a staff user, you could only have a look at the menus.</p><p>Please go to the ADMIN page <a
+                        class="add-profile-data" href="{% url 'admin:index' %}">here</a>.</p>
+
                 {% else %}
                     <p>In case you log in for the first time, please update your profile <a class="add-profile-data"
                                                                                             href="{% url 'profile edit' pk=request.user.pk %}">here</a>.</p>

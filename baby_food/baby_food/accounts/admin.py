@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from baby_food.accounts.forms import SignUpForm, UserEditForm
-from baby_food.accounts.models import AppUser, Profile, Child
+from baby_food.accounts.models import Profile, Child
 from django.contrib.auth import admin as auth_admin, get_user_model
 
 
@@ -22,8 +22,6 @@ class AppUserAdmin(auth_admin.UserAdmin):
             {
                 'fields': (
                     'username',
-                    # 'password1',
-                    # 'password2',
                 ),
             }),
         (

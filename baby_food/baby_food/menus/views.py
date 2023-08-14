@@ -13,9 +13,10 @@ def menu_home(request):
 
 def menu_with_allergens_first(request):
     user = request.user
-    # menus = Menu.objects.filter(age__exact='10M-18M', category_id=2,
-    #                             date__gt=(datetime.date.today() + datetime.timedelta(days=12)))
-    menus = Menu.objects.filter(age__exact='10M-18M', category_id=2)
+    menus = Menu.objects.filter(age__exact='10M-18M', category_id=2,
+                                date__range=(datetime.date.today() + datetime.timedelta(days=1),
+                                             datetime.date.today() + datetime.timedelta(days=12)))
+
     try:
         profile = Profile.objects.get(user_id=user.id)
     except Profile.DoesNotExist:
@@ -31,7 +32,8 @@ def menu_with_allergens_first(request):
 def menu_with_allergens_last(request):
     user = request.user
     menus = Menu.objects.filter(age__exact='18M-36M', category_id=2,
-                                date__gt=(datetime.date.today() + datetime.timedelta(days=12)))
+                                date__range=(datetime.date.today() + datetime.timedelta(days=1),
+                                             datetime.date.today() + datetime.timedelta(days=12)))
 
     try:
         profile = Profile.objects.get(user_id=user.id)
@@ -48,7 +50,8 @@ def menu_with_allergens_last(request):
 def menu_no_allergens(request):
     user = request.user
     menus = Menu.objects.filter(age__exact='10M-36M', category_id=1,
-                                date__gt=(datetime.date.today() + datetime.timedelta(days=12)))
+                                date__range=(datetime.date.today() + datetime.timedelta(days=1),
+                                             datetime.date.today() + datetime.timedelta(days=12)))
 
     try:
         profile = Profile.objects.get(user_id=user.id)

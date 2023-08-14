@@ -1,8 +1,7 @@
-from django.utils.html import format_html
 from totalsum.admin import TotalsumAdmin
 
 from django.contrib import admin
-from baby_food.order.models import Order, OrderItem, Payments
+from baby_food.orders.models import Order, OrderItem, Payments
 
 
 @admin.register(Order)
@@ -43,7 +42,8 @@ class OrderItemAdmin(TotalsumAdmin):
 class PaymentsAdmin(admin.ModelAdmin):
     list_display = ('order_id', 'payment_number', 'payment_date')
     list_filter = ('payment_date',)
-    exclude = ('card_verification_code',)
+    exclude = ('card_verification_code', 'payment_date')
+    readonly_fields = ('payment_date',)
 
     fieldsets = (
         (
@@ -56,12 +56,4 @@ class PaymentsAdmin(admin.ModelAdmin):
                 ),
             },
         ),
-        # (
-        #     'Card details',
-        #     {
-        #         'fields': (
-        #             'card_holder',
-        #             'card_number',
-        #         ),
-        #     }),
     )

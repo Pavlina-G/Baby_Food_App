@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, login, authenticate
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView, PasswordResetView, PasswordResetConfirmView
@@ -49,7 +49,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     email_template_name = 'accounts/password-reset-email.html'
 
 
-class ResetPasswordConfirmView(SuccessMessageMixin,PasswordResetConfirmView):
+class ResetPasswordConfirmView(SuccessMessageMixin, PasswordResetConfirmView):
     template_name = 'accounts/password_reset_confirm.html'
     success_url = reverse_lazy('password_reset_complete')
 
@@ -69,46 +69,18 @@ class ProfileHomeView(views.DetailView):
 
 class ProfileDetailsFormView(MultiModelFormView, views.DetailView):
     form_classes = {
-
         'profile_form': ProfileForm,
         'user_form': UserForm,
         'child_form': ChildForm,
     }
 
-    record_id = None
     template_name = 'accounts/profile-details.html'
 
     def get_object(self, queryset=None):
         return self.request.user
 
-    def get_form_kwargs(self):
-        kwargs = super(ProfileDetailsFormView, self).get_form_kwargs()
-        kwargs['user_form']['prefix'] = 'user'
-        kwargs['child_form']['prefix'] = 'child'
-        return kwargs
-
-    def get_objects(self):
-
-        user_id = self.request.user.pk
-        try:
-            profile = Profile.objects.get(user_id=self.kwargs.get('user_id', None))
-        except Profile.DoesNotExist:
-            profile = None
-        return {
-            'profile_form': profile,
-            'user_form': profile.user if profile else None,
-            'child_form': profile.child_set if profile else None,
-        }
-
     def get_success_url(self):
         return reverse('profile home')
-
-    def forms_valid(self, forms):
-        profile = forms['profile_form'].save(commit=False)
-        profile.user = forms['user_form'].save()
-        profile.child = forms['child_form'].save()
-        profile.save()
-        return super(ProfileDetailsFormView, self).forms_valid(forms)
 
     def get_context_data(self, **kwargs):
         user = AppUser.objects.get(pk=self.request.user.pk)
@@ -130,6 +102,9 @@ def get_child_by_user_id(pk, parent_id):
 @login_required
 def profile_edit(request, pk):
     user = request.user
+
+    if user.pk != pk:
+        return redirect('profile home')
 
     profile = get_object_or_404(Profile, user_id=user.pk)
 
@@ -197,7 +172,7 @@ class ProfileDeleteView(views.DeleteView):
 
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
-    template_name = 'accounts/password/../../templates/accounts/password_change.html'
+    template_name = 'accounts/password_change.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('profile home')
 

@@ -109,8 +109,7 @@
             href="https://fonts.googleapis.com/css2?family=ABeeZee:ital,wght@0,400;1,400&amp;display=swap"
             data-tag="font"
     />
-    <!--This is the head section-->
-    <!-- <style> ... </style> -->
+
     <style data-section-id="dropdown">
         [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
             display: flex;
@@ -265,16 +264,16 @@
                                 class="page-image011"
                         />
                         <span class="page-text013">
-              <span class="page-text014">{{ menu.soup }}</span>
+              <span class="page-text014">SOUP: {{ menu.soup }}</span>
                             <br> <span class="page-text015">( {{ menu.soup.ingredients|lower }} )</span>
                             <br>
                             <br>
-              <span class="page-text014">{{ menu.main_dish }}</span>
+              <span class="page-text014">MAIN DISH: {{ menu.main_dish }}</span>
                             <br> <span class="page-text015">( {{ menu.main_dish.ingredients|lower }} )</span>
 
               <br class="page-text024"/>
               <br class="page-text025"/>
-              <span class="page-text014">{{ menu.dessert }}</span>
+              <span class="page-text014">DESSERT: {{ menu.dessert }}</span>
                             <br> <span class="page-text015">( {{ menu.dessert.ingredients|lower }} )</span>
 
               <br/>
@@ -297,19 +296,15 @@
               <span class="page-text016">The menu will be uploaded soon.</span>
               <br class="page-text015"/>
               <br class="page-text016"/>Please check again later!
-{#              <br class="page-text017"/>#}
+
               <br class="page-text018"/>
               <br class="page-text019"/>
               <span class="page-text020"></span>
-{#              <br class="page-text021"/>#}
-{#              <br class="page-text022"/>#}
-{#              <br class="page-text023"/>#}
+
               <br class="page-text024"/>
               <br class="page-text025"/>
               <span class="page-text026"></span>
-{#              <br/>#}
-{#              <br/>#}
-{#              <br/>#}
+
               <br/>
               <br/>
             </span>
@@ -340,15 +335,15 @@
                                 class="page-image06"
                         />
                         <span class="page-text123">
-              <span class="page-text124">{{ menu.soup }}</span>
+              <span class="page-text124">SOUP: {{ menu.soup }}</span>
               <br> <span class="page-text125">( {{ menu.soup.ingredients|lower }} )</span>
               <br class="page-text128"/>
               <br class="page-text129"/>
-              <span class="page-text124">{{ menu.main_dish }}</span>
+              <span class="page-text124">MAIN DISH: {{ menu.main_dish }}</span>
                             <br> <span class="page-text125">( {{ menu.main_dish.ingredients|lower }} )</span>
               <br class="page-text134"/>
               <br class="page-text135"/>
-              <span class="page-text124">{{ menu.dessert }}</span>
+              <span class="page-text124">DESSERT: {{ menu.dessert }}</span>
               <br> <span class="page-text125">( {{ menu.dessert.ingredients|lower }} )</span>
               <br/>
               <br/>
@@ -368,7 +363,7 @@
     <div class="menu-no-allergens-icon-group1"></div>
 </footer>
 {% if request.user.is_authenticated and not staff_group %}
-    {#    <a href="{% url 'profile details' pk=request.user.pk %}" class="menu-no-allergens-link">#}
+
     <a href="{% url 'cart details' %}" class="menu-no-allergens-link">
         <h1 class="menu-no-allergens-text236">
             <span>Menu With Allergens 18M-36M</span>

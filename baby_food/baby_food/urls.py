@@ -12,7 +12,7 @@ urlpatterns = [
     path('accounts/', include('baby_food.accounts.urls')),
     path('menus/', include('baby_food.menus.urls')),
     path('recipes/', include('baby_food.recipes.urls')),
-    path('order/', include('baby_food.order.urls')),
+    path('orders/', include('baby_food.orders.urls')),
     path('cart/', include('baby_food.shopping_cart.urls')),
 ]
 

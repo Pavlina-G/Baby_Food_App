@@ -1,13 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.core.checks import messages
 
 from django.shortcuts import render, redirect, get_object_or_404
 
 from baby_food.accounts.models import Profile
 from baby_food.common.models import Location
 from baby_food.common.utils import is_staff
-from baby_food.order.forms import OrderCreateForm, OrderPayForm
-from baby_food.order.models import OrderItem, Order
+from baby_food.orders.forms import OrderCreateForm, OrderPayForm
+from baby_food.orders.models import OrderItem, Order
 
 from baby_food.shopping_cart.cart import Cart
 
@@ -44,7 +43,7 @@ def create_order(request):
             order.order_amount = total_amount
             if order.order_amount > 0:
                 order.save()
-                messages.success = (request, f'Your order number is {order.pk}')
+
                 for item in cart:
                     OrderItem.objects.create(
                         order=order,
@@ -91,7 +90,7 @@ def pay_order(request, order_pk):
             order.paid = True
             order.save()
 
-            return redirect('created order')
+            return redirect('orders list')
         return render(request, 'shopping_cart/checkout.html', {'payment_form': payment_form, 'order': order})
 
     else:
@@ -127,4 +126,4 @@ def delete_order(request, pk):
 
     order.delete()
 
-    return redirect('created order')
+    return redirect('orders list')

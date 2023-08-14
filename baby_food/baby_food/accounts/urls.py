@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
-# from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetDoneView, PasswordResetCompleteView
 from django.urls import path, include
 
 from baby_food.accounts.views import profile_edit, SignOutView, ProfileHomeView, SignUpView, SignInView, \

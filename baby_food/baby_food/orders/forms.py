@@ -4,10 +4,7 @@ from datetime import datetime
 from django import forms
 from django.core.exceptions import ValidationError
 
-
-from baby_food.order.models import Order, Payments
-
-from django.utils.translation import gettext_lazy as _
+from baby_food.orders.models import Order, Payments
 
 
 def create_new_payment_number():
@@ -35,8 +32,10 @@ class OrderPayForm(forms.ModelForm):
         cleaned_data = super(OrderPayForm, self).clean()
         month = cleaned_data.get('card_expiry_month')
         year = cleaned_data.get('card_expiry_year')
+
         if year == datetime.now().year and month < datetime.now().month:
-            self.add_error('card_expiry_month', ValidationError(_("The month is not valid!")))
+            self.add_error('card_expiry_month', ValidationError("The month is not valid!"))
+
         return cleaned_data
 
     class Meta:
@@ -60,13 +59,10 @@ class OrderPayForm(forms.ModelForm):
                     'class': 'checkout-card-form-input',
                     'placeholder': "Enter your card number",
                     'id': "cardNumId",
-                    # 'required': True,
                     'oninvalid': 'this.setCustomValidity("The card number must contain 16 digits.")',
-
                 }
             ),
             'card_expiry_month': forms.Select(
-
                 attrs={
                     'class': 'checkout-card-form-input exp ccv-label',
                     'placeholder': 'MM',
@@ -74,9 +70,7 @@ class OrderPayForm(forms.ModelForm):
                     'oninvalid': 'this.setCustomValidity("The month is in the past.")',
                 },
             ),
-
             'card_expiry_year': forms.Select(
-                # choices=YEAR_CHOICES,
                 attrs={
                     'class': 'checkout-card-form-input exp ccv-label',
                     'placeholder': 'YYYY',

@@ -107,8 +107,7 @@
             href="https://fonts.googleapis.com/css2?family=ABeeZee:ital,wght@0,400;1,400&amp;display=swap"
             data-tag="font"
     />
-    <!--This is the head section-->
-    <!-- <style> ... </style> -->
+
     <link rel="stylesheet" href="{% static 'css_new/style.css' %}"/>
 </head>
 <body>
@@ -196,12 +195,12 @@
                 </div>
             </div>
         </header>
-        {#        <div class="register-container4">#}
+
 
         <div class="login-register-div">
             <div class="login-register-box" style="width: 350px; height: 448px">
                 <h1>Sign In</h1>
-                <!-- Start Register Form -->
+
                 <form method="post" action="{% url 'sign in' %}">
 
                     <p style="font-size: 12px">{{ form.username.errors|striptags }}</p>

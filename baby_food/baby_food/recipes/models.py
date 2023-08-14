@@ -4,7 +4,6 @@ from baby_food.common.models import Category
 
 
 class Recipe(models.Model):
-
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
@@ -42,7 +41,8 @@ class Recipe(models.Model):
         auto_now=True,
     )
 
+    class Meta:
+        ordering = ['-added_on']
+
     def __str__(self):
-        return f'{self.dish_type}: {self.name}'
-
-
+        return f'{self.name}'

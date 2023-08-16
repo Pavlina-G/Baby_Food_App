@@ -37,5 +37,3 @@ class GalleryView(views.TemplateView):
         context['photos'] = photos
         context['paginated_photos'] = paginated_photos
         return self.render_to_response(context)
-
-

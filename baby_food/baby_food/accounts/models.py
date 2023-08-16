@@ -90,7 +90,7 @@ class Profile(models.Model):
 
     profile_image = models.ImageField(
         upload_to='profile_pics',
-        default='profile_pics/profile-icon.jpg'
+        blank=True,
     )
 
     location = models.ForeignKey(

@@ -1,3 +1,9 @@
+import datetime
+
+from baby_food.accounts.models import Profile
+from baby_food.menus.models import Menu
+
+
 def is_staff(request):
     return request.user.groups.filter(name='Staff')
 
@@ -14,3 +20,19 @@ def get_context_menus(menus):
         context['menus_first'] = menus
 
     return context
+
+
+def get_profile(id):
+    try:
+        profile = Profile.objects.get(user_id=id)
+    except Profile.DoesNotExist:
+        profile = None
+
+    return profile
+
+
+def get_filtered_menus(age, cat_id):
+    menus = Menu.objects.filter(age__exact=age, category_id=cat_id,
+                                date__range=(datetime.date.today() + datetime.timedelta(days=1),
+                                             datetime.date.today() + datetime.timedelta(days=16)))
+    return menus

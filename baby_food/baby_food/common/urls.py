@@ -6,5 +6,5 @@ urlpatterns = (
     path('', IndexView.as_view(), name='index'),
     path('locations/', locations_map, name='locations map'),
     path('gallery/', GalleryView.as_view(), name='gallery pictures'),
-    # path('error/', error, name='error temeplate test'),
+    # path('error/', error, name='error template test'),
 )

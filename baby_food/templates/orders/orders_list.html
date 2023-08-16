@@ -1,4 +1,5 @@
 {% load static %}
+{% load cloudinary %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -228,7 +229,12 @@
                                     </li>
                                 </ul>
                             </div>
-                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% if user.profile.profile_image %}
+                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% else %}
+                                <img class="profile-pic-view"
+                                     src="https://res.cloudinary.com/dvobk3jpf/image/upload/v1692130307/baby_food/profile_pics/profile_icon.jpg">
+                            {% endif %}
 
                         </nav>
                     </div>
@@ -339,7 +345,12 @@
                                 </li>
                             </ul>
                         </div>
-                        <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                        {% if user.profile.profile_image %}
+                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                            {% else %}
+                                <img class="profile-pic-view"
+                                     src="https://res.cloudinary.com/dvobk3jpf/image/upload/v1692130307/baby_food/profile_pics/profile_icon.jpg">
+                            {% endif %}
                     </nav>
                 </div>
                 <div>

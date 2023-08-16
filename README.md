@@ -1,4 +1,4 @@
-# Baby_Food_Burgas
+# Baby_Food_App
 
  This is a demo project for ordering baby and toddel food, related to the Python Web Framework exam.
 

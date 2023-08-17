@@ -9,7 +9,6 @@ class MenuAdmin(admin.ModelAdmin):
     list_display = ('category', 'date', 'age', 'soup', 'main_dish', 'dessert',)
     list_filter = ('age', 'date', 'category')
     search_fields = ('soup', 'main_dish', 'dessert')
-    # autocomplete_fields = ('soup', 'main_dish', 'dessert')
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "soup":

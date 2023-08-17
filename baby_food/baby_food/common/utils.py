@@ -5,7 +5,7 @@ from baby_food.menus.models import Menu
 
 
 def is_staff(request):
-    return request.user.groups.filter(name='Staff')
+    return request.user.groups.filter(name='Staff') and not request.user.is_superuser
 
 
 def get_context_menus(menus):
@@ -22,9 +22,9 @@ def get_context_menus(menus):
     return context
 
 
-def get_profile(id):
+def get_profile(user_id):
     try:
-        profile = Profile.objects.get(user_id=id)
+        profile = Profile.objects.get(user_id=user_id)
     except Profile.DoesNotExist:
         profile = None
 

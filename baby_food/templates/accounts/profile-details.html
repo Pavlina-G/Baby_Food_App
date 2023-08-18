@@ -336,11 +336,11 @@
                             </ul>
                         </div>
                         {% if user.profile.profile_image %}
-                                <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
-                            {% else %}
-                                <img class="profile-pic-view"
-                                     src="https://res.cloudinary.com/dvobk3jpf/image/upload/v1692130307/baby_food/profile_pics/profile_icon.jpg">
-                            {% endif %}
+                            <img class="profile-pic-view" src="{{ user.profile.profile_image.url }}">
+                        {% else %}
+                            <img class="profile-pic-view"
+                                 src="https://res.cloudinary.com/dvobk3jpf/image/upload/v1692130307/baby_food/profile_pics/profile_icon.jpg">
+                        {% endif %}
                     </nav>
                 </div>
                 <div>
@@ -384,11 +384,13 @@
                     <div class="profile_img">
                         <div class="image">
                             {% if not user.profile.profile_image %}
-{#                                <img class="profile-img-details" src="{% static 'public/playground_assets/profile-icon-200h.jpg' %}">#}
-                                <img class="profile-img-details" src="https://res.cloudinary.com/dvobk3jpf/image/upload/v1692130307/baby_food/profile_pics/profile_icon.jpg"
+                                {#                                <img class="profile-img-details" src="{% static 'public/playground_assets/profile-icon-200h.jpg' %}">#}
+                                <img class="profile-img-details"
+                                     src="https://res.cloudinary.com/dvobk3jpf/image/upload/v1692130307/baby_food/profile_pics/profile_icon.jpg"
                                      alt="img-profile">
                             {% else %}
-                                <img class="profile-img-details" src="{{ user.profile.profile_image.url }}" alt="img-profile">
+                                <img class="profile-img-details" src="{{ user.profile.profile_image.url }}"
+                                     alt="img-profile">
                             {% endif %}
                         </div>
                     </div>
@@ -398,23 +400,54 @@
                             class="span-label-details">Username: </span>{{ user.username.get_ }}{{ user.username }}</p>
                     <p class="profile-details-text-info"><span class="span-label-details">Email: </span>{{ user.email }}
                     </p>
-                    <p class="profile-details-text-info"><span
-                            class="span-label-details">First Name: </span>{{ user.profile.first_name }}</p>
-                    <p class="profile-details-text-info"><span
-                            class="span-label-details">Last Name: </span>{{ user.profile.last_name }}</p>
-                    <p class="profile-details-text-info"><span
-                            class="span-label-details">Location: </span>{{ user.profile.location }}</p>
+
+                    {% if user.profile.first_name %}
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">First Name: </span>{{ user.profile.first_name }}</p>
+                    {% else %}
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">First Name: </span></p>
+                    {% endif %}
+
+                    {% if user.profile.last_name %}
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">Last Name: </span>{{ user.profile.last_name }}</p>
+                    {% else %}
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">Last Name: </span></p>
+                    {% endif %}
+
+                    {% if user.profile.location %}
+
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">Location: </span>{{ user.profile.location }}</p>
+                    {% else %}
+                        <p class="profile-details-text-info"><span
+                                class="span-label-details">Location: </span></p>
+                    {% endif %}
 
                     <button type="button" value="edit">
                         <a href="{% url 'profile edit' pk=request.user.pk %}">Edit</a></button>
 
                     {% for child in children %}
                         <br>
-                        <p class="profile-details-text-info"><span
-                                class="span-label-details">Child
+                        {% if child.first_name and child.last_name %}
+                            <p class="profile-details-text-info"><span
+                                    class="span-label-details">Child
                             Name: </span>{{ child.first_name }} {{ child.last_name }}</p>
-                        <p class="profile-details-text-info"><span
-                                class="span-label-details">Child Birth Date: </span>{{ child.date_of_birth }}</p>
+                        {% elif not child.first_name and not child.last_name %}
+                            <p class="profile-details-text-info"><span
+                                    class="span-label-details">Child
+                            Name: </span></p>
+                        {% endif %}
+
+                        {% if child.date_of_birth %}
+                            <p class="profile-details-text-info"><span
+                                    class="span-label-details">Child Birth Date: </span>{{ child.date_of_birth }}</p>
+                        {% else %}
+                            <p class="profile-details-text-info"><span
+                                    class="span-label-details">Child Birth Date: </span></p>
+                        {% endif %}
 
                         <button type="button" value="edit">
                             <a href="{% url 'child update' user_id=request.user.pk pk=child.pk %}">Edit</a></button>

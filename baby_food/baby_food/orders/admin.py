@@ -40,10 +40,13 @@ class OrderItemAdmin(TotalsumAdmin):
 
 @admin.register(Payments)
 class PaymentsAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'payment_number', 'payment_date')
+    list_display = ('order_id', 'payment_number', 'payment_date', 'paid_amount')
     list_filter = ('payment_date',)
     exclude = ('card_verification_code', 'payment_date')
-    readonly_fields = ('payment_date',)
+    readonly_fields = ('payment_date', 'paid_amount')
+
+    def paid_amount(self, obj):
+        return obj.order_id.order_amount
 
     fieldsets = (
         (
@@ -53,6 +56,7 @@ class PaymentsAdmin(admin.ModelAdmin):
                     'order_id',
                     'payment_number',
                     'payment_date',
+                    'paid_amount'
                 ),
             },
         ),
